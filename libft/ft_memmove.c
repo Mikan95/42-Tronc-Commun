@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:15:13 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/12 14:58:28 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/14 15:09:04 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,40 +40,24 @@ void	*ft_memmove(void *dest, const void *src, int len)
 	}
 	return (dest);
 }
-
 /* #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 int main(int argc, char** argv)
 {
-	(void)argc;
-	char dest1[100] = "";
-	char dest2[100] = "";
-	char *src1 = "I love Zoe";
-	char *src2 = "I love Zoe";
-	printf("ft_memcpy: %s\n", ft_memmove(dest1, src1, atoi(argv[1])));
-	printf("   memcpy: %s\n", memmove(dest2, src2, atoi(argv[1])));
-} 
- */
-
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-int main(int argc, char** argv)
-{
-	(void)argc;
+	(void)argc; */
 /* 	########################################### */
 	/* char ptr[100] = "";
 	char ptr2[100] = "";
 	char *str = "I love Zoe";
 	char *str2 = "I love Zoe"; */
 /*	########################################### */
-	char str[] = "Hello-Zoe,you-are-beautiful";
+	/* char str[] = "Hello-Zoe,you-are-beautiful";
 	char str2[] = "Hello-Zoe,you-are-beautiful";
 	char *ptr = &str[5];
-	char *ptr2 = &str2[5];
+	char *ptr2 = &str2[5]; */
 /*	########################################### */
-	printf("before memmove:\n");
+	/* printf("before memmove:\n");
 	printf("ft_memmove src: %s\n", str);
 	printf("   memmove src: %s\n", str2);
 	printf("ft_memmove dst: %s\n", ptr);
@@ -85,4 +69,4 @@ int main(int argc, char** argv)
 	printf("   memmove src: %s\n", str2);
 	printf("ft_memmove dst: %s\n", ptr);
 	printf("   memmove dst: %s\n", ptr2);
-}
+} */
