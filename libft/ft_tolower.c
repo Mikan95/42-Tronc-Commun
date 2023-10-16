@@ -1,0 +1,27 @@
+/******************************************************************************/
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/16 22:19:49 by ameechan          #+#    #+#             */
+/*   Updated: 2023/10/16 22:21:33 by ameechan         ###   ########.fr       */
+/*                                                                            */
+/******************************************************************************/
+
+int ft_tolower(unsigned char c)
+{
+    if (c >= 'A' && c <= 'Z')
+        c = c + 32;
+    return (c);
+}
+
+/* #include <stdio.h>
+#include <ctype.h>
+int main(int argc, char **argv)
+{
+    (void)argc;
+    printf("ft_tolower: %c\n", ft_tolower(argv[1][0]));
+    printf("   tolower: %c\n", tolower(argv[1][0]));
+} */
