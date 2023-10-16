@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 16:01:03 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/14 16:59:17 by ameechan         ###   ########.fr       */
+/*   Created: 2023/10/16 16:13:57 by ameechan          #+#    #+#             */
+/*   Updated: 2023/10/16 16:18:43 by ameechan         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 unsigned long	ft_strlen(char *s)
 {
@@ -20,7 +20,7 @@ unsigned long	ft_strlen(char *s)
 	return (len);
 }
 
-int	ft_strlcat(char *dest, char *src, int dest_size)
+int	ft_strlcat(char *dest, char *src, int size)
 {
 	int	i;
 	int j;
@@ -31,11 +31,11 @@ int	ft_strlcat(char *dest, char *src, int dest_size)
 	j = 0;
 	src_len = ft_strlen(src);
 	dest_len = ft_strlen(dest);
-	if (dest_size > 0 && dest_len < dest_size)
+	if (size > 0 && dest_len < size)
 	{
 		while (dest[i] != '\0')
 		i++;
-		while (j < dest_size - dest_len - 1 && src[j] != '\0')
+		while (j < size - dest_len - 1 && src[j] != '\0')
 		{
 			dest[i + j] = src[j];
 			j++;
@@ -44,9 +44,9 @@ int	ft_strlcat(char *dest, char *src, int dest_size)
 		return(src_len + dest_len);
 	}
 	else
-		return(src_len + dest_size);
+		return(src_len + size);
 }
-
+/* 
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -79,4 +79,4 @@ int main(int argc, char** argv)
 	printf("RETURN VALUES:\n");
 	printf("ft_strlcat: %d\n", res);
 	printf("   strlcat: %d\n", res2);
-}
+} */
