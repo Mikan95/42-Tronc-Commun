@@ -1,27 +1,29 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:22:45 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/17 15:26:01 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:11:14 by ameechan         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
-void *ft_memchr(void *str, int c, int n)
+void	*ft_memchr(void *str, int c, int n)
 {
-    unsigned char   *ptr;
+	unsigned char	*ptr;
 
-    ptr = (unsigned char*)str;
-    while (n-- > 0)
-    {
-        if (*ptr == (unsigned char)c)
-        return (ptr);
-        ptr++;
-    }
-    return ('\0');
+	ptr = (unsigned char *)str;
+	while (n-- > 0)
+	{
+		if (*ptr == (unsigned char)c)
+		{
+			return (ptr);
+			ptr++;
+		}
+	}
+	return ('\0');
 }
 /* 
 #include <stdio.h>

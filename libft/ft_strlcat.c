@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 16:13:57 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/16 16:18:43 by ameechan         ###   ########.fr       */
+/*   Created: 2023/10/18 17:28:46 by ameechan          #+#    #+#             */
+/*   Updated: 2023/10/18 17:29:19 by ameechan         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 unsigned long	ft_strlen(char *s)
 {
@@ -23,10 +23,10 @@ unsigned long	ft_strlen(char *s)
 int	ft_strlcat(char *dest, char *src, int size)
 {
 	int	i;
-	int j;
+	int	j;
 	int	src_len;
 	int	dest_len;
-	
+
 	i = 0;
 	j = 0;
 	src_len = ft_strlen(src);
@@ -41,12 +41,12 @@ int	ft_strlcat(char *dest, char *src, int size)
 			j++;
 		}
 		dest[i + j] = '\0';
-		return(src_len + dest_len);
+		return (src_len + dest_len);
 	}
 	else
-		return(src_len + size);
+		return (src_len + size);
 }
-/* 
+/*
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

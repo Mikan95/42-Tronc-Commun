@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:14:27 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/14 16:00:11 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:29:43 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ unsigned long	ft_strlen(char *s)
 int	ft_strlcpy(char *dest, char *src, int dest_size)
 {
 	int	i;
-	int src_len;
+	int	src_len;
 
 	i = 0;
 	src_len = ft_strlen(src);
@@ -36,9 +36,9 @@ int	ft_strlcpy(char *dest, char *src, int dest_size)
 		}
 		dest[i] = '\0';
 	}
-	return(src_len);
+	return (src_len);
 }
-/* 
+/*
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>

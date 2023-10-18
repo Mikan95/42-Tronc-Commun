@@ -1,4 +1,4 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
@@ -6,27 +6,27 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:22:59 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/16 22:43:14 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/18 17:25:42 by ameechan         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
-char *ft_strchr(char *str, int c)
+char	*ft_strchr(char *str, int c)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while(str[i] != '\0')
-    {
-        if (str[i] == c)
-        return (&str[i]);
-        else
-        i++;
-    }
-    return ('\0');
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == c)
+			return (&str[i]);
+		else
+			i++;
+	}
+	return ('\0');
 }
-/* 
+/*
 #include <stdio.h>
-#include <bsd/string.h>
+#include <string.h>
 
 int main(int argc, char **argv)
 {
