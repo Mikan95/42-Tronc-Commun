@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:04:52 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 15:10:34 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:16:14 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_bzero(void *str, size_t n)
 {
 	unsigned char	*ptr;
-	int				i;
+	unsigned long	i;
 
 	i = 0;
 	ptr = (unsigned char *)str;

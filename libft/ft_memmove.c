@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:15:13 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 15:13:01 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:17:53 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*ft_memmove(void *dest, const void *src, size_t len)
 {
 	unsigned char	*ptrd;
 	unsigned char	*ptrs;
-	int				i;
+	unsigned long	i;
 
 	i = 0;
 	ptrd = (unsigned char *) dest;

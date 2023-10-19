@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 06:21:42 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 15:11:49 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:24:14 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ static unsigned long	ft_bestlen(char *s1, char *s2)
 
 int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
-	int	i;
-	int	res1;
-	int	res2;
-	int	len;
+	unsigned long	i;
+	int				res1;
+	int				res2;
+	unsigned long	len;
 
 	i = 0;
 	res1 = 0;

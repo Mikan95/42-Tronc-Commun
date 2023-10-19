@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:22:32 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 15:12:03 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:25:43 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ char	*ft_strrchr(const char *str, int c)
 	while (i >= 0)
 	{
 		if (str[i] == c)
-			return (&str[i]);
+			return ((char *)&str[i]);
 		else
 			i--;
 	}
-	return ('\0');
+	return (0);
 }
 /*
 #include <stdio.h>

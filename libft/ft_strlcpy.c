@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:14:27 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 15:11:31 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:24:20 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static size_t	ft_strlen(const char *s)
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t dest_size)
 {
-	int	i;
-	int	src_len;
+	unsigned long	i;
+	int				src_len;
 
 	i = 0;
 	src_len = ft_strlen(src);

@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:28:46 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 15:11:28 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:24:35 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ static size_t	ft_strlen(const char *s)
 
 size_t	ft_strlcat(char *dest, const char *src, size_t dest_size)
 {
-	int	i;
-	int	j;
-	int	src_len;
-	int	dest_len;
+	unsigned long	i;
+	unsigned long	j;
+	unsigned long	src_len;
+	unsigned long	dest_len;
 
 	i = 0;
 	j = 0;

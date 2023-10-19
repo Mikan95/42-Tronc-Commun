@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:15:55 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 15:12:00 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:24:05 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int	i;
-	int	j;
+	unsigned long	i;
+	unsigned long	j;
 
 	i = 0;
 	if (needle[i] == '\0')
