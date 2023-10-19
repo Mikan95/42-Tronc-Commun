@@ -6,13 +6,13 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 19:41:15 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/18 20:54:33 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:10:38 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void	*ft_calloc(unsigned int count, unsigned int size)
+void	*ft_calloc(size_t count, size_t size)
 {
 	unsigned int	i;
 	int				*ptr;

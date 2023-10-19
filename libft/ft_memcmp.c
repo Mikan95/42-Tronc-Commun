@@ -6,11 +6,13 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 15:41:26 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/18 17:28:21 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:10:47 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_memcmp(const void *s1, const void *s2, int n)
+#include <stdlib.h>
+
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	int				res1;
 	int				res2;

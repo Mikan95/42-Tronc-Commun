@@ -6,11 +6,13 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:22:32 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/18 17:24:20 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:12:03 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned long	ft_strlen(char *s)
+#include <stdlib.h>
+
+static size_t	ft_strlen(const char *s)
 {
 	int	len;
 
@@ -20,7 +22,7 @@ unsigned long	ft_strlen(char *s)
 	return (len);
 }
 
-char	*ft_strrchr(char *str, int c)
+char	*ft_strrchr(const char *str, int c)
 {
 	int	i;
 

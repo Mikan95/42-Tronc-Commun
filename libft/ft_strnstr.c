@@ -6,11 +6,13 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:15:55 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/18 19:03:25 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:12:00 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strnstr(const char *haystack, const char *needle, int len)
+#include <stdlib.h>
+
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	int	i;
 	int	j;

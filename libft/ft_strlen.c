@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:03:26 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/10 17:31:20 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:11:33 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned long	ft_strlen(char *s)
+#include <stdlib.h>
+
+size_t	ft_strlen(const char *s)
 {
 	int	len;
 

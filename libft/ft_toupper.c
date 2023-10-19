@@ -6,11 +6,11 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:21:23 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/18 17:21:41 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:05:14 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(unsigned char c)
+int	ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')
 		c = c - 32;

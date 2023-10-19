@@ -6,11 +6,11 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:19:54 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/18 17:20:23 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:04:46 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tolower(unsigned char c)
+int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
 		c = c + 32;

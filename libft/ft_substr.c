@@ -6,11 +6,12 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:45:41 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/18 21:45:59 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:12:18 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_substr(char const *s, unsigned int start, unsigned int len)
-{
+#include <stdlib.h>
 
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
 }

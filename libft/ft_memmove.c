@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:15:13 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/14 15:09:04 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:13:01 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_overlapping(unsigned char *ptrd, unsigned char *ptrs, int len, int i)
+#include <stdlib.h>
+
+static void	ovrlap(unsigned char *ptrd, unsigned char *ptrs, int len, int i)
 {
 	while (i <= len)
 	{
@@ -19,7 +21,7 @@ void	ft_overlapping(unsigned char *ptrd, unsigned char *ptrs, int len, int i)
 	}
 }
 
-void	*ft_memmove(void *dest, const void *src, int len)
+void	*ft_memmove(void *dest, const void *src, size_t len)
 {
 	unsigned char	*ptrd;
 	unsigned char	*ptrs;
@@ -29,7 +31,7 @@ void	*ft_memmove(void *dest, const void *src, int len)
 	ptrd = (unsigned char *) dest;
 	ptrs = (unsigned char *) src;
 	if (ptrs < ptrd && ((ptrs + len) >= ptrd))
-		ft_overlapping(ptrd, ptrs, len, 1);
+		ovrlap(ptrd, ptrs, len, 1);
 	else
 	{
 		while (i < len)

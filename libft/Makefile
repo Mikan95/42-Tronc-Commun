@@ -1,0 +1,42 @@
+SRC = $(addprefix ft_, $(addsuffix .c, atoi bzero calloc isalnum isalpha isascii \
+isdigit isprint memchr memcmp memcpy memmove memset strchr strdup strlcat strlcpy \
+strlen strncmp strnstr strrchr substr tolower toupper))
+
+OBJS := $(SRC:%.c=%.o)
+
+BONUS_SRC = $(addprefix bonus/, $(addsuffix _bonus.c, ))
+
+BONUS_OBJS := $(BONUS_SRC:%.c=%.o)
+
+NAME = libft.a
+
+CC = gcc
+
+CCFLAGS = -Wall -Werror -Wextra
+
+INC_DIR = .
+
+CPPFLAGS = -I$(INC_DIR)
+
+RM = rm -f
+
+ARNAME = ar rcs $(NAME)
+
+OBJS_MANBO = $(OBJS) $(BONUS_OBJS)
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(ARNAME) $(OBJS)
+
+%.o: %.c
+	$(CC) $(CPPFLAGS) $(CCFLAGS) -o $@ -c $<
+
+.PHONY: clean
+clean:
+	$(RM) $(OBJS_MANBO)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean all

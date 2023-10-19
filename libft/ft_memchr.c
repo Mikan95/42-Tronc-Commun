@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:22:45 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/18 17:11:14 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:10:44 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memchr(void *str, int c, int n)
+#include <stdlib.h>
+
+void	*ft_memchr(const void *str, int c, size_t n)
 {
 	unsigned char	*ptr;
 
@@ -25,7 +27,7 @@ void	*ft_memchr(void *str, int c, int n)
 	}
 	return ('\0');
 }
-/* 
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

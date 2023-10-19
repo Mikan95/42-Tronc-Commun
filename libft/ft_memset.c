@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:43:37 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/11 11:18:37 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:10:55 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memset(void *dest, int n, int len)
+#include <stdlib.h>
+
+void	*ft_memset(void *dest, int n, size_t len)
 {
 	unsigned char	*ptr;
 	int				i;

@@ -6,11 +6,11 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 19:06:16 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/18 19:12:37 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:34:31 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_space(char c)
+static int	is_space(char c)
 {
 	if (c == ' ' || c == '\t' || c == '\n')
 		return (1);
@@ -19,7 +19,7 @@ int	is_space(char c)
 	return (0);
 }
 
-int	is_digit(char c)
+static int	is_digit(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);

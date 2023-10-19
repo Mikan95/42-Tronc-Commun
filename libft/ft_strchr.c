@@ -6,11 +6,11 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:22:59 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/18 17:25:42 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 14:45:57 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(char *str, int c)
+char	*ft_strchr(const char *str, int c)
 {
 	int	i;
 

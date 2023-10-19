@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 06:21:42 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/18 17:07:28 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:11:49 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 /*
 Calculates len of both str and returns the shortest one,
 unless one of both len = 0
 */
-unsigned long	ft_shortestlen(char *s1, char *s2)
+static unsigned long	ft_bestlen(char *s1, char *s2)
 {
 	int	i;
 	int	j;
@@ -37,7 +38,7 @@ unsigned long	ft_shortestlen(char *s1, char *s2)
 		return (0);
 }
 
-int	ft_strncmp(const char *str1, const char *str2, int n)
+int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
 	int	i;
 	int	res1;
@@ -47,7 +48,7 @@ int	ft_strncmp(const char *str1, const char *str2, int n)
 	i = 0;
 	res1 = 0;
 	res2 = 0;
-	len = ft_shortestlen((char *)str1, (char *)str2);
+	len = ft_bestlen((char *)str1, (char *)str2);
 	while (i < n && i < len)
 	{
 		if (str1[i] == str2[i])
@@ -65,7 +66,7 @@ int	ft_strncmp(const char *str1, const char *str2, int n)
 	}
 	return (res1 - res2);
 }
-/* 
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

@@ -6,11 +6,13 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:28:46 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/18 17:29:19 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:11:28 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned long	ft_strlen(char *s)
+#include <stdlib.h>
+
+static size_t	ft_strlen(const char *s)
 {
 	int	len;
 
@@ -20,7 +22,7 @@ unsigned long	ft_strlen(char *s)
 	return (len);
 }
 
-int	ft_strlcat(char *dest, char *src, int size)
+size_t	ft_strlcat(char *dest, const char *src, size_t dest_size)
 {
 	int	i;
 	int	j;
@@ -31,11 +33,11 @@ int	ft_strlcat(char *dest, char *src, int size)
 	j = 0;
 	src_len = ft_strlen(src);
 	dest_len = ft_strlen(dest);
-	if (size > 0 && dest_len < size)
+	if (dest_size > 0 && dest_len < dest_size)
 	{
 		while (dest[i] != '\0')
 		i++;
-		while (j < size - dest_len - 1 && src[j] != '\0')
+		while (j < dest_size - dest_len - 1 && src[j] != '\0')
 		{
 			dest[i + j] = src[j];
 			j++;
@@ -44,7 +46,7 @@ int	ft_strlcat(char *dest, char *src, int size)
 		return (src_len + dest_len);
 	}
 	else
-		return (src_len + size);
+		return (src_len + dest_size);
 }
 /*
 #include <stdio.h>

@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:04:52 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/11 12:56:09 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:10:34 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_bzero(void *str, int n)
+#include <stdlib.h>
+
+void	ft_bzero(void *str, size_t n)
 {
 	unsigned char	*ptr;
 	int				i;
@@ -21,7 +23,7 @@ void	ft_bzero(void *str, int n)
 		while (i <= n)
 			ptr[i++] = '\0';
 }
-/*  
+/*
 #include <stdio.h>
 #include <strings.h>
 int	main(int argc, char **argv)
@@ -31,7 +33,7 @@ int	main(int argc, char **argv)
 	printf("bzero does: %s\n", bzero(argv[2], '0'));
 }
 */
-/* ft_bzero() et bzero() utilisent des argv different pour verifier 
+/* ft_bzero() et bzero() utilisent des argv different pour verifier
  qu'ils font bel et bien la meme chose.
  Il faut juste s'assurer d'écrire le meme str pour les deux
  */
