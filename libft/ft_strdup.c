@@ -6,11 +6,11 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:09:18 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 15:11:23 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:57:42 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static size_t	ft_strlen(const char *s)
 {

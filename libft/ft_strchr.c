@@ -6,9 +6,11 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:22:59 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 15:19:13 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:57:39 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strchr(const char *str, int c)
 {

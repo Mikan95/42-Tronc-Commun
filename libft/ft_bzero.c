@@ -6,11 +6,12 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:04:52 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 15:16:14 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:56:21 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft.h"
 
 void	ft_bzero(void *str, size_t n)
 {

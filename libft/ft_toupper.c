@@ -6,9 +6,11 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:21:23 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 15:05:14 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:58:37 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_toupper(int c)
 {

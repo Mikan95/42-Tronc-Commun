@@ -6,11 +6,11 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 06:21:42 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 15:24:14 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:58:15 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 /*
 Calculates len of both str and returns the shortest one,
 unless one of both len = 0

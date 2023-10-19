@@ -6,11 +6,11 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:22:45 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 15:16:47 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:57:21 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 void	*ft_memchr(const void *str, int c, size_t n)
 {

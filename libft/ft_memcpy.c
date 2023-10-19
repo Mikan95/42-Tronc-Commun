@@ -6,11 +6,11 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 19:25:58 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 15:17:30 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:57:27 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t len)
 {

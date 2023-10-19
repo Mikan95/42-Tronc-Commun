@@ -6,9 +6,11 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 19:06:16 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 14:34:31 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:56:01 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 static int	is_space(char c)
 {

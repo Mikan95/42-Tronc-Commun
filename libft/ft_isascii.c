@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 14:23:06 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/11 12:58:46 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:56:50 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isascii(int c)
 {
@@ -17,7 +19,7 @@ int	ft_isascii(int c)
 	else
 		return (1);
 }
-/* 
+/*
 #include <stdio.h>
 #include <ctype.h>
 int	main(int argc, char **argv)

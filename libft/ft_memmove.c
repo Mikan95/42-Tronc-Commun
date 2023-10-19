@@ -6,11 +6,11 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 20:15:13 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 15:17:53 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:57:31 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 static void	ovrlap(unsigned char *ptrd, unsigned char *ptrs, int len, int i)
 {

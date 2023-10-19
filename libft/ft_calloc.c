@@ -6,32 +6,26 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 19:41:15 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 15:10:38 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:56:33 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	unsigned int	i;
-	int				*ptr;
+	size_t			i;
+	unsigned char	*ptr;
 
 	i = 0;
-	ptr = NULL;
-	if ((int)count < 0 || (int)size < 0)
-		return ((void *)ptr);
-	else
+	ptr = (void *)malloc(count * size);
+	if (!ptr)
+		return (NULL);
+	while (i < count)
 	{
-		ptr = (void *)malloc(count * size);
-		if (ptr)
-		{
-			while (i < count)
-			{
-				*(ptr + i) = '\0';
-				i++;
-			}
-		}
+		*(ptr + i) = '\0';
+		i++;
 	}
 	return ((void *)ptr);
 }

@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 14:35:14 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/11 13:02:21 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:56:55 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isprint(int c)
 {
@@ -17,7 +19,7 @@ int	ft_isprint(int c)
 	else
 		return (0);
 }
-/* 
+/*
 #include <stdio.h>
 #include <ctype.h>
 int	main(int argc, char **argv)
