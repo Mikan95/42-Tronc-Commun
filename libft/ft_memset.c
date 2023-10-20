@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 15:43:37 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 16:57:35 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:56:28 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memset(void *dest, int n, size_t len)
 
 	i = 0;
 	ptr = (unsigned char *) dest;
-	while (i++ <= len)
+	while (i++ < len)
 		*ptr++ = n;
 	return (dest);
 }
