@@ -6,35 +6,30 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:22:32 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 16:58:28 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:34:32 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_strlen(const char *s)
-{
-	int	len;
-
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	return (len);
-}
-
 char	*ft_strrchr(const char *str, int c)
 {
-	int	i;
+	int		i;
+	char	cc;
+	char	*res;
 
-	i = ft_strlen(str);
-	while (i >= 0)
+	i = 0;
+	cc = (char)c;
+	res = NULL;
+	while (str[i])
 	{
-		if (str[i] == c)
-			return ((char *)&str[i]);
-		else
-			i--;
+		if (str[i] == cc)
+			res = (char *)&str[i];
+		i++;
 	}
-	return (0);
+	if (!str[i] && cc == '\0')
+		return ((char *)&str[i]);
+	return (res);
 }
 /*
 #include <stdio.h>

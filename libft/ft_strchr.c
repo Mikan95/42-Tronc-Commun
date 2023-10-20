@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 22:22:59 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 16:57:39 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:31:04 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,20 @@
 
 char	*ft_strchr(const char *str, int c)
 {
-	int	i;
+	int		i;
+	char	cc;
 
 	i = 0;
-	while (str[i] != '\0')
+	cc = (char)c;
+	while (str[i])
 	{
-		if (str[i] == c)
+		if (str[i] == cc)
 			return ((char *)&str[i]);
-		else
-			i++;
+		i++;
 	}
-	return (0);
+	if (!str[i] && cc == '\0')
+		return ((char *)&str[i]);
+	return (NULL);
 }
 /*
 #include <stdio.h>

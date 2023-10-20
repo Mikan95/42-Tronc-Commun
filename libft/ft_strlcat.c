@@ -6,21 +6,11 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:28:46 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 16:57:46 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:20:14 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static size_t	ft_strlen(const char *s)
-{
-	int	len;
-
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	return (len);
-}
 
 size_t	ft_strlcat(char *dest, const char *src, size_t dest_size)
 {

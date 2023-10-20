@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:04:52 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 16:56:21 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:13:12 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 void	ft_bzero(void *str, size_t n)
 {
 	unsigned char	*ptr;
-	unsigned long	i;
+	size_t			i;
 
 	i = 0;
 	ptr = (unsigned char *)str;
-	if (n != '\0')
-		while (i <= n)
+	if (n > 0)
+		while (i < n)
 			ptr[i++] = '\0';
 }
 /*

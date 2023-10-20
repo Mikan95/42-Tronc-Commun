@@ -6,65 +6,24 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 06:21:42 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 16:58:15 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:51:54 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-Calculates len of both str and returns the shortest one,
-unless one of both len = 0
-*/
-static unsigned long	ft_bestlen(char *s1, char *s2)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (s1[i] != '\0')
-		i++;
-	while (s2[j] != '\0')
-		j++;
-	if (i >= j && j != 0)
-		return (j);
-	else if (j >= i && i != 0)
-		return (i);
-	else if (i == 0 && j > i)
-		return (j);
-	else if (j == 0 && i > j)
-		return (i);
-	else
-		return (0);
-}
 
 int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
-	unsigned long	i;
-	int				res1;
-	int				res2;
-	unsigned long	len;
+	size_t			i;
 
 	i = 0;
-	res1 = 0;
-	res2 = 0;
-	len = ft_bestlen((char *)str1, (char *)str2);
-	while (i < n && i < len)
+	while (i < n && (str1[i] || str2[i]))
 	{
-		if (str1[i] == str2[i])
-		{
-			res1 = res1 + str1[i];
-			res2 = res2 + str2[i];
-			i++;
-		}
-		else
-		{
-			res1 = res1 + str1[i];
-			res2 = res2 + str2[i];
-			break ;
-		}
+		if (str1[i] != str2[i])
+			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+		i++;
 	}
-	return (res1 - res2);
+	return (0);
 }
 /*
 #include <stdio.h>
@@ -76,4 +35,4 @@ int main(int argc, char **argv)
     printf("ft_strncmp: %d\n", ft_strncmp(argv[1], argv[2], atoi(argv[3])));
     printf("   strncmp: %d\n", strncmp(argv[1], argv[2], atoi(argv[3])));
 }
-*/
+ */

@@ -6,41 +6,27 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 21:09:18 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 16:57:42 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:06:07 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_strlen(const char *s)
-{
-	int	len;
-
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	return (len);
-}
-
 char	*ft_strdup(const char *s1)
 {
-	int		i;
-	int		len;
+	size_t	i;
 	char	*ptr;
 
+	ptr = (char *)malloc(ft_strlen(s1) + 1);
+	if (!ptr)
+		return (NULL);
 	i = 0;
-	len = ft_strlen((char *)s1);
-	ptr = (char *)malloc(len * sizeof(char));
-	if (ptr)
+	while (i < ft_strlen(s1))
 	{
-		while (i < len)
-		{
-			ptr[i] = s1[i];
-			i++;
-		}
+		ptr[i] = s1[i];
+		i++;
 	}
-	else
-		ptr = NULL;
+	ptr[i] = '\0';
 	return (ptr);
 }
 /*
@@ -49,7 +35,7 @@ char	*ft_strdup(const char *s1)
 int	main(int argc, char **argv)
 {
 	(void)argc;
-	printf("ft_strdup: %s\n", ft_strdup(argv[1]));
-	printf("   strdup: %s\n", strdup(argv[1]));
+	printf("ft_strdup: %p\n", ft_strdup(argv[1]));
+	printf("   strdup: %p\n", strdup(argv[1]));
 }
  */
