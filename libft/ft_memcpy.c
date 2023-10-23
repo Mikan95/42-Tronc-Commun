@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 19:25:58 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/20 15:16:03 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:45:40 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t len)
 	unsigned char	*ptr2;
 	size_t			i;
 
+	if (!dest && !src)
+		return (0);
 	i = 0;
 	ptr1 = (unsigned char *) dest;
 	ptr2 = (unsigned char *) src;
