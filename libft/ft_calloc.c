@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 19:41:15 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 16:56:33 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/23 14:32:56 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_calloc(size_t count, size_t size)
 	ptr = (void *)malloc(count * size);
 	if (!ptr)
 		return (NULL);
-	while (i < count)
+	while (i < count * size)
 	{
 		*(ptr + i) = '\0';
 		i++;
@@ -31,10 +31,11 @@ void	*ft_calloc(size_t count, size_t size)
 }
 /*
 #include <stdio.h>
+#include <string.h>
 int	main(int argc, char **argv)
 {
 	(void)argc;
-	printf("ft_calloc: %p\n", ft_calloc(atoi(argv[1]), atoi(argv[2])));
-	printf("   calloc: %p\n", calloc(atoi(argv[1]), atoi(argv[2])));
+	printf("ft_calloc: %p\n", ft_calloc(atoi(argv[1]), 0));
+	printf("   calloc: %p\n", calloc(atoi(argv[1]), 0));
 }
 */
