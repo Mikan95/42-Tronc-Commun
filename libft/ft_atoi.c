@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 19:06:16 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 16:56:01 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:29:49 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,15 @@ int	ft_atoi(const char *str)
 	res = 0;
 	while (is_space(str[i]))
 			i++;
-	while (str[i] == '-' || str[i] == '+')
+	if (str[i + 1] == '-' || str[i + 1] == '+')
+		return (0);
+	if (str[i] == '-')
 	{
-		if (str[i] == '-')
-			sign = sign * -1;
+		sign = sign * -1;
 		i++;
 	}
+	else if (str[i] == '+')
+		i++;
 	while (is_digit(str[i]))
 	{
 		res = res * 10 + str[i] - '0';
