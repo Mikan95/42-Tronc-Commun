@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:13:49 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/23 16:35:56 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/10/27 16:04:51 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,70 +22,54 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
  */
-static unsigned int	ft_startindex(char *s1, char *set)
+
+static int	to_trim(const char *set, char c)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int	i;
 
 	i = 0;
-	j = 0;
-	while (set[j])
+	while (set[i])
 	{
-		if (s1[i] == set[j])
-		{
-			i++;
-			j = 0;
-		}
-		else
-			j++;
+		if (set[i] == c)
+			return (1);
+		i++;
 	}
-	return (i);
+	return (0);
 }
 
-static unsigned int	ft_endindex(char *s1, char *set)
+static char	*new_str(const char *s1, size_t start, size_t len)
 {
-	unsigned int	i;
-	unsigned int	j;
+	char	*str;
+	size_t	i;
 
-	i = ft_strlen(s1) - 1;
-	j = 0;
-	while (set[j] && i > 0)
+	if (len <= 0 || start >= ft_strlen(s1))
+		return (ft_strdup(""));
+	str = ft_calloc(len + 1, sizeof(char));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (i < len)
 	{
-		if (s1[i] == set[j])
-		{
-			i--;
-			j = 0;
-		}
-		else
-			j++;
+		str[i] = s1[start + i];
+		i++;
 	}
-	return (i);
+	return (str);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	unsigned int	i;
-	unsigned int	start;
-	unsigned int	end;
-	char			*ptr;
+	int	i;
+	int	j;
 
 	i = 0;
-	start = ft_startindex((char *)s1, (char *)set);
-	end = ft_endindex((char *)s1, (char *)set);
-	if (start > end)
-		ptr = (char *)malloc(1 * sizeof(char));
-	else
-		ptr = (char *)malloc((end - start + 2) * sizeof(char));
-	if (!ptr)
-		return (NULL);
-	while (start <= end)
-	{
-		ptr[i] = s1[start];
-		start++;
+	j = ft_strlen(s1) - 1;
+	if (ft_strlen(s1) == 0)
+		return (ft_strdup(""));
+	while (to_trim(set, s1[i]))
 		i++;
-	}
-	ptr[i] = '\0';
-	return (ptr);
+	while (to_trim(set, s1[j]))
+		j--;
+	return (new_str(s1, i, j - (i - 1)));
 }
 /*
 #include <stdio.h>
