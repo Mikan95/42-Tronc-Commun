@@ -1,6 +1,6 @@
 SRC = $(addprefix ft_, $(addsuffix .c, atoi bzero calloc isalnum isalpha isascii \
 isdigit isprint memchr memcmp memcpy memmove memset strchr strdup strlcat strlcpy \
-strlen strncmp strnstr strrchr substr tolower toupper strjoin strtrim))
+strlen strncmp strnstr strrchr substr tolower toupper strjoin strtrim split))
 
 OBJS := $(SRC:%.c=%.o)
 
