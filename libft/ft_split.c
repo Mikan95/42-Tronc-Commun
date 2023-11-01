@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:07:45 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/01 15:29:12 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/11/01 16:27:55 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ char	**ft_split(char const *s, char c)
 {
 	char	**words;
 
-	if (ft_strlen(s) == 0)
-		return (NULL);
 	words = ft_calloc((word_count(s, c) + 1), sizeof(char *));
 	if (!words)
 		return (NULL);
@@ -104,18 +102,25 @@ static char	*fill_word(char const *s, size_t start, size_t end, char c)
 
 static int	word_count(char const *s, char c)
 {
-	int	res;
+	int	count;
+	int	flag;
 	int	i;
 
-	res = 0;
+	count = 0;
+	flag = 0;
 	i = 0;
-	while (s[i])
+	while (*s)
 	{
-		if (s[i] == c)
-			res++;
-		i++;
+		if (flag == 0 && *s != c)
+		{
+			flag = 1;
+			count++;
+		}
+		else if (*s == c)
+			flag = 0;
+		s++;
 	}
-	return (res);
+	return (count);
 }
 
 static void	*ft_free(char **words, int count)
@@ -139,7 +144,7 @@ int	main(int argc, char **argv)
 {
 	(void)argc;
 	int	count;
-	count = word_count(argv[1], argv[2][0]) + 1;
+	count = word_count(argv[1], argv[2][0]);
 	char	**res = ft_split(argv[1], argv[2][0]);
 
 	printf("str: %s\n", argv[1]);
