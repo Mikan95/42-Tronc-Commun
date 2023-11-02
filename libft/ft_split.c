@@ -6,98 +6,26 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:07:45 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/01 16:27:55 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/11/02 13:23:09 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static int	word_count(char const *s, char c);
-static char	*fill_word(char const *s, size_t start, size_t len, char c);
+static char	*fill_word(char const *s, size_t start, size_t len);
 static void	fill_table(char **words, char const *s, char c);
 static void	*ft_free(char **words, int count);
 
-/*
-size_t	ft_strlen(const char *s)
-{
-	int	len;
-
-	len = 0;
-	while (s[len] != '\0')
-		len++;
-	return (len);
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	size_t			i;
-	unsigned char	*ptr;
-
-	i = 0;
-	ptr = (void *)malloc(count * size);
-	if (!ptr)
-		return (NULL);
-	while (i < count * size)
-	{
-		*(ptr + i) = '\0';
-		i++;
-	}
-	return ((void *)ptr);
-}
- */
 char	**ft_split(char const *s, char c)
 {
 	char	**words;
 
 	words = ft_calloc((word_count(s, c) + 1), sizeof(char *));
-	if (!words)
+	if (!words || !s)
 		return (NULL);
 	fill_table(words, s, c);
 	return (words);
-}
-
-static void	fill_table(char **words, char const *s, char c)
-{
-	size_t	i;
-	int		j;
-	int		start;
-
-	i = 0;
-	j = 0;
-	start = -1;
-	while (i <= ft_strlen(s))
-	{
-		if (s[i] != c && start < 0)
-			start = i;
-		else if ((s[i] == c || i == ft_strlen(s)) && start >= 0)
-		{
-			words[j] = fill_word(s, start, i, c);
-			if (!words[j])
-				ft_free(words, j);
-			start = -1;
-			j++;
-		}
-		i++;
-	}
-}
-
-static char	*fill_word(char const *s, size_t start, size_t end, char c)
-{
-	char	*ptr;
-	size_t	i;
-
-	ptr = malloc((end - start + 1) * sizeof(char));
-	if (!ptr)
-		return (NULL);
-	i = 0;
-	while (i < end && s[start] != c)
-	{
-		ptr[i] = s[start];
-		i++;
-		start++;
-	}
-	ptr[i] = '\0';
-	return (ptr);
 }
 
 static int	word_count(char const *s, char c)
@@ -121,6 +49,50 @@ static int	word_count(char const *s, char c)
 		s++;
 	}
 	return (count);
+}
+
+static void	fill_table(char **words, char const *s, char c)
+{
+	size_t	i;
+	int		j;
+	int		start;
+
+	i = 0;
+	j = 0;
+	start = -1;
+	while (i <= ft_strlen(s))
+	{
+		if (s[i] != c && start < 0)
+			start = i;
+		else if ((s[i] == c || i == ft_strlen(s)) && start >= 0)
+		{
+			words[j] = fill_word(s, start, i);
+			if (!words[j])
+				ft_free(words, j);
+			start = -1;
+			j++;
+		}
+		i++;
+	}
+}
+
+static char	*fill_word(char const *s, size_t start, size_t end)
+{
+	char	*ptr;
+	size_t	i;
+
+	ptr = malloc((end - start + 1) * sizeof(char));
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	while (start < end)
+	{
+		ptr[i] = s[start];
+		i++;
+		start++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
 }
 
 static void	*ft_free(char **words, int count)
