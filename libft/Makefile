@@ -41,3 +41,6 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+bonus: $(OBJS_MANBO)
+	$(ARNAME) &(OBJS_MANBO)
