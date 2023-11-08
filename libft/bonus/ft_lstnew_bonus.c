@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/07 17:33:52 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/07 17:43:44 by ameechan         ###   ########.fr       */
+/*   Created: 2023/11/08 17:33:50 by ameechan          #+#    #+#             */
+/*   Updated: 2023/11/08 17:33:56 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,10 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	
+	struct s_list	*newlst;
+
+	newlst = (struct s_list *)malloc(sizeof(struct s_list));
+	newlst->content = content;
+	newlst->next = NULL;
+	return (newlst);
 }

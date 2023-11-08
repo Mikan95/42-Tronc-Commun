@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>           +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 19:06:16 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/23 13:29:49 by ameechan         ###   ########.fr       */
+/*   Created: 2023/11/08 15:32:52 by ameechan          #+#    #+#             */
+/*   Updated: 2023/11/08 15:33:07 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_atoi(const char *str)
 	sign = 1;
 	res = 0;
 	while (is_space(str[i]))
-			i++;
+		i++;
 	if (str[i + 1] == '-' || str[i + 1] == '+')
 		return (0);
 	if (str[i] == '-')

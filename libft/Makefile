@@ -5,7 +5,7 @@ strmapi striteri putchar_fd putstr_fd putendl_fd putnbr_fd))
 
 OBJS := $(SRC:%.c=%.o)
 
-BONUS_SRC = $(addprefix bonus/, $(addsuffix _bonus.c, ))
+BONUS_SRC = $(addprefix bonus/, $(addsuffix _bonus.c, ft_lstnew))
 
 BONUS_OBJS := $(BONUS_SRC:%.c=%.o)
 
@@ -43,4 +43,4 @@ fclean: clean
 re: fclean all
 
 bonus: $(OBJS_MANBO)
-	$(ARNAME) &(OBJS_MANBO)
+	$(ARNAME) $(OBJS_MANBO)

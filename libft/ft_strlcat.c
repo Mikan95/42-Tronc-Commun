@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 17:28:46 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/20 14:20:14 by ameechan         ###   ########.fr       */
+/*   Created: 2023/11/08 15:26:02 by ameechan          #+#    #+#             */
+/*   Updated: 2023/11/08 15:26:06 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t dest_size)
 	if (dest_size > 0 && dest_len < dest_size)
 	{
 		while (dest[i] != '\0')
-		i++;
+			i++;
 		while (j < dest_size - dest_len - 1 && src[j] != '\0')
 		{
 			dest[i + j] = src[j];

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+      */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 16:07:45 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/02 13:23:09 by ameechan         ###   ########.fr       */
+/*   Created: 2023/11/08 15:25:27 by ameechan          #+#    #+#             */
+/*   Updated: 2023/11/08 15:25:49 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,9 @@ static int	word_count(char const *s, char c)
 {
 	int	count;
 	int	flag;
-	int	i;
 
 	count = 0;
 	flag = 0;
-	i = 0;
 	while (*s)
 	{
 		if (flag == 0 && *s != c)
