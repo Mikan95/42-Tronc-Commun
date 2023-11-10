@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>           +#+  +:+       +#+       */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 17:37:20 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/08 17:37:20 by ameechan         ###   ########.ch       */
+/*   Created: 2023/11/10 12:42:11 by ameechan          #+#    #+#             */
+/*   Updated: 2023/11/10 12:42:11 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,5 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 t_list	*ft_lstnew(void *content);
+void	ft_lstadd_front(t_list **lst, t_list *new);
 #endif
