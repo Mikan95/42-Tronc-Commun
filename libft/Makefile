@@ -6,7 +6,7 @@ strmapi striteri putchar_fd putstr_fd putendl_fd putnbr_fd))
 OBJS := $(SRC:%.c=%.o)
 
 BONUS_SRC = $(addprefix bonus/, $(addsuffix _bonus.c, ft_lstnew ft_lstadd_front \
-ft_lstsize))
+ft_lstsize ft_lstlast))
 
 BONUS_OBJS := $(BONUS_SRC:%.c=%.o)
 
