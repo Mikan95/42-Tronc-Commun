@@ -6,12 +6,12 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:41:46 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/16 14:35:48 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:34:12 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINTF_H
 # define PRINTF_H
-#include <stdarg.h>
+# include <stdarg.h>
 
 #endif
