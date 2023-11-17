@@ -3,3 +3,4 @@
 
 #printf exclusions
 /ft_printf/*.o
+/ft_printf/a.out
