@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:13:13 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/17 16:11:58 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/11/17 16:22:10 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int	ft_conversion(const char *str, va_list ap)
 	if (*str == 'c')
 		count += ft_c(va_arg(ap, int));
 	return (count);
-/* 	else if (*str == 's')
+}
+/*
+	else if (*str == 's')
 	else if (*str == 'p')
 	else if (*str == 'd')
 	else if (*str == 'i')
@@ -29,5 +31,5 @@ int	ft_conversion(const char *str, va_list ap)
 	else if (*str == 'X')
 	else if (*str == '%')
 	else
-		return (-1);*/
-}
+		return (-1);
+*/

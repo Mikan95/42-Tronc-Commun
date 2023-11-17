@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 13:57:04 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/17 16:17:44 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/11/17 16:22:56 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	ft_printf(const char *str, ...)
 {
+	int		i;
+	int		res;
 	va_list	ap;
-	int	i;
-	int	res;
 
 	i = 0;
 	res = 0;
 	va_start(ap, str);
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == '%')
 		{
@@ -37,8 +37,9 @@ int	ft_printf(const char *str, ...)
 
 int	main(int argc, char **argv)
 {
-	(void)argc;
 	char	c;
+
+	(void)argc;
 	c = argv[1][0];
 	printf("printf:\n");
 	printf("your character is: %c\n", c);
