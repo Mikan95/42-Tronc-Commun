@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 13:41:46 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/17 14:54:03 by ameechan         ###   ########.fr       */
+/*   Created: 2023/11/07 16:06:55 by ameechan          #+#    #+#             */
+/*   Updated: 2023/11/07 16:34:19 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
-#include <stdarg.h>
-#include <stdio.h>
 #include "libft.h"
+#include <unistd.h>
 
-int	ft_printf(const char *str, ...);
-int	ft_conversion(const char *str, va_list ap);
-#endif
+void	ft_putstr_fd(char *s, int fd)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}
+}
+/*
+#include <stdlib.h>
+int	main(int argc, char **argv)
+{
+	if (argc > 2)
+		write(1, "Wrong input", 11);
+	ft_putstr_fd(argv[1], 1);
+}
+ */

@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 13:41:46 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/17 14:54:03 by ameechan         ###   ########.fr       */
+/*   Created: 2023/10/10 15:03:26 by ameechan          #+#    #+#             */
+/*   Updated: 2023/10/20 14:46:02 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
-#include <stdarg.h>
-#include <stdio.h>
 #include "libft.h"
 
-int	ft_printf(const char *str, ...);
-int	ft_conversion(const char *str, va_list ap);
-#endif
+size_t	ft_strlen(const char *s)
+{
+	int	len;
+
+	len = 0;
+	while (s[len] != '\0')
+		len++;
+	return (len);
+}
+/*
+#include <string.h>
+#include <stdio.h>
+int	main(int argc, char **argv)
+{
+	(void)argc;
+	printf("ft_strlen of string is: %lu\n", ft_strlen(argv[1]));
+	printf("strlen of string is: %lu\n", strlen(argv[1]));
+}
+*/

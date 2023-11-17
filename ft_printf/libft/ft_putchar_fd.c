@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 13:41:46 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/17 14:54:03 by ameechan         ###   ########.fr       */
+/*   Created: 2023/11/07 16:07:50 by ameechan          #+#    #+#             */
+/*   Updated: 2023/11/07 16:11:36 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
-#include <stdarg.h>
-#include <stdio.h>
 #include "libft.h"
+#include <unistd.h>
 
-int	ft_printf(const char *str, ...);
-int	ft_conversion(const char *str, va_list ap);
-#endif
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}

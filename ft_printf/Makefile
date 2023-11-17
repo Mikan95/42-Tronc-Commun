@@ -1,28 +1,34 @@
-SRC = $(addsuffix .c, )
-OBJS := $(SRC:%.c=%.o)
 NAME = libftprintf.a
 CC = gcc
-CCFLAGS = -Wall -Werror -Wextra
-INC_DIR = .
-CPPFLAGS = -I$(INC_DIR)
+CCFLAGS = -Wall -Wextra -Werror
 RM = rm -f
-ARNAME = ar rcs $(NAME)
+LIBFT_DIR = libft
 
+SRC_FILES = $(addprefix ft_, $(addsuffix .c, printf conversion))
 
+OBJ = $(SRC_FILES:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(ARNAME) $(OBJS)
+$(NAME): $(OBJ)
+	@make -C $(LIBFT_DIR)
+	@cp ${LIBFT_DIR}/libft.a .
+	@mv libft.a $(NAME)
+	ar rcs $(NAME) $(OBJ)
+	@echo "Compilation done"
 
-%.o: %.c
-	$(CC) $(CPPFLAGS) $(CCFLAGS) -o $@ -c $<
+%.o : %.c
+	$(CC) $(CCFLAGS) -c $< -o $@ -I $(LIBFT_DIR)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJ)
+	@make clean -C ${LIBFT_DIR}
+	@echo "Clean done"
 
 fclean: clean
 	$(RM) $(NAME)
+	$(RM) $(LIBFT_DIR)/libft.a
+	@echo "Fclean done"
 
 re: fclean all
 

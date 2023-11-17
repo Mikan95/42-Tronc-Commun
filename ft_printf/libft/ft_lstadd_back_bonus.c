@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 13:41:46 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/17 14:54:03 by ameechan         ###   ########.fr       */
+/*   Created: 2023/11/10 14:48:11 by ameechan          #+#    #+#             */
+/*   Updated: 2023/11/10 18:09:09 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
-#include <stdarg.h>
-#include <stdio.h>
 #include "libft.h"
 
-int	ft_printf(const char *str, ...);
-int	ft_conversion(const char *str, va_list ap);
-#endif
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*last;
+
+	if (!new)
+		return ;
+	if (!*lst)
+	{
+		*lst = new;
+		return ;
+	}
+	last = ft_lstlast(*lst);
+	last->next = new;
+}

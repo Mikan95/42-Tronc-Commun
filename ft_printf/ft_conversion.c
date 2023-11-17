@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_conversion.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 13:41:46 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/17 14:54:03 by ameechan         ###   ########.fr       */
+/*   Created: 2023/11/17 14:13:13 by ameechan          #+#    #+#             */
+/*   Updated: 2023/11/17 14:55:04 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
-#include <stdarg.h>
-#include <stdio.h>
-#include "libft.h"
+#include "printf.h"
 
-int	ft_printf(const char *str, ...);
-int	ft_conversion(const char *str, va_list ap);
-#endif
+int	ft_conversion(const char *str, va_list ap)
+{
+	int	count;
+
+	count = 0;
+	(void)ap;
+	if (*str == 'c')
+		return (0);
+	return (count);
+/* 	else if (*str == 's')
+	else if (*str == 'p')
+	else if (*str == 'd')
+	else if (*str == 'i')
+	else if (*str == 'u')
+	else if (*str == 'x')
+	else if (*str == 'X')
+	else if (*str == '%') */
+}

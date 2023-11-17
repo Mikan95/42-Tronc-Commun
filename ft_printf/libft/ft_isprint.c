@@ -1,21 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 13:41:46 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/17 14:54:03 by ameechan         ###   ########.fr       */
+/*   Created: 2023/10/10 14:35:14 by ameechan          #+#    #+#             */
+/*   Updated: 2023/10/19 16:56:55 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
-#include <stdarg.h>
-#include <stdio.h>
 #include "libft.h"
 
-int	ft_printf(const char *str, ...);
-int	ft_conversion(const char *str, va_list ap);
-#endif
+int	ft_isprint(int c)
+{
+	if (c >= 32 && c <= 126)
+		return (1);
+	else
+		return (0);
+}
+/*
+#include <stdio.h>
+#include <ctype.h>
+int	main(int argc, char **argv)
+{
+	(void)argc;
+	printf("ft_isprint is: %d\n", ft_isprint(argv[1][0]));
+	printf("isprint is: %d\n", isprint(argv[1][0]));
+}
+ */
+/*
+#include <stdio.h>
+int	main()
+{
+	int c = 127;
+	printf("%d", ft_isprint(c));
+}
+*/

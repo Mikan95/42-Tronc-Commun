@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 13:41:46 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/17 14:54:03 by ameechan         ###   ########.fr       */
+/*   Created: 2023/10/10 15:43:37 by ameechan          #+#    #+#             */
+/*   Updated: 2023/10/20 12:56:28 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
-#include <stdarg.h>
-#include <stdio.h>
 #include "libft.h"
 
-int	ft_printf(const char *str, ...);
-int	ft_conversion(const char *str, va_list ap);
-#endif
+void	*ft_memset(void *dest, int n, size_t len)
+{
+	unsigned char	*ptr;
+	unsigned long	i;
+
+	i = 0;
+	ptr = (unsigned char *) dest;
+	while (i++ < len)
+		*ptr++ = n;
+	return (dest);
+}
+/*
+#include <string.h>
+#include <stdio.h>
+int	main(int argc, char** argv)
+{
+	(void)argc;
+	printf("ft_memset does: %s\n", ft_memset(argv[1], argv[2][0], argv[3][0]));
+	printf("memset does: %s\n", memset(argv[1], argv[2][0],  argv[3][0]));
+}
+*/
