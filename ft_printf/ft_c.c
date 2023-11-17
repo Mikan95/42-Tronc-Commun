@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conversion.c                                    :+:      :+:    :+:   */
+/*   ft_c.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 14:13:13 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/17 16:11:58 by ameechan         ###   ########.fr       */
+/*   Created: 2023/11/17 15:32:39 by ameechan          #+#    #+#             */
+/*   Updated: 2023/11/17 16:05:52 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	ft_conversion(const char *str, va_list ap)
+int	ft_c(char c)
 {
-	int	count;
-
-	count = 0;
-	if (*str == 'c')
-		count += ft_c(va_arg(ap, int));
-	return (count);
-/* 	else if (*str == 's')
-	else if (*str == 'p')
-	else if (*str == 'd')
-	else if (*str == 'i')
-	else if (*str == 'u')
-	else if (*str == 'x')
-	else if (*str == 'X')
-	else if (*str == '%')
-	else
-		return (-1);*/
+	write(1, &c, 1);
+	return (1);
 }
