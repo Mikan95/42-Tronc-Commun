@@ -1,1 +1,5 @@
+#libft exclusions
 /libft/a.out
+
+#printf exclusions
+/ft_printf/*.o
