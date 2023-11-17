@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 13:57:04 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/17 16:22:56 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/11/17 16:30:30 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,15 @@ int	ft_printf(const char *str, ...)
 int	main(int argc, char **argv)
 {
 	char	c;
+	int		res1;
+	int		res2;
 
 	(void)argc;
 	c = argv[1][0];
 	printf("printf:\n");
-	printf("your character is: %c\n", c);
+	res1 = printf("your character is: %c\n", c);
 	printf("########################\nft_printf:\n");
-	ft_printf("your character is: %c\n", c);
+	res2 = ft_printf("your character is: %c\n", c);
+	printf("########################\nRETURN VALUES:");
+	printf("printf: %d\nft_printf: %d\n", res1, res2);
 }
