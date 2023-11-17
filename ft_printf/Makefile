@@ -10,6 +10,8 @@ OBJ = $(SRC_FILES:.c=.o)
 
 all: $(NAME)
 
+#run make in libft subdirectory, copy it to current dir and
+#rename it to $(NAME), then ar it with objs of current dir
 $(NAME): $(OBJ)
 	@make -C $(LIBFT_DIR)
 	@cp ${LIBFT_DIR}/libft.a .
