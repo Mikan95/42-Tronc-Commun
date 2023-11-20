@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_c.c                                             :+:      :+:    :+:   */
+/*   ft_str.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/17 15:32:39 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/17 16:05:52 by ameechan         ###   ########.fr       */
+/*   Created: 2023/11/20 15:34:18 by ameechan          #+#    #+#             */
+/*   Updated: 2023/11/20 18:56:27 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-int	ft_c(char c)
+int	ft_str(char *str)
 {
-	write(1, &c, 1);
-	return (1);
+	int	i;
+
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
 }
