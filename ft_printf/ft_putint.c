@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_str.c                                           :+:      :+:    :+:   */
+/*   ft_putint.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 15:34:18 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/21 15:09:55 by ameechan         ###   ########.fr       */
+/*   Created: 2023/11/21 15:30:58 by ameechan          #+#    #+#             */
+/*   Updated: 2023/11/21 15:42:12 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "printf.h"
+#include "libft.h"
 
-int	ft_str(char *str)
+static int	ft_intlen(int n)
+{
+	int	len;
+
+	len = 0;
+	if (n < 0 || n == 0)
+		len += 1;
+	while (n != 0)
+	{
+		n /= 10;
+		len++;
+	}
+	return (len);
+}
+
+int	ft_putint(int n)
 {
 	int	print_len;
 
-	print_len = 0;
-	if (!str)
-		exit (0);
-	while (str[print_len])
-	{
-		write(1, &str[print_len], 1);
-		print_len++;
-	}
+	print_len = ft_intlen(n);
+	ft_putnbr_fd(n, 1);
 	return (print_len);
 }
