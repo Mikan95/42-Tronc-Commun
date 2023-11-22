@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:13:13 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/22 17:08:00 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/11/22 17:35:38 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,3 @@ int	ft_conversion(const char *str, va_list ap)
 		return (-1);
 	return (count);
 }
-
-/* 	if (*str == 'n')
-		count += write(1, "\n", 1); */
