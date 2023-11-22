@@ -5,7 +5,7 @@ RM = rm -f
 LIBFT_DIR = libft
 
 SRC_FILES = $(addprefix ft_, $(addsuffix .c, printf conversion char str putptr \
-putint putunsigned hex_upper hex_lower))
+putint putnbr_hex putnbr_dec))
 
 OBJ = $(SRC_FILES:.c=.o)
 

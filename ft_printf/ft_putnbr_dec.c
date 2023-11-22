@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putint.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_dec.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/21 15:30:58 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/22 16:45:52 by ameechan         ###   ########.fr       */
+/*   Created: 2023/11/22 15:41:01 by ameechan          #+#    #+#             */
+/*   Updated: 2023/11/22 16:35:42 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 #include "libft.h"
-#include <unistd.h>
 
-int	ft_putint(int nbr, char *dec_chars)
+int	ft_putnbr_dec(unsigned int nbr, char *dec_chars)
 {
 	int	print_len;
 
 	print_len = 0;
-	if (nbr == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		return (11);
-	}
-	else if (nbr < 0)
-	{
-		print_len += write(1, "-", 1);
-		nbr = -nbr;
-	}
 	if (nbr >= 10)
-		print_len += ft_putint(nbr / 10, dec_chars);
+		print_len += ft_putnbr_dec(nbr / 10, dec_chars);
 	ft_putchar_fd(dec_chars[nbr % 10], 1);
 	print_len++;
 	return (print_len);

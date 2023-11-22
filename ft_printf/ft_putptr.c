@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:00:13 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/21 15:18:59 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/11/22 15:11:29 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <unistd.h>
 
-static int	ft_ptr_len(uintptr_t n)
+static int	ft_ptr_len(unsigned long n)
 {
 	int	len;
 
@@ -27,7 +27,7 @@ static int	ft_ptr_len(uintptr_t n)
 	return (len);
 }
 
-static void	ft_dec_to_hex(uintptr_t n)
+static void	ft_dec_to_hex(unsigned long n)
 {
 	if (n >= 16)
 	{
@@ -43,7 +43,7 @@ static void	ft_dec_to_hex(uintptr_t n)
 	}
 }
 
-int	ft_putptr(uintptr_t ptr)
+int	ft_putptr(unsigned long ptr)
 {
 	int	print_len;
 
