@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 15:34:18 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/21 15:09:55 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:21:09 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	ft_str(char *str)
 		exit (0);
 	while (str[print_len])
 	{
-		write(1, &str[print_len], 1);
+		if (write(1, &str[print_len], 1) < 0)
+			return (-1);
 		print_len++;
 	}
 	return (print_len);

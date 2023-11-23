@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 14:13:13 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/22 17:35:38 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:49:36 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_conversion(const char *str, va_list ap)
 	else if (*str == 's')
 		count += ft_str(va_arg(ap, char *));
 	else if (*str == 'p')
-		count += ft_putptr(va_arg(ap, unsigned long));
+		count += ft_putptr(va_arg(ap, unsigned long), "0123456789abcdef");
 	else if (*str == 'd' || *str == 'i')
 		count += ft_putint(va_arg(ap, int), "0123456789");
 	else if (*str == 'x')
@@ -34,6 +34,8 @@ int	ft_conversion(const char *str, va_list ap)
 	else if (*str == 'u')
 		count += ft_putnbr_dec(va_arg(ap, unsigned int), "0123456789");
 	else
+		return (-1);
+	if (count < 0)
 		return (-1);
 	return (count);
 }

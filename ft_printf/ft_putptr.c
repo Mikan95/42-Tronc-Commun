@@ -6,11 +6,11 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:00:13 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/22 15:11:29 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:47:50 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 #include "libft.h"
 #include <unistd.h>
 
@@ -27,23 +27,16 @@ static int	ft_ptr_len(unsigned long n)
 	return (len);
 }
 
-static void	ft_dec_to_hex(unsigned long n)
+static int	ft_ptr_hex(unsigned long nbr, char *hex_chars)
 {
-	if (n >= 16)
-	{
-		ft_dec_to_hex(n / 16);
-		ft_dec_to_hex(n % 16);
-	}
-	else
-	{
-		if (n <= 9)
-			ft_putchar_fd((n + '0'), 1);
-		else
-			ft_putchar_fd((n - 10 + 'a'), 1);
-	}
+	if (nbr >= 16)
+		ft_ptr_hex(nbr / 16, hex_chars);
+	if (ft_char(hex_chars[nbr % 16]) < 0)
+		return (-1);
+	return (0);
 }
 
-int	ft_putptr(unsigned long ptr)
+int	ft_putptr(unsigned long ptr, char *hex_chars)
 {
 	int	print_len;
 
@@ -53,7 +46,8 @@ int	ft_putptr(unsigned long ptr)
 		print_len += write(1, "0", 1);
 	else
 	{
-		ft_dec_to_hex(ptr);
+		if (ft_ptr_hex(ptr, hex_chars) < 0)
+			return (-1);
 		print_len += ft_ptr_len(ptr);
 	}
 	return (print_len);

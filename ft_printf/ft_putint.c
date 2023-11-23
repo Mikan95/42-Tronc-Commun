@@ -6,11 +6,11 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 15:30:58 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/22 16:45:52 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:28:08 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 #include "libft.h"
 #include <unistd.h>
 
@@ -31,7 +31,8 @@ int	ft_putint(int nbr, char *dec_chars)
 	}
 	if (nbr >= 10)
 		print_len += ft_putint(nbr / 10, dec_chars);
-	ft_putchar_fd(dec_chars[nbr % 10], 1);
+	if (ft_char(dec_chars[nbr % 10]) < 0)
+		return (-1);
 	print_len++;
 	return (print_len);
 }
