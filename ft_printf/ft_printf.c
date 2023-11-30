@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 13:57:04 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/23 15:11:55 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:08:28 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,30 @@
 
 int	ft_printf(const char *str, ...)
 {
-	int		i;
+	va_list	ap;
 	int		res;
 	int		temp;
-	va_list	ap;
 
-	i = 0;
 	res = 0;
 	va_start(ap, str);
-	while (str[i])
+	while (*str)
 	{
-		if (str[i] == '%')
+		if (*str == '%')
 		{
-			temp = ft_conversion(&str[++i], ap);
+			temp = ft_conversion(++str, ap);
 			if (temp < 0)
 				return (-1);
 			res += temp;
-			i++;
 		}
 		else
 		{
-			res += ft_char(str[i]);
-			i++;
+			if (ft_char(*str) < 0)
+				return (-1);
+			res++;
 		}
+		str++;
 	}
+	va_end(ap);
 	return (res);
 }
 /*

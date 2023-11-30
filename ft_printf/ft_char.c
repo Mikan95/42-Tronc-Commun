@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 15:32:39 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/23 14:40:40 by ameechan         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:11:56 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_char(char c)
 {
-	if (write(1, &c, 1) < 0)
+	if (write(1, &c, 1) != 1)
 		return (-1);
 	return (1);
 }
