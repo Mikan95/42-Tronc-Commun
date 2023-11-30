@@ -5,8 +5,8 @@ strmapi striteri putchar_fd putstr_fd putendl_fd putnbr_fd))
 
 OBJS := $(SRC:%.c=%.o)
 
-BONUS_SRC = $(addprefix bonus/, $(addsuffix _bonus.c, ft_lstnew ft_lstadd_front \
-ft_lstsize ft_lstlast ft_lstadd_back ft_lstdelone ft_lstclear ft_lstiter ft_lstmap))
+BONUS_SRC = $(addsuffix _bonus.c, ft_lstnew ft_lstadd_front \
+ft_lstsize ft_lstlast ft_lstadd_back ft_lstdelone ft_lstclear ft_lstiter ft_lstmap)
 
 BONUS_OBJS := $(BONUS_SRC:%.c=%.o)
 
@@ -34,7 +34,6 @@ $(NAME): $(OBJS)
 %.o: %.c
 	$(CC) $(CPPFLAGS) $(CCFLAGS) -o $@ -c $<
 
-.PHONY: clean
 clean:
 	$(RM) $(OBJS_MANBO)
 
@@ -45,3 +44,5 @@ re: fclean all
 
 bonus: $(OBJS_MANBO)
 	$(ARNAME) $(OBJS_MANBO)
+
+.PHONY: clean fclean bonus
