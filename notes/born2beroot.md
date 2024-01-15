@@ -1,4 +1,7 @@
 ## BORN2BEROOT
+1. [Difference between Debian and CentOS](https://github.com/Mikan95/42-Tronc-Commun/blob/main/notes/born2beroot.md#difference-between-debian-and-centos)
+2. [Difference between apt and aptitude](https://github.com/Mikan95/42-Tronc-Commun/blob/main/notes/born2beroot.md#difference-between-apt-and-aptitude)
+3. [AppArmor](https://github.com/Mikan95/42-Tronc-Commun/blob/main/notes/born2beroot.md#apparmor)
 ### Difference between _Debian_ and _CentOS_
 **Debian** and **CentOS** are both popular Linux distributions, but they have some key differences:
 
