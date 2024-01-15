@@ -41,7 +41,7 @@ ip=$(hostname -I)
 mac=$(ip -4 link show | grep "ether" | awk '{print $2}')
 
 #SUDO
-cmd=$(cat /var/log/sudo | grep "COMMAND" | wc -l)
+cmd=$(journalctl _COMM=sudo | grep COMMAND | wc -l)
 #########################################################################################
 
 #Broadcast info to all users in a clean and readable format
