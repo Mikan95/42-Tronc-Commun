@@ -54,3 +54,29 @@ AppArmor is a Linux security module that limits what specific programs can do by
 	- Controls the behavior of specific applications or processes by defining security profiles.
 	- Specifies what resources an application is allowed to access, which files it can read or write, and what system calls it can make.
 	- Protects against vulnerabilities or malicious activities within individual applications.
+
+### Partitions and Logical Volume Management (LVM)
+**A partition** is a logically divided section of a computer's hard drive or storage device. It is treated as an independent unit, and each partition can have its own file system and operating system. Partitions are used to organize and manage data on a storage device more efficiently.
+
+**Logical Volume Management** (LVM) is a system that provides a higher-level, flexible way of managing disk space compared to traditional partitioning.
+
+##### LVMs
+1. **Physical Volumes (PV):**
+	- Physical volumes are the actual storage devices or partitions (like hard drives or partitions on hard drives) that contribute to the LVM setup.
+
+1. **Volume Groups (VG):**
+	- Volume groups are created by combining one or more physical volumes. These can span multiple physical disks.
+	- Volume groups act as a pool of storage from which logical volumes are created.
+
+1. **Logical Volumes (LV):**
+	- Logical volumes are created within volume groups and are analogous to partitions in traditional partitioning schemes.
+	- Unlike partitions, logical volumes can easily be resized, moved, or even span multiple physical volumes.
+
+1. **File Systems:**
+	- File systems are then created on these logical volumes, allowing for the storage and retrieval of files.
+
+In summary, LVM introduces a layer of abstraction between the physical storage devices (or partitions) and the file systems.  
+This abstraction allows for **more flexibility in managing storage space**. You can dynamically resize logical volumes, add new physical volumes to a volume group, or create snapshots for backup purposes, all without disrupting the existing data.
+
+**Traditional partitions have fixed sizes, and once you allocate space to them, changing their sizes or adding new partitions can be challenging.**  
+LVM provides a dynamic and more versatile way to manage storage, making it easier to adapt to changing needs in terms of space allocation on a system.
