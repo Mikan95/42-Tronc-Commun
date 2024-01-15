@@ -1,5 +1,5 @@
 #global exclusions
-/notes/*.md
+notes/**
 #libft exclusions
 /libft/a.out
 
