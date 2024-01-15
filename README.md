@@ -1,3 +1,7 @@
-# 42 COMMON CORE NOTES
-### Table of Contents
-+ [Born2Beroot](https://github.com/Mikan95/42-Tronc-Commun/blob/main/notes/born2beroot.md#born2beroot)
+# 42 COMMON CORE
+Here lies the repository I used throughout my 42 common core curriculum!
+Sweat and tears have/will probably be spilled in all these projects!
+
+Hi future Andrew! at the time of writing this it is 15<sup>th</sup> Jan 2024 and you have validated Libft and ft_printf.  
+Born2Beroot is almost finalised, you just need to revise a bit to know all the commands and how to answer all the questions!  
+I hope you are doing good and that you are absolutely smashing the common core!
