@@ -44,3 +44,10 @@
 	- **aptitude:** Does not automatically install recommended packages by default. Users need to explicitly request them.
 
 In general, both apt and aptitude can be used for routine package management tasks, and the choice between them often comes down to personal preference. Some users prefer the simplicity of apt, while others appreciate the additional features and interactivity of aptitude.
+
+### AppArmor
+AppArmor is a Linux security module that limits what specific programs can do by creating rules for their actions. These rules, enforced by the kernel, restrict access to resources, reducing the impact of security threats or malicious software. Essentially, AppArmor enhances system security by controlling the behavior of individual applications on a Linux server.
++ **AppArmor:**
+	- Controls the behavior of specific applications or processes by defining security profiles.
+	- Specifies what resources an application is allowed to access, which files it can read or write, and what system calls it can make.
+	- Protects against vulnerabilities or malicious activities within individual applications.
