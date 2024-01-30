@@ -7,3 +7,4 @@ README.md
 /ft_printf/a.out
 #get_next_line exclusions
 /get_next_line/a.out
+/get_next_line/*.h.gch

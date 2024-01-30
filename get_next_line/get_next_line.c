@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:32:53 by ameechan          #+#    #+#             */
-/*   Updated: 2024/01/30 23:41:19 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/01/30 23:45:18 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char	*get_next_line(int fd)
 {
 	void			*buffer;
 	static t_list	*line_stash;
-	int				i;
 
 	line_stash = NULL;
 	buffer = (void *)malloc(BUFFER_SIZE);
