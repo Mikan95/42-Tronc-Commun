@@ -2,7 +2,8 @@
 README.md
 #libft exclusions
 /libft/a.out
-
 #printf exclusions
 /ft_printf/*.o
 /ft_printf/a.out
+#get_next_line exclusions
+/get_next_line/a.out
