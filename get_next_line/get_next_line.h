@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:28:46 by ameechan          #+#    #+#             */
-/*   Updated: 2024/01/30 23:41:25 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/01/31 01:55:38 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@
 # include <stdlib.h>
 # include <stdio.h>
 
+# include <fcntl.h>
+# include <stdio.h>
+
 typedef struct s_list
 {
-	void					*stash;
+	void			*stash;
 	struct	s_list	*next;
-}							t_list;
+}					t_list;
 char	*get_next_line(int fd);
+int		found_nl_or_eof(char *buffer);
 t_list	**fill_stash(char *buffer, t_list **line_stash);
+char	*clear_stash(char *nl_str, t_list **line_stash);
 #endif

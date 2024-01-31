@@ -6,22 +6,38 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:32:53 by ameechan          #+#    #+#             */
-/*   Updated: 2024/01/30 23:45:18 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/01/31 02:02:04 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+
 char	*get_next_line(int fd)
 {
 	void			*buffer;
-	static t_list	*line_stash;
+	t_list	*line_stash;
 
 	line_stash = NULL;
 	buffer = (void *)malloc(BUFFER_SIZE);
 	while (read(fd, buffer, BUFFER_SIZE) > 0)
+	{
+		if (found_nl_or_eof(buffer) == 1)
+			return(clear_stache(buffer, &line_stash));
+		else
 			line_stash = *fill_stash(buffer, &line_stash);
+	}
 	return (buffer);
+}
+
+int		found_nl_or_eof(char *buffer)
+{
+	while (*buffer != '\n' | !buffer)
+		buffer++;
+	if (*buffer == '\n')
+		return (1);
+	else
+		return(0);
 }
 
 t_list	**fill_stash(char *buffer, t_list **line_stash)
@@ -44,6 +60,14 @@ t_list	**fill_stash(char *buffer, t_list **line_stash)
 		current->next = new_node;
 	}
 	return (line_stash);
+}
+
+char	*clear_stash(char *nl_str, t_list **line_stash)
+{
+/*  this function will find the new line, copy every character up to nl (including nl)
+	copy evrything from line_stash to "line"
+	clear line_stash and copy everything after nl to the new head node of line_stash
+	and finally return "line"*/
 }
 
 #include <fcntl.h>
