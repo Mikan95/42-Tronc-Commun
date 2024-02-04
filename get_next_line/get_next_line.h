@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:28:46 by ameechan          #+#    #+#             */
-/*   Updated: 2024/01/31 01:55:38 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/02/04 11:51:54 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ typedef struct s_list
 char	*get_next_line(int fd);
 int		found_nl_or_eof(char *buffer);
 t_list	**fill_stash(char *buffer, t_list **line_stash);
-char	*clear_stash(char *nl_str, t_list **line_stash);
+char	*split_nl(char *nl_str, t_list **line_stash);
+size_t	ft_strlen(char *s);
+//size_t	ft_strlcpy(char *dest, char *src, size_t dest_size);
 #endif
