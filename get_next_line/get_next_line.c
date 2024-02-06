@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:32:53 by ameechan          #+#    #+#             */
-/*   Updated: 2024/02/04 12:59:30 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/02/06 18:24:32 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,41 +15,62 @@
 
 char	*get_next_line(int fd)
 {
-	void			*buffer;
-	t_list	*line_stash;
+	void					*buffer;
+	static t_list			*line_stash;
+	static unsigned long	nl_count;
 
-	line_stash = NULL;
 	printf("assigning memory to buffer\n");
 	buffer = (void *)malloc(BUFFER_SIZE);
 	printf("assigned successfully\n");
-//	I'm thinking adding the read in the while loop instead of making it the condition may be the way to go!
-	while (read(fd, buffer, BUFFER_SIZE) > 0)
+	if (!line_stash || nl_count = 0)
 	{
-		printf("checking for nl\n");
-		if (found_nl_or_eof(buffer) == 1)
+		printf("line stash empty, initialising nl_count to 0\n");
+//		while (read(fd, buffer, BUFFER_SIZE) > 0)
+		nl_count = 0;
+		while (nl_count < 1)
 		{
-			printf("nl found!\n");
-			return(split_nl(buffer, &line_stash));
+			read(fd, buffer, BUFFER_SIZE);
+			nl_count = found_nl_or_eof(buffer);
+			if (nl_count = 1)
+			{
+				nl_count = 0;
+				return (split_nl(buffer, &line_stash));
+			}
+			line_stash = *fill_stash(buffer, line_stash);
 		}
-		else
-			printf("no nl\n");
-			line_stash = *fill_stash(buffer, &line_stash);
+	}
+	else
+	{
+		return (split_nl(buffer))
+			printf("checking for nl\n");
+			nl_count = found_nl_or_eof(buffer);
+			if (nl_count > 0)
+			{
+				printf("nl found!\n");
+				return(split_nl(buffer, &line_stash));
+			}
+			printf("number of new lines in current buffer: %zu\n", nl_count);
+			else
+				printf("no nl\n");
+				line_stash = *fill_stash(buffer, &line_stash);
 	}
 	return (buffer);
 }
 
-int		found_nl_or_eof(char *buffer)
+unsigned long	found_nl_or_eof(char *buffer)
 {
-	int	i;
+	unsigned long	i;
+	unsigned long	count;
 
 	i = 0;
+	count = 0;
 	while (buffer[i] != '\n' && buffer[i])
 	{
-		if (buffer[i] == '\n')
-			return (1);
+		if (buffer[i] == '\n' || buffer[i] == '\0')
+			count++;
 		i++;
 	}
-	return(0);
+	return(count);
 }
 
 t_list	**fill_stash(char *buffer, t_list **line_stash)
