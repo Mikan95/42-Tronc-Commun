@@ -12,31 +12,35 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *s)
+/* Looks for a newline character in the given linked list. */
+int        found_newline(t_list *stash)
+{
+}
+
+/* Returns a pointer to the last node in our stash */
+t_list        *ft_lst_get_last(t_list *stash)
+{
+}
+
+/* Calculates the number of chars in the current line, including the trailing
+ * \n if there is one, and allocates memory accordingly. */
+void        generate_line(char **line, t_list *stash)
+{
+}
+
+/* Frees the entire stash. */
+void        free_stash(t_list *stash)
+{
+}
+
+
+
+int	ft_strlen(const char *str)
 {
 	int	len;
 
 	len = 0;
-	while (s[len] != '\0')
+	while (*(str++))
 		len++;
 	return (len);
 }
-
-/* size_t	ft_strlcpy(char *dest, char *src, size_t dest_size)
-{
-	size_t	i;
-	int		src_len;
-
-	i = 0;
-	src_len = ft_strlen(src);
-	if (dest_size > 0)
-	{
-		while (i < dest_size - 1 && src[i] != '\0')
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		dest[i] = '\0';
-	}
-	return (src_len);
-} */

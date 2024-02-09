@@ -21,7 +21,7 @@
 
 typedef struct s_list
 {
-	void			*stash;
+	void			*data;
 	struct	s_list	*next;
 }					t_list;
 char	*get_next_line(int fd);
