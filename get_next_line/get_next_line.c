@@ -31,7 +31,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-// uses read() to add characters to tue stash
+// uses read() to add characters to the stash
 void	read_and_stash(int fd, t_list **line_stash)
 {
 	char	*buffer;
