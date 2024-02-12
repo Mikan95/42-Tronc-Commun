@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:32:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/02/09 17:23:13 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/02/12 12:02:07 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,32 @@ t_list	*get_last_node(t_list *line_stash)
 
 /* Calculates the number of chars in the current line, including the trailing
  * \n if there is one, and allocates memory accordingly. */
-void	generate_line(char **line, t_list *line_stash)
+void	generate_line(char *line, t_list *line_stash)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		count;
+	t_list	*current;
 
+	current = line_stash;
+	count = 0;
+	while (current->next)
+	{
+		i = 0;
+		while (current->data[i])
+		{
+			if (current->data[i] == '\n')
+			{
+				count++;
+				break;
+			}
+			i++;
+			count++;
+		}
+		current = current->next;
+	}
+	line = malloc(sizeof(char) * (count + 1));
+	if (!line)
+		return ;
 
 }
 
