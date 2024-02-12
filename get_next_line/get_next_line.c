@@ -26,7 +26,7 @@ char	*get_next_line(int fd)
 	if (line_stash == NULL)
 		return (NULL);
 	// 2. extract from stash to line
-	
+generate_line(line, line_stash);	
 	// 3. clean up stash
 	return (line);
 }

@@ -48,6 +48,10 @@ t_list	*get_last_node(t_list *line_stash)
  * \n if there is one, and allocates memory accordingly. */
 void	generate_line(char **line, t_list *line_stash)
 {
+	int	i;
+	int	j;
+
+
 }
 
 /* Frees the entire stash. */
