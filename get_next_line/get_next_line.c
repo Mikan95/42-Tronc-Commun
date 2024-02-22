@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:32:53 by ameechan          #+#    #+#             */
-/*   Updated: 2024/02/22 15:23:08 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/02/22 15:26:09 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ char	*get_next_line(int fd)
 	char			*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &line, 0) < 0)
+	{
+		free_stash(line_stash);
+		line_stash = NULL;
 		return (NULL);
+	}
 	line = NULL;
 	read_and_stash(fd, &line_stash);
 	if (line_stash == NULL)
