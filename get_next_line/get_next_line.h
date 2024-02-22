@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:28:46 by ameechan          #+#    #+#             */
-/*   Updated: 2024/02/09 17:10:54 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:59:38 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-
 # include <fcntl.h>
-# include <stdio.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 typedef struct s_list
 {
