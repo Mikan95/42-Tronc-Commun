@@ -6,12 +6,11 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:32:53 by ameechan          #+#    #+#             */
-/*   Updated: 2024/02/09 17:31:38 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/02/22 15:23:08 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 char	*get_next_line(int fd)
 {
@@ -21,13 +20,18 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &line, 0) < 0)
 		return (NULL);
 	line = NULL;
-	// 1. read from fd and add to linked list
 	read_and_stash(fd, &line_stash);
 	if (line_stash == NULL)
 		return (NULL);
-	// 2. extract from stash to line
-generate_line(line, line_stash);	
-	// 3. clean up stash
+	extract_line(line_stash, &line);
+	clean_stash(&line_stash);
+	if (line[0] == '\0')
+	{
+		free_stash(line_stash);
+		line_stash = NULL;
+		free(line);
+		return (NULL);
+	}
 	return (line);
 }
 
@@ -50,7 +54,7 @@ void	read_and_stash(int fd, t_list **line_stash)
 			return ;
 		}
 		buffer[readed] = '\0';
-		add_to_stash(&line_stash, buffer, readed);
+		add_to_stash(line_stash, buffer, readed);
 		free(buffer);
 	}
 }
@@ -68,14 +72,14 @@ void	add_to_stash(t_list **line_stash, char *buffer, int readed)
 	new_node->next = NULL;
 	new_node->data = malloc(sizeof (char) * (readed + 1));
 	if (new_node->data == NULL)
-		return;
+		return ;
+	i = 0;
 	while (buffer[i] && i < readed)
 	{
 		new_node->data[i] = buffer[i];
 		i++;
 	}
 	new_node->data[i] = '\0';
-
 	if (*line_stash == NULL)
 	{
 		*line_stash = new_node;
@@ -89,6 +93,30 @@ void	add_to_stash(t_list **line_stash, char *buffer, int readed)
 // stopping after the first \n it encounters
 void	extract_line(t_list *line_stash, char **line)
 {
+	int	i;
+	int	j;
+
+	if (line_stash == NULL)
+		return ;
+	generate_line(line, line_stash);
+	if (line == NULL)
+		return ;
+	j = 0;
+	while (line_stash)
+	{
+		i = 0;
+		while (line_stash->data[i])
+		{
+			if (line_stash->data[i] == '\n')
+			{
+				(*line)[j++] = line_stash->data[i];
+				break ;
+			}
+			(*line)[j++] = line_stash->data[i++];
+		}
+		line_stash = line_stash->next;
+	}
+	(*line)[j] = '\0';
 }
 
 /* After extracting the line that was read, we don't need those characters
@@ -96,21 +124,49 @@ void	extract_line(t_list *line_stash, char **line)
  * not been returned at the end of get_next_line remain in our static stash. */
 void	clean_stash(t_list **line_stash)
 {
-}
+	t_list	*last;
+	t_list	*clean_node;
+	int		i;
+	int		j;
 
+	clean_node = malloc(sizeof(t_list));
+	if (!clean_node || !line_stash)
+		return ;
+	clean_node->next = NULL;
+	last = get_last_node(*line_stash);
+	i = 0;
+	while (last->data[i] && last->data[i] != '\n')
+		i++;
+	if (last->data[i] && last->data[i] == '\n')
+		i++;
+	clean_node->data = malloc(sizeof(char) * (ft_strlen(last->data) - i) + 1);
+	if (!clean_node)
+		return ;
+	j = 0;
+	while (last->data[i])
+		clean_node->data[j++] = last->data[i++];
+	clean_node->data[j] = '\0';
+	free_stash(*line_stash);
+	*line_stash = clean_node;
+}
+/*
 int	main(void)
 {
 	int		fd;
+	char	*path;
 	char	*line;
+	int		i;
 
-	fd = open("test.txt", O_RDONLY);
-	while (1)
+	i = 0;
+	path = "test.txt";
+	fd = open(path, O_RDONLY);
+	while (i < 10)
 	{
 		line = get_next_line(fd);
-		if (line == NULL)
-			break;
-		printf ("%s", line);
-		free (line);
+		printf ("i: %i\n", i);
+		printf ("fd: %i, %s\n", fd, line);
+		i++;
 	}
 	return (0);
 }
+*/

@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:32:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/02/12 12:02:07 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/02/22 15:15:15 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,41 +46,45 @@ t_list	*get_last_node(t_list *line_stash)
 
 /* Calculates the number of chars in the current line, including the trailing
  * \n if there is one, and allocates memory accordingly. */
-void	generate_line(char *line, t_list *line_stash)
+void	generate_line(char **line, t_list *line_stash)
 {
 	int		i;
 	int		count;
-	t_list	*current;
 
-	current = line_stash;
 	count = 0;
-	while (current->next)
+	while (line_stash)
 	{
 		i = 0;
-		while (current->data[i])
+		while (line_stash->data[i])
 		{
-			if (current->data[i] == '\n')
+			if (line_stash->data[i] == '\n')
 			{
 				count++;
-				break;
+				break ;
 			}
 			i++;
 			count++;
 		}
-		current = current->next;
+		line_stash = line_stash->next;
 	}
-	line = malloc(sizeof(char) * (count + 1));
-	if (!line)
-		return ;
-
+	*line = malloc(sizeof(char) * (count + 1));
 }
 
 /* Frees the entire stash. */
 void	free_stash(t_list *line_stash)
 {
+	t_list	*current;
+	t_list	*next;
+
+	current = line_stash;
+	while (current)
+	{
+		next = current->next;
+		free(current->data);
+		free(current);
+		current = next;
+	}
 }
-
-
 
 int	ft_strlen(const char *str)
 {
