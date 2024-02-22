@@ -26,12 +26,12 @@ char	*get_next_line(int fd)
 	if (line_stash == NULL)
 		return (NULL);
 	// 2. extract from stash to line
-	
+generate_line(line, line_stash);	
 	// 3. clean up stash
 	return (line);
 }
 
-// uses read() to add characters to tue stash
+// uses read() to add characters to the stash
 void	read_and_stash(int fd, t_list **line_stash)
 {
 	char	*buffer;
