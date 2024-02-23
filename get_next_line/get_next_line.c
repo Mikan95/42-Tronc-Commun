@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:32:53 by ameechan          #+#    #+#             */
-/*   Updated: 2024/02/22 15:26:09 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/02/23 17:10:09 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-// uses read() to add characters to the stash
+// uses read() and adds characters to 'line_stash'.
 void	read_and_stash(int fd, t_list **line_stash)
 {
 	char	*buffer;
@@ -63,7 +63,7 @@ void	read_and_stash(int fd, t_list **line_stash)
 	}
 }
 
-// adds the content of buffer to the end of linked list
+// adds the content of 'buffer' to the end of 'line_stash'.
 void	add_to_stash(t_list **line_stash, char *buffer, int readed)
 {
 	int		i;
@@ -93,8 +93,8 @@ void	add_to_stash(t_list **line_stash, char *buffer, int readed)
 	last->next = new_node;
 }
 
-// extracts all characters from our stash and stores them in line
-// stopping after the first \n it encounters
+// extracts all characters from 'line_stash' and stores them in 'line'
+// stops after first '\n' encountered.
 void	extract_line(t_list *line_stash, char **line)
 {
 	int	i;
@@ -123,9 +123,8 @@ void	extract_line(t_list *line_stash, char **line)
 	(*line)[j] = '\0';
 }
 
-/* After extracting the line that was read, we don't need those characters
- * anymore. This function clears the stash so only the characters that have
- * not been returned at the end of get_next_line remain in our static stash. */
+// clears 'line_stash' so only the overflow (chars after the \n)
+// remains in 'line_stash'.
 void	clean_stash(t_list **line_stash)
 {
 	t_list	*last;
