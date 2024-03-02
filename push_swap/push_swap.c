@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/03/02 13:46:49 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/03/02 13:49:21 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int argc, char **argv)
 		exit (0);
 	}
 	test_i = 0;
-	test = (unsigned int);
+	test = (unsigned int)-2147483648;
 	ft_printf("Below is a list of your arguments:\n");
 	while (test_i < argc)
 		ft_printf("%s\n", argv[test_i++]);
