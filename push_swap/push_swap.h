@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:27:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/03/01 16:32:03 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/03/02 13:31:19 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
+# ifndef INT_MAX
+#  define INT_MAX 2147483647
+# endif
+# ifndef INT_MIN
+#  define INT_MIN -2147483648
+# endif
 
 int		is_space(char c);
 int		is_digit(char c);
