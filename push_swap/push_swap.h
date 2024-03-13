@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:27:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/03/02 13:31:19 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:09:47 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,25 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
+# include <stdbool.h>
 # ifndef INT_MAX
 #  define INT_MAX 2147483647
 # endif
 # ifndef INT_MIN
 #  define INT_MIN -2147483648
 # endif
+
+typedef struct s_list
+{
+	int				value;
+	int				index;
+	int				push_cost;
+	bool			above_median;
+	bool			cheapest;
+	struct s_list	target_node;
+	struct s_list	*next;
+	struct s_list	*prev;
+}					t_stack; 
 
 int		is_space(char c);
 int		is_digit(char c);

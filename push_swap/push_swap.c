@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/03/02 13:49:21 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:14:22 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	main(int argc, char **argv)
 	int	test_i;
 	unsigned int	test;
 
-	if (argc < 2)
-		exit(-1);
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
+		return (-1);
 	i = 1;
 	while (i < (argc - 1) && invalid_char_checker(argv[i]) == 1)
 		i++;

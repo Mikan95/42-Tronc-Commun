@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:25:27 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/14 17:05:54 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/03/13 17:50:24 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char	**ft_split(char const *s, char c)
 	split[i] = NULL;
 	return (split);
 }
-/*
+
 #include <stdio.h>
 #include <string.h>
 
@@ -92,7 +92,7 @@ int	main(int argc, char **argv)
 {
 	(void)argc;
 	int	count;
-	count = word_count(argv[1], argv[2][0]);
+	count = ft_count_words(argv[1], argv[2][0]);
 	char	**res = ft_split(argv[1], argv[2][0]);
 
 	printf("str: %s\n", argv[1]);
@@ -102,4 +102,3 @@ int	main(int argc, char **argv)
 		printf("%s\n", res[i]);
 	}
 }
- */
