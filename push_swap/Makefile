@@ -2,23 +2,31 @@ NAME = push_swap
 CC = gcc
 CCFLAGS = -Wall -Werror -Wextra
 RM = rm -f
-SRC_FILES = $(addsuffix .c, push_swap push_swap_utils ft_printf ft_printf_utils ft_atoi)
-OBJS := $(SRC_FILES:.c=.o)
+LIBFT_DIR = libft
+
+SRC_FILES = $(addsuffix .c, push_swap push_swap_utils ft_printf ft_printf_utils ft_atoi \
+ft_split init_stack libft_lst libft_functions)
+OBJ := $(SRC_FILES:.c=.o)
 
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CCFLAGS) $(OBJS) -o $(NAME)
+#run make in libft subdirectory, copy it to current dir and
+#rename it to $(NAME), then ar it with objs of current dir
+$(NAME): $(OBJ)
+	$(CC) $(CCFLAGS) $(OBJ) -o $(NAME)
+	@echo "Compilation done"
 
-%.o: %.c
-	$(CC) $(CCFLAGS) -o $@ -c $<
+%.o : %.c
+	$(CC) $(CCFLAGS) -c $< -o $@ -I $(LIBFT_DIR)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJ)
+	@echo "Clean done"
 
 fclean: clean
 	$(RM) $(NAME)
+	@echo "Fclean done"
 
 re: fclean all
 

@@ -6,51 +6,36 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/03/13 16:14:22 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:04:34 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	invalid_char_checker(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str[i] == '-')
-		i++;
-	while (str[i])
-	{
-		if (str[i] >= '0' && str[i] <= '9')
-			i++;
-		else
-			return (0);
-	}
-	return (1);
-}
-
 int	main(int argc, char **argv)
 {
-	int	i;
-	int	test_i;
-	unsigned int	test;
+	t_stack	*a;
+	t_stack	*b;
 
+	a = NULL;
+	b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (-1);
-	i = 1;
-	while (i < (argc - 1) && invalid_char_checker(argv[i]) == 1)
-		i++;
-	if (invalid_char_checker(argv[i]) == 0)
+	else if (argc == 2)
+		argv = ft_split(argv[1], ' ');
+	init_stack_a(&a, argv + 1);
+	ft_printf("Below is stack a printed out:\n");
+	while (a->next)
+		printf("%d\n", a->value);
+/*	if(!stack_sorted(a))
 	{
-		write(2, "Error\n", 6);
-		exit (0);
+		if (ft_lstsize(a) == 2)
+			sa(&a, false);
+		else if (ft_lstsize(a) == 3)
+			sort_three(&a);
+		else
+			sort_stacks(&a, &b);
 	}
-	test_i = 0;
-	test = (unsigned int)-2147483648;
-	ft_printf("Below is a list of your arguments:\n");
-	while (test_i < argc)
-		ft_printf("%s\n", argv[test_i++]);
-	ft_printf("normal int min is: %d\n", INT_MIN);
-	ft_printf("converted int min is %u\n", (-test));
+	free_stack(&a); */
 	return (0);
 }

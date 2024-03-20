@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:27:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/03/13 16:09:47 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/03/20 17:03:04 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdbool.h>
-# ifndef INT_MAX
-#  define INT_MAX 2147483647
-# endif
-# ifndef INT_MIN
-#  define INT_MIN -2147483648
-# endif
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -31,10 +26,10 @@ typedef struct s_list
 	int				push_cost;
 	bool			above_median;
 	bool			cheapest;
-	struct s_list	target_node;
+	struct s_list	*target_node;
 	struct s_list	*next;
 	struct s_list	*prev;
-}					t_stack; 
+}					t_stack;
 
 int		is_space(char c);
 int		is_digit(char c);
@@ -47,4 +42,13 @@ int		ft_putptr(unsigned long ptr, char *hex_chars);
 int		ft_putint(int nbr, char *dec_chars);
 int		ft_putnbr_hex(unsigned int nbr, char *hex_chars);
 int		ft_putnbr_dec(unsigned int nbr, char *dec_chars);
+char	**ft_split(char const *s, char c);
+size_t	ft_strlen(const char *s);
+void	*ft_calloc(size_t count, size_t size);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strdup(const char *s1);
+t_stack	*ft_lstlast(t_stack *lst);
+void	ft_lstadd_back(t_stack **lst, t_stack *new);
+int		ft_lstsize(t_stack *lst);
+void	init_stack_a(t_stack **stack_a, char **argv);
 #endif
