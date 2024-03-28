@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/03/20 17:04:34 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/03/28 15:47:44 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int	main(int argc, char **argv)
 		return (-1);
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
+	ft_printf("initialising stack..\n");
 	init_stack_a(&a, argv + 1);
 	ft_printf("Below is stack a printed out:\n");
-	while (a->next)
-		printf("%d\n", a->value);
+	ft_printf("%d\n", a->value);
 /*	if(!stack_sorted(a))
 	{
 		if (ft_lstsize(a) == 2)
