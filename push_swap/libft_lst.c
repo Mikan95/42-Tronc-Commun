@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:48:11 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/06 17:22:50 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/06 17:31:11 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,31 @@ t_stack	*ft_lstlast(t_stack *lst)
 	return (current);
 }
 
-void	ft_lstadd_back(t_stack **lst, t_stack *new)
+void	ft_lstadd_back(t_stack **lst, long int res)
 {
 	t_stack	*last;
+	t_stack	*new_node;
 
-	if (!new)
+	new_node = malloc(sizeof(t_stack));
+	if (!new_node)
 		return ;
+	new_node->value = res;
 	if (!*lst)
 	{
-		printf("initialising stack a for first time..\n");
-		*lst = new;
-		new->next = NULL;
-		new->prev = NULL;
-		printf("First value: %ld\n", new->value);
-		printf("last after first value = %ld\n\n", ft_lstlast(*lst)->value);
+//		printf("initialising stack a for first time..\n");
+		*lst = new_node;
+		new_node->next = NULL;
+		new_node->prev = NULL;
+//		printf("First value: %ld\n", new_node->value);
+//		printf("last after first value = %ld\n\n", ft_lstlast(*lst)->value);
 		return ;
 	}
 	last = ft_lstlast(*lst);
-	last->next = new;
-	new->prev = last;
-	new->next = NULL;
-	printf("Last value: %ld\n", last->value);
-	printf("New value: %ld\n", new->value);
+	last->next = new_node;
+	new_node->prev = last;
+	new_node->next = NULL;
+//	printf("Last value: %ld\n", last->value);
+//	printf("New value: %ld\n", new_node->value);
 }
 
 int	ft_lstsize(t_stack *lst)

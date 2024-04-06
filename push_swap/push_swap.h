@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:27:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/06 15:54:09 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/06 17:29:25 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void		*ft_calloc(size_t count, size_t size);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 char		*ft_strdup(const char *s1);
 t_stack		*ft_lstlast(t_stack *lst);
-void		ft_lstadd_back(t_stack **lst, t_stack *new);
+void		ft_lstadd_back(t_stack **lst, long int res);
 int			ft_lstsize(t_stack *lst);
 void		init_stack_a(t_stack **stack_a, char **argv);
 #endif
