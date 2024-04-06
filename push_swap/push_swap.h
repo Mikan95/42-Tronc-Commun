@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:27:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/03/28 15:57:42 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/06 15:54:09 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_list
 
 int			is_space(char c);
 int			is_digit(char c);
-long int	ft_atol(const char *str);
+long int	ft_atol(char *str);
 int			ft_printf(const char *str, ...);
 int			ft_conversion(const char *str, va_list ap);
 int			ft_char(char c);
