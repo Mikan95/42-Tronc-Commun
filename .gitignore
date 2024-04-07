@@ -1,12 +1,14 @@
 #global exclusions
 README.md
+**/*.o
+*/a.out
 #libft exclusions
-/libft/a.out
+/libft/libft.a
 #printf exclusions
-/ft_printf/*.o
-/ft_printf/a.out
+/ft_printf/libftprintf.a
+/ft_printf/libft/libft.a
 #get_next_line exclusions
-/get_next_line/a.out
 /get_next_line/*.h.gch
 #Push_swap exclusions
-/push_swap/a.out
+/push_swap/push_swap
+
