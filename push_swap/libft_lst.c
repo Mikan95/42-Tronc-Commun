@@ -6,12 +6,13 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:48:11 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/06 17:31:11 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/07 16:20:23 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// finds and returns the last node of a linked list
 t_stack	*ft_lstlast(t_stack *lst)
 {
 	t_stack	*current;
@@ -22,6 +23,7 @@ t_stack	*ft_lstlast(t_stack *lst)
 	return (current);
 }
 
+//adds a new node to the end of a linked list
 void	ft_lstadd_back(t_stack **lst, long int res)
 {
 	t_stack	*last;
@@ -49,6 +51,7 @@ void	ft_lstadd_back(t_stack **lst, long int res)
 //	printf("New value: %ld\n", new_node->value);
 }
 
+//returns the number of nodes in a linked list
 int	ft_lstsize(t_stack *lst)
 {
 	t_stack	*temp;
@@ -63,5 +66,3 @@ int	ft_lstsize(t_stack *lst)
 	}
 	return (i);
 }
-
-
