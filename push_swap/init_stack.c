@@ -6,12 +6,16 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:44:21 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/07 18:00:27 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/07 18:14:08 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*
+initialises the stack, adding each element of argv to the end of the list,
+once each str has been converted to long ints using ft_atol().
+*/
 void	init_stack_a(t_stack **stack_a, char **argv)
 {
 	int			i;
@@ -54,8 +58,8 @@ int	ft_error_check(char **argv)
 	return (0);
 }
 
-//reads element from an array, checks for syntax errors.
-//returns 1 if error found.
+//reads an element from an array, checks for syntax errors.
+//returns 1 if error is found.
 int	ft_check_syntax(char *str)
 {
 	if (*str == '-' || *str == '+')

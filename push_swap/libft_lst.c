@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:48:11 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/07 16:20:23 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/07 18:20:02 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,17 @@ int	ft_lstsize(t_stack *lst)
 		temp = temp->next;
 	}
 	return (i);
+}
+
+//frees each node of a linked list
+void	ft_freelist(t_stack *stack_a)
+{
+	t_stack	*temp;
+
+	while (stack_a)
+	{
+		temp = stack_a;
+		stack_a = stack_a->next;
+		free(temp);
+	}
 }
