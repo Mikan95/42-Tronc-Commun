@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:44:21 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/07 18:14:08 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/09 01:52:24 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	init_stack_a(t_stack **stack_a, char **argv)
 {
 	int			i;
 	long int	res;
+//	t_stack		*last;
 
 	if (ft_error_check(argv))
 	{
@@ -34,6 +35,8 @@ void	init_stack_a(t_stack **stack_a, char **argv)
 		{
 			res = ft_atol(argv[i]);
 			ft_lstadd_back(stack_a, res);
+//			last = ft_lstlast(*stack_a);
+//			printf("Last of stack A: %ld\n", last->value);
 			i++;
 		}
 	}

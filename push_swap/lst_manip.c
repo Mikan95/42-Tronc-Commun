@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_lst.c                                        :+:      :+:    :+:   */
+/*   lst_manip.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:48:11 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/07 18:20:02 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/09 01:51:10 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_stack	*ft_lstlast(t_stack *lst)
 	t_stack	*current;
 
 	current = lst;
-	while (current->next)
+	while (current->next && current->next != lst)
 		current = current->next;
 	return (current);
 }
@@ -46,7 +46,7 @@ void	ft_lstadd_back(t_stack **lst, long int res)
 	last = ft_lstlast(*lst);
 	last->next = new_node;
 	new_node->prev = last;
-	new_node->next = NULL;
+	new_node->next = *lst;
 //	printf("Last value: %ld\n", last->value);
 //	printf("New value: %ld\n", new_node->value);
 }
@@ -56,11 +56,19 @@ int	ft_lstsize(t_stack *lst)
 {
 	t_stack	*temp;
 	int		i;
+	int		loop;
 
 	temp = lst;
 	i = 0;
-	while (temp != NULL)
+	loop = -1;
+	while (temp->next && loop < 1)
 	{
+		if (temp == lst)
+		{
+			loop++;
+			if (loop > 0)
+				break ;
+		}
 		i++;
 		temp = temp->next;
 	}
@@ -72,7 +80,7 @@ void	ft_freelist(t_stack *stack_a)
 {
 	t_stack	*temp;
 
-	while (stack_a)
+	while (temp->next != stack_a)
 	{
 		temp = stack_a;
 		stack_a = stack_a->next;
