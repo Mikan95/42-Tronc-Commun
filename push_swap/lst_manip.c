@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:48:11 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/09 01:51:10 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/09 02:22:42 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,16 @@ void	ft_lstadd_back(t_stack **lst, long int res)
 int	ft_lstsize(t_stack *lst)
 {
 	t_stack	*temp;
-	int		i;
-	int		loop;
+	t_stack *start;
+	int		i;;
 
-	temp = lst;
 	i = 0;
-	loop = -1;
-	while (temp->next && loop < 1)
+	temp = lst;
+	while (temp != start)
 	{
-		if (temp == lst)
-		{
-			loop++;
-			if (loop > 0)
-				break ;
-		}
-		i++;
+		start = lst;
 		temp = temp->next;
+		i++;
 	}
 	return (i);
 }
@@ -80,7 +74,7 @@ void	ft_freelist(t_stack *stack_a)
 {
 	t_stack	*temp;
 
-	while (temp->next != stack_a)
+	while (temp != stack_a)
 	{
 		temp = stack_a;
 		stack_a = stack_a->next;
