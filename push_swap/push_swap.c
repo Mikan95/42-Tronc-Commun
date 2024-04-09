@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/09 01:44:37 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/09 19:32:35 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
-	t_stack	*print;
-	int		loop;
+	t_stack	*temp; //delete later
+	t_stack	*start;
 //	t_stack	*b;
 	a = NULL;
-	print = NULL;
+	start = NULL;
 //	b = NULL;
 //	int		i = 0;
 
@@ -36,18 +36,12 @@ int	main(int argc, char **argv)
 	init_stack_a(&a, argv);
 	ft_printf("list size: %d\n", ft_lstsize(a));
 	ft_printf("Elements in Stack_a:\n");
-	print = a;
-	loop = -1;
-	while(print->next && loop < 1)
+	temp = a;
+	while(temp != start)
 	{
-		if (print == a)
-		{
-			loop++;
-			if (loop > 0)
-				break;
-		}
-		printf("%ld\n", print->value);
-		print = print->next;
+		start = a;
+		printf("%ld\n", temp->value);
+		temp = temp->next;
 	}
 
 /* 	if(!stack_sorted(a))

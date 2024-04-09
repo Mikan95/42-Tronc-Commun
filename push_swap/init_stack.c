@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:44:21 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/09 01:52:24 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/09 19:44:34 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,20 @@ int	ft_error_check(char **argv)
 //returns 1 if error is found.
 int	ft_check_syntax(char *str)
 {
-	if (*str == '-' || *str == '+')
-		str++;
-	while (*str)
+	int	i;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (*str < '0' || *str > '9')
+		if (str[i + 1] < '0' || str[i] > '9')
 			return (1);
-		str++;
+		i++;
+	}
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (1);
+		i++;
 	}
 	return (0);
 }

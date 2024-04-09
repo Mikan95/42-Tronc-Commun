@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:48:11 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/09 02:22:42 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/09 19:37:12 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ t_stack	*ft_lstlast(t_stack *lst)
 	return (current);
 }
 
-//adds a new node to the end of a linked list
+//adds a new node to the end of a circular linked list
+//last->next is always set to *lst ( pointer to head node)
 void	ft_lstadd_back(t_stack **lst, long int res)
 {
 	t_stack	*last;
@@ -58,6 +59,7 @@ int	ft_lstsize(t_stack *lst)
 	t_stack *start;
 	int		i;;
 
+	start = NULL;
 	i = 0;
 	temp = lst;
 	while (temp != start)
@@ -73,11 +75,14 @@ int	ft_lstsize(t_stack *lst)
 void	ft_freelist(t_stack *stack_a)
 {
 	t_stack	*temp;
+	t_stack	*start;
 
-	while (temp != stack_a)
+	start = NULL;
+	temp = stack_a;
+	while (temp != start)
 	{
-		temp = stack_a;
-		stack_a = stack_a->next;
+		start = stack_a;
+		temp = temp->next;
 		free(temp);
 	}
 }
