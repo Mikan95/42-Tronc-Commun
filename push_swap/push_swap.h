@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:27:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/09 20:47:10 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/10 17:13:38 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,5 @@ int			ft_check_dupli(char **argv);
 void		ft_error();
 void		ft_freelist(t_stack *stack_a);
 int			is_sorted(t_stack *lst);
+void		swap(t_stack **lst);
 #endif
