@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:44:32 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/12 16:10:05 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/12 17:10:52 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,7 @@ void	swap(t_stack **lst)
 	second = first->next;
 // adjust next pointers
 	first->next = second->next;
-	second->next->prev = first;
 	second->next = first;
-//adjust prev pointers
-	second->prev = first->prev;
-	first->prev->next = second;
-	first->prev = second;
 // set second node as head node
 	*lst = second;
 }
@@ -51,26 +46,22 @@ void	swap(t_stack **lst)
 void	push(t_stack **src, t_stack **dest)
 {
 	t_stack	*dest_last;
-	t_stack *dest_first;
 	t_stack	*pushed_node;
 
-	pushed_node = *src;
-	pushed_node->next->prev = pushed_node->prev;
-	pushed_node->prev->next = pushed_node->next;
-	*src = pushed_node->next;
-	if(!*dest)
-	{
+	if (!*src)
+		return ;
+	pushed_node = ft_lstadd_back(*src);
+	if (!*dest)
 		*dest = pushed_node;
-		pushed_node->next = NULL;
-		pushed_node->prev = NULL;
-	}
 	else
 	{
-	dest_first = *dest;
-	dest_last = ft_lstlast(*dest);
-	pushed_node->prev = dest_last;
-	pushed_node->next = *dest;
-	dest_last->next = pushed_node;
-	dest_first->prev = pushed_node;
+		dest_last = ft_lstlast(*dest);
+		dest_last->next = pushed_node;
 	}
+	pushed_node->next = NULL;
+}
+
+void	rotate(t_stack **lst)
+{
+	
 }

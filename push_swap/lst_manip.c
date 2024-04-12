@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:48:11 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/12 16:38:30 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/12 16:54:44 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,12 @@ t_stack	*ft_lstlast(t_stack *lst)
 	t_stack	*current;
 
 	current = lst;
-	while (current->next && current->next != lst)
+	while (current->next)
 		current = current->next;
 	return (current);
 }
 
-//adds a new node to the end of a circular linked list
-//last->next is always set to *lst ( pointer to head node)
+//adds a new node to the end of a single linked list
 void	ft_lstadd_back(t_stack **lst, long int res)
 {
 	t_stack	*last;
@@ -39,15 +38,13 @@ void	ft_lstadd_back(t_stack **lst, long int res)
 //		printf("initialising stack a for first time..\n");
 		*lst = new_node;
 		new_node->next = NULL;
-		new_node->prev = NULL;
 //		printf("First value: %ld\n", new_node->value);
 //		printf("last after first value = %ld\n\n", ft_lstlast(*lst)->value);
 		return ;
 	}
 	last = ft_lstlast(*lst);
 	last->next = new_node;
-	new_node->prev = last;
-	new_node->next = *lst;
+	new_node->next = NULL;
 //	printf("Last value: %ld\n", last->value);
 //	printf("New value: %ld\n", new_node->value);
 }
@@ -56,15 +53,12 @@ void	ft_lstadd_back(t_stack **lst, long int res)
 int	ft_lstsize(t_stack *lst)
 {
 	t_stack	*temp;
-	t_stack *start;
-	int		i;;
+	int		i;
 
-	start = NULL;
 	i = 0;
 	temp = lst;
-	while (temp != start)
+	while (temp->next)
 	{
-		start = lst;
 		temp = temp->next;
 		i++;
 	}
@@ -75,13 +69,10 @@ int	ft_lstsize(t_stack *lst)
 void	ft_freelist(t_stack *stack_a)
 {
 	t_stack	*temp;
-	t_stack	*start;
 
-	start = NULL;
 	temp = stack_a;
-	while (temp != start)
+	while (temp->next)
 	{
-		start = stack_a;
 		temp = temp->next;
 		free(temp);
 	}
