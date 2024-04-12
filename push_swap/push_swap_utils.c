@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:44:32 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/10 17:16:56 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/12 16:10:05 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,31 @@ void	swap(t_stack **lst)
 	first->prev = second;
 // set second node as head node
 	*lst = second;
+}
+
+void	push(t_stack **src, t_stack **dest)
+{
+	t_stack	*dest_last;
+	t_stack *dest_first;
+	t_stack	*pushed_node;
+
+	pushed_node = *src;
+	pushed_node->next->prev = pushed_node->prev;
+	pushed_node->prev->next = pushed_node->next;
+	*src = pushed_node->next;
+	if(!*dest)
+	{
+		*dest = pushed_node;
+		pushed_node->next = NULL;
+		pushed_node->prev = NULL;
+	}
+	else
+	{
+	dest_first = *dest;
+	dest_last = ft_lstlast(*dest);
+	pushed_node->prev = dest_last;
+	pushed_node->next = *dest;
+	dest_last->next = pushed_node;
+	dest_first->prev = pushed_node;
+	}
 }
