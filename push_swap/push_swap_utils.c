@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:44:32 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/12 17:10:52 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:34:41 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_sorted(t_stack *lst)
 		return (0);
 }
 
-//swaps the first two elements of a list
+//swaps the top two elements of stack "lst"
 void	swap(t_stack **lst)
 {
 	t_stack	*first;
@@ -43,6 +43,7 @@ void	swap(t_stack **lst)
 	*lst = second;
 }
 
+//Pushes the top element of stack "src" to stack "dest"
 void	push(t_stack **src, t_stack **dest)
 {
 	t_stack	*dest_last;
@@ -50,7 +51,7 @@ void	push(t_stack **src, t_stack **dest)
 
 	if (!*src)
 		return ;
-	pushed_node = ft_lstadd_back(*src);
+	pushed_node = ft_lstlast(*src);
 	if (!*dest)
 		*dest = pushed_node;
 	else
@@ -61,7 +62,7 @@ void	push(t_stack **src, t_stack **dest)
 	pushed_node->next = NULL;
 }
 
-void	rotate(t_stack **lst)
+/* void	rotate(t_stack **lst)
 {
-	
-}
+
+} */

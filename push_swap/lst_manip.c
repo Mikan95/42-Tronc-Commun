@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:48:11 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/12 16:54:44 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:14:53 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,12 @@ void	ft_lstadd_back(t_stack **lst, long int res)
 //		printf("last after first value = %ld\n\n", ft_lstlast(*lst)->value);
 		return ;
 	}
-	last = ft_lstlast(*lst);
-	last->next = new_node;
-	new_node->next = NULL;
+	else
+	{
+		last = ft_lstlast(*lst);
+		last->next = new_node;
+		new_node->next = NULL;
+	}
 //	printf("Last value: %ld\n", last->value);
 //	printf("New value: %ld\n", new_node->value);
 }
@@ -57,7 +60,7 @@ int	ft_lstsize(t_stack *lst)
 
 	i = 0;
 	temp = lst;
-	while (temp->next)
+	while (temp)
 	{
 		temp = temp->next;
 		i++;
@@ -71,9 +74,9 @@ void	ft_freelist(t_stack *stack_a)
 	t_stack	*temp;
 
 	temp = stack_a;
-	while (temp->next)
+	while (temp)
 	{
-		temp = temp->next;
 		free(temp);
+		temp = temp->next;
 	}
 }
