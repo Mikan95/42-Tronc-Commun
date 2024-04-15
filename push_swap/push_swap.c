@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/15 15:48:17 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/15 19:11:31 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,27 +51,28 @@ int	main(int argc, char **argv)
 		 if (ft_lstsize(a) == 2)
 		 {
 			swap(&a);
-			printf("AFTER SWAP\n");
-			test_print_elements_lst(a, b);
+			printf("AFTER SWAP\n");//DELETE LATER
+			test_print_elements_lst(a, b);//DELETE LATER
 		 }
 		else if (ft_lstsize(a) == 3)
-		{
-			push(&a, &b);
-			printf("AFTER PUSH\n");
-			test_print_elements_lst(a, b);
-		}
-/* 			sort_three(&a);
-		else
+ 			sort_three(&a);
+/*		else
 			sort_stacks(&a, &b); */
+
+//########## T E S T S ###########
+//		test_push(&a, &b);//TEST
+//		test_swap(&a, &b);//TEST
+//################################
 	}
 	ft_freelist(a);
-/* 	printf("AFTER FREE\n");
-	while(temp)
-	{
-		printf("%ld\n", temp->value);
-		temp = temp->next;
-	} */
+//	test_free(&a);
 	return (0);
+}
+
+void	sort_three(t_stack **lst)
+{
+	(void)lst;
+	printf("WORK IN PROGRESS\n");
 }
 
 void	test_print_elements_lst(t_stack *a, t_stack *b)
@@ -88,6 +89,33 @@ void	test_print_elements_lst(t_stack *a, t_stack *b)
 	ft_printf("Elements in Stack B:\n");
 	temp = b;
 	while(temp)//printing elements of Stack B
+	{
+		printf("%ld\n", temp->value);
+		temp = temp->next;
+	}
+}
+
+void		test_swap(t_stack **a, t_stack **b)
+{
+	swap(a);
+	printf("AFTER SWAP\n");
+	test_print_elements_lst(*a, *b);
+}
+
+void		test_push(t_stack **a, t_stack **b)
+{
+	push(a, b);
+	printf("AFTER PUSH\n");
+	test_print_elements_lst(*a, *b);
+}
+
+void		test_free(t_stack **lst)
+{
+	t_stack	*temp;
+
+	temp = *lst;
+	printf("AFTER FREE\n");
+	while(temp)
 	{
 		printf("%ld\n", temp->value);
 		temp = temp->next;

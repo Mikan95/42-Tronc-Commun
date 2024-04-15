@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:44:32 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/15 16:10:57 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:52:49 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,24 @@ int	is_sorted(t_stack *lst)
 //swaps the top two elements of stack "lst"
 void	swap(t_stack **lst)
 {
-	t_stack	*old_first;
-	t_stack	*new_first;
+	t_stack	*last_node;
+	t_stack	*penultimate_node;
 
-	old_first = *lst;
-	new_first = old_first->next;
+	last_node = ft_lstlast(*lst);
+	penultimate_node = last_node->prev;
 // adjust next pointers
-	old_first->next = new_first->next;
-	new_first->next = old_first;
+	if (penultimate_node->prev)
+		penultimate_node->prev->next = last_node;
+	else
+	{
+		*lst = last_node;
+		penultimate_node->prev = NULL;
+	}
+	last_node->next = penultimate_node;
+	penultimate_node->next = NULL;
 // adjust prev pointers
-	new_first->prev = NULL;
-	old_first->prev = new_first;
-// set second node as head node
-	*lst = new_first;
+	last_node->prev = penultimate_node->prev;
+	penultimate_node->prev = last_node;
 }
 
 //Pushes the top element of stack "src" to stack "dest"
