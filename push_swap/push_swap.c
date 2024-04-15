@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/15 15:32:18 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:48:17 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,16 @@ int	main(int argc, char **argv)
 //intialises stack, checks for errors, and converts elements from str to long int
 	init_stack_a(&a, argv);
 	ft_printf("list size: %d\n", ft_lstsize(a));
-	ft_printf("Elements in Stack_a:\n");
+	ft_printf("Elements in Stack A:\n");
 	temp = a;
-	while(temp)
+	while(temp)//printing elements of Stack A
+	{
+		printf("%ld\n", temp->value);
+		temp = temp->next;
+	}
+	ft_printf("Elements in Stack B:\n");
+	temp = b;
+	while(temp)//printing elements of Stack B
 	{
 		printf("%ld\n", temp->value);
 		temp = temp->next;
@@ -44,36 +51,45 @@ int	main(int argc, char **argv)
 		 if (ft_lstsize(a) == 2)
 		 {
 			swap(&a);
-			printf("AFTER SWAP\nStack A:\n");
-			while(temp)//printing contents of Stack A
-			{
-				printf("%ld\n", temp->value);
-				temp = temp->next;
-			}
+			printf("AFTER SWAP\n");
+			test_print_elements_lst(a, b);
 		 }
 		else if (ft_lstsize(a) == 3)
 		{
 			push(&a, &b);
-			printf("AFTER PUSH\nStack A:\n");
-			while(temp)// printing contents of Stack A
-			{
-				printf("%ld\n", temp->value);
-				temp = temp->next;
-			}
-			temp = b;
-			printf("Stack B:\n");
-			printf("%ld\n", temp->value);
+			printf("AFTER PUSH\n");
+			test_print_elements_lst(a, b);
 		}
-//			sort_three(&a);
-//		else
-//			sort_stacks(&a, &b); */
+/* 			sort_three(&a);
+		else
+			sort_stacks(&a, &b); */
 	}
 	ft_freelist(a);
-	printf("AFTER FREE\n");
+/* 	printf("AFTER FREE\n");
 	while(temp)
 	{
 		printf("%ld\n", temp->value);
 		temp = temp->next;
-	}
+	} */
 	return (0);
+}
+
+void	test_print_elements_lst(t_stack *a, t_stack *b)
+{
+	t_stack	*temp;
+
+	ft_printf("Elements in Stack A:\n");
+	temp = a;
+	while(temp)//printing elements of Stack A
+	{
+		printf("%ld\n", temp->value);
+		temp = temp->next;
+	}
+	ft_printf("Elements in Stack B:\n");
+	temp = b;
+	while(temp)//printing elements of Stack B
+	{
+		printf("%ld\n", temp->value);
+		temp = temp->next;
+	}
 }

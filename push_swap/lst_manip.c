@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:48:11 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/15 15:14:53 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:41:54 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ft_lstadd_back(t_stack **lst, long int res)
 //		printf("initialising stack a for first time..\n");
 		*lst = new_node;
 		new_node->next = NULL;
+		new_node->prev = NULL;
 //		printf("First value: %ld\n", new_node->value);
 //		printf("last after first value = %ld\n\n", ft_lstlast(*lst)->value);
 		return ;
@@ -47,6 +48,7 @@ void	ft_lstadd_back(t_stack **lst, long int res)
 		last = ft_lstlast(*lst);
 		last->next = new_node;
 		new_node->next = NULL;
+		new_node->prev = last;
 	}
 //	printf("Last value: %ld\n", last->value);
 //	printf("New value: %ld\n", new_node->value);

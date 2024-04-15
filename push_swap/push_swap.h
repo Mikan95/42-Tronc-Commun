@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:27:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/15 15:22:10 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:45:40 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_list
 	bool			cheapest;
 	struct s_list	*target_node;
 	struct s_list	*next;
+	struct s_list	*prev;
 }					t_stack;
 
 int			is_space(char c);
@@ -58,4 +59,9 @@ void		ft_freelist(t_stack *stack_a);
 int			is_sorted(t_stack *lst);
 void		swap(t_stack **lst);
 void		push(t_stack **src, t_stack **dest);
+
+
+
+//TEST FUCNTIONS
+void	test_print_elements_lst(t_stack *a, t_stack *b);
 #endif
