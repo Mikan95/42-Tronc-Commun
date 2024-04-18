@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:27:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/15 19:11:12 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/18 14:17:41 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,15 @@ int			is_sorted(t_stack *lst);
 void		sort_three(t_stack **lst);
 void		swap(t_stack **lst);
 void		push(t_stack **src, t_stack **dest);
+void		rotate(t_stack **lst);
+void		reverse_rotate(t_stack **lst);
 
 
 //TEST FUCNTIONS
 void		test_print_elements_lst(t_stack *a, t_stack *b);
 void		test_swap(t_stack **a, t_stack **b);
 void		test_push(t_stack **a, t_stack **b);
+void		test_rotate(t_stack **a, t_stack **b);
+void		test_reverse_rotate(t_stack **a, t_stack **b);
 void		test_free(t_stack **lst);
 #endif

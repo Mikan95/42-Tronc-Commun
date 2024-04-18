@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/15 19:11:31 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/18 14:17:16 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	main(int argc, char **argv)
 
 	if(!is_sorted(a))
 	{
+		printf("sorting...\n");
 		temp = a;
 		 if (ft_lstsize(a) == 2)
 		 {
@@ -60,8 +61,10 @@ int	main(int argc, char **argv)
 			sort_stacks(&a, &b); */
 
 //########## T E S T S ###########
-//		test_push(&a, &b);//TEST
-//		test_swap(&a, &b);//TEST
+//	test_push(&a, &b);//TEST
+//	test_swap(&a, &b);//TEST
+//	test_rotate(&a, &b);//TEST
+	test_reverse_rotate(&a, &b);//TEST
 //################################
 	}
 	ft_freelist(a);
@@ -106,6 +109,20 @@ void		test_push(t_stack **a, t_stack **b)
 {
 	push(a, b);
 	printf("AFTER PUSH\n");
+	test_print_elements_lst(*a, *b);
+}
+
+void		test_rotate(t_stack **a, t_stack **b)
+{
+	rotate(a);
+	printf("AFTER ROTATE\n");
+	test_print_elements_lst(*a, *b);
+}
+
+void		test_reverse_rotate(t_stack **a, t_stack **b)
+{
+	reverse_rotate(a);
+	printf("AFTER REVERSE ROTATE\n");
 	test_print_elements_lst(*a, *b);
 }
 

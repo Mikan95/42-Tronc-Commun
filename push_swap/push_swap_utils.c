@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:44:32 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/15 18:52:49 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/18 14:15:59 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ int	is_sorted(t_stack *lst)
 	t_stack	*current;
 
 	current = lst;
-	if (!lst)
+	if (!lst || ft_lstsize(lst) < 2)
 		return (1);
 	while (current->value < current->next->value)
 		current = current->next;
-	if (current->next == lst)
+	if (!current)
 		return (1);
 	else
 		return (0);
@@ -31,24 +31,20 @@ int	is_sorted(t_stack *lst)
 //swaps the top two elements of stack "lst"
 void	swap(t_stack **lst)
 {
-	t_stack	*last_node;
-	t_stack	*penultimate_node;
+	t_stack	*old_first;
+	t_stack	*new_first;
 
-	last_node = ft_lstlast(*lst);
-	penultimate_node = last_node->prev;
+	old_first = *lst;
+	new_first = old_first->next;
 // adjust next pointers
-	if (penultimate_node->prev)
-		penultimate_node->prev->next = last_node;
-	else
-	{
-		*lst = last_node;
-		penultimate_node->prev = NULL;
-	}
-	last_node->next = penultimate_node;
-	penultimate_node->next = NULL;
+	old_first->next = new_first->next;
+	new_first->next->prev = old_first;
+	new_first->next = old_first;
 // adjust prev pointers
-	last_node->prev = penultimate_node->prev;
-	penultimate_node->prev = last_node;
+	new_first->prev = NULL;
+	old_first->prev = new_first;
+// adjust head_node
+	*lst = new_first;
 }
 
 //Pushes the top element of stack "src" to stack "dest"
@@ -71,7 +67,30 @@ void	push(t_stack **src, t_stack **dest)
 	pushed_node->prev->next = NULL;
 }
 
-/* void	rotate(t_stack **lst)
+void	rotate(t_stack **lst)
 {
+	t_stack	*old_first;
+	t_stack	*old_last;
 
-} */
+	old_first = *lst;
+	old_last = ft_lstlast(*lst);
+	*lst = old_first->next;
+	old_first->next->prev = NULL;
+	old_first->next = NULL;
+	old_first->prev = old_last;
+	old_last->next = old_first;
+}
+
+void		reverse_rotate(t_stack **lst)
+{
+	t_stack	*old_first;
+	t_stack	*old_last;
+
+	old_first = *lst;
+	old_last = ft_lstlast(*lst);
+	*lst = old_last;
+	old_last->next = old_first;
+	old_first->prev = old_last;
+	old_last->prev->next = NULL;
+	old_last->prev = NULL;
+}
