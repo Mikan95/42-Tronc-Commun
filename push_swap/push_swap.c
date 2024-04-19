@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/19 18:47:21 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/19 19:00:52 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
-	t_stack	*temp; //delete later
 	t_stack	*b;
 	a = NULL;
 	b = NULL;
@@ -31,24 +30,11 @@ int	main(int argc, char **argv)
 	init_stack_a(&a, argv);
 	ft_printf("list size: %d\n", ft_lstsize(a));
 	ft_printf("Elements in Stack A:\n");
-	temp = a;
-	while(temp)//printing elements of Stack A
-	{
-		printf("%ld\n", temp->value);
-		temp = temp->next;
-	}
-	ft_printf("Elements in Stack B:\n");
-	temp = b;
-	while(temp)//printing elements of Stack B
-	{
-		printf("%ld\n", temp->value);
-		temp = temp->next;
-	}
+	test_print_elements_lst(a, b);
 
 	if(!is_sorted(a))
 	{
 		printf("sorting...\n");
-		temp = a;
 		 if (ft_lstsize(a) == 2)
 		 {
 			swap(&a);
@@ -64,7 +50,7 @@ int	main(int argc, char **argv)
 //	test_push(&a, &b);//TEST
 //	test_swap(&a, &b);//TEST
 //	test_rotate(&a, &b);//TEST
-	test_reverse_rotate(&a, &b);//TEST
+//	test_reverse_rotate(&a, &b);//TEST
 //################################
 	}
 	ft_freelist(a);
