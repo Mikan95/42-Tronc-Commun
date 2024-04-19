@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/18 14:17:16 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/19 18:47:21 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,49 @@ int	main(int argc, char **argv)
 
 void	sort_three(t_stack **lst)
 {
-	(void)lst;
-	printf("WORK IN PROGRESS\n");
+	t_stack	*smallest;
+	t_stack	*biggest;
+	t_stack	*head_node;
+
+	find_minmax(*lst, smallest, biggest);
+	head_node = *lst;
+	if (smallest == head_node && biggest == head_node->next)
+	{
+		reverse_rotate(lst);
+		swap(lst);
+	}
+	else if (smallest == head_node->next && biggest != head_node)
+		swap(lst);
+	else if (smallest == head_node->next && biggest == head_node)
+		rotate(lst);
+	else if (biggest == head_node && smallest != head_node->next)
+	{
+		swap(lst);
+		reverse_rotate(lst);
+	}
+	else
+		reverse_rotate(lst);
+}
+
+void	find_minmax(t_stack *lst, t_stack *min, t_stack *max)
+{
+	t_stack	*first;
+	t_stack	*second;
+	t_stack	*third;
+
+	first = lst;
+	second = lst->next;
+	third = second->next;
+	min = first;
+	if (first->value < second->value && second->value < third->value)
+		max = third;
+	if (first->value < second->value && second->value > third->value)
+		max = second;
+	if (first->value > second->value && second->value > third->value)
+	{
+		min = third;
+		max = first;
+	}
 }
 
 void	test_print_elements_lst(t_stack *a, t_stack *b)
