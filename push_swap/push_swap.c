@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/19 19:03:41 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/19 20:22:33 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,20 @@ int	main(int argc, char **argv)
 			test_print_elements_lst(a, b);//DELETE LATER
 		 }
 		else if (ft_lstsize(a) == 3)
- 			sort_three(&a);
+			sort_three(&a);
 /*		else
 			sort_stacks(&a, &b); */
 
 //########## T E S T S ###########
 //	test_push(&a, &b);//TEST
+//	test_reverse_rotate(&a, &b);//TEST
 //	test_swap(&a, &b);//TEST
 //	test_rotate(&a, &b);//TEST
-//	test_reverse_rotate(&a, &b);//TEST
+	test_print_elements_lst(a, b);//TEST FOR SORT_THREE
 //################################
 	}
+	else								 //delete later
+		printf("LIST ALREADY SORTED!\n");//delete later
 	ft_freelist(a);
 //	test_free(&a);
 	return (0);
@@ -64,8 +67,12 @@ void	sort_three(t_stack **lst)
 	t_stack	*biggest;
 	t_stack	*head_node;
 
-	find_minmax(*lst, smallest, biggest);
 	head_node = *lst;
+	smallest = NULL;
+	biggest = NULL;
+//	printf("Starting sort_three...\n");//delete
+	find_minmax(*lst, &smallest, &biggest);
+//	printf("Sorting list...\n");//delete
 	if (smallest == head_node && biggest == head_node->next)
 	{
 		reverse_rotate(lst);
@@ -80,29 +87,38 @@ void	sort_three(t_stack **lst)
 		swap(lst);
 		reverse_rotate(lst);
 	}
-	else
+	else if (biggest == head_node->next && smallest != head_node)
 		reverse_rotate(lst);
+	printf("List sorted:\n");
 }
 
-void	find_minmax(t_stack *lst, t_stack *min, t_stack *max)
+void	find_minmax(t_stack *lst, t_stack **min, t_stack **max)
 {
 	t_stack	*first;
 	t_stack	*second;
 	t_stack	*third;
+	t_stack	*print_min;//delete
+	t_stack	*print_max;//delete
 
+	printf("Finding min and max\n");
 	first = lst;
 	second = lst->next;
 	third = second->next;
-	min = first;
-	if (first->value < second->value && second->value < third->value)
-		max = third;
-	if (first->value < second->value && second->value > third->value)
-		max = second;
-	if (first->value > second->value && second->value > third->value)
-	{
-		min = third;
-		max = first;
-	}
+	if (first->value < second->value && first->value < third->value)
+		*min = first;
+	else if (second->value < first->value && second->value < third->value)
+		*min = second;
+	else if (third->value < first->value && third->value < second->value)
+		*min = third;
+	if (first->value > second->value && first->value > third->value)
+		*max = first;
+	else if (second->value > first->value && second->value > third->value)
+		*max = second;
+	else
+		*max = third;
+	print_min = *min;
+	print_max = *max;
+	printf("Min is: %ld\nMax is: %ld\n", print_min->value, print_max->value);
 }
 
 void	test_print_elements_lst(t_stack *a, t_stack *b)

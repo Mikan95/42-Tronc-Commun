@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:27:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/18 14:17:41 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/19 20:20:11 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,12 @@ int			ft_check_dupli(char **argv);
 void		ft_error();
 void		ft_freelist(t_stack *stack_a);
 int			is_sorted(t_stack *lst);
-void		sort_three(t_stack **lst);
 void		swap(t_stack **lst);
 void		push(t_stack **src, t_stack **dest);
 void		rotate(t_stack **lst);
 void		reverse_rotate(t_stack **lst);
+void		sort_three(t_stack **lst);
+void		find_minmax(t_stack *lst, t_stack **min, t_stack **max);
 
 
 //TEST FUCNTIONS
