@@ -6,11 +6,27 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:48:11 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/15 15:41:54 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/22 16:46:13 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+//returns the number of nodes in a linked list
+int	ft_lstsize(t_stack *lst)
+{
+	t_stack	*temp;
+	int		i;
+
+	i = 0;
+	temp = lst;
+	while (temp)
+	{
+		temp = temp->next;
+		i++;
+	}
+	return (i);
+}
 
 // finds and returns the last node of a linked list
 t_stack	*ft_lstlast(t_stack *lst)
@@ -52,22 +68,6 @@ void	ft_lstadd_back(t_stack **lst, long int res)
 	}
 //	printf("Last value: %ld\n", last->value);
 //	printf("New value: %ld\n", new_node->value);
-}
-
-//returns the number of nodes in a linked list
-int	ft_lstsize(t_stack *lst)
-{
-	t_stack	*temp;
-	int		i;
-
-	i = 0;
-	temp = lst;
-	while (temp)
-	{
-		temp = temp->next;
-		i++;
-	}
-	return (i);
 }
 
 //frees each node of a linked list

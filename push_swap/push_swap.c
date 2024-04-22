@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/19 20:22:33 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/22 16:37:30 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	main(int argc, char **argv)
 		 }
 		else if (ft_lstsize(a) == 3)
 			sort_three(&a);
-/*		else
-			sort_stacks(&a, &b); */
+		else
+			sort_stacks(&a, &b);
 
 //########## T E S T S ###########
 //	test_push(&a, &b);//TEST
@@ -120,6 +120,10 @@ void	find_minmax(t_stack *lst, t_stack **min, t_stack **max)
 	print_max = *max;
 	printf("Min is: %ld\nMax is: %ld\n", print_min->value, print_max->value);
 }
+
+//#################################################//
+//################ TEST FUNCTIONS #################//
+//#################################################//
 
 void	test_print_elements_lst(t_stack *a, t_stack *b)
 {

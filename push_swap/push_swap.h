@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:27:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/19 20:20:11 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/22 16:45:51 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,10 @@ void		rotate(t_stack **lst);
 void		reverse_rotate(t_stack **lst);
 void		sort_three(t_stack **lst);
 void		find_minmax(t_stack *lst, t_stack **min, t_stack **max);
-
+void		sort_stacks(t_stack **a, t_stack **b);
+void		init_nodes_a(t_stack *a, t_stack *b);
+//void		init_nodes_b(t_stack *a, t_stack *b);
+void		set_index(t_stack *lst);
 
 //TEST FUCNTIONS
 void		test_print_elements_lst(t_stack *a, t_stack *b);
