@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/23 16:32:14 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/23 19:12:51 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,32 +65,8 @@ int	main(int argc, char **argv)
 
 void	sort_three(t_stack **lst)
 {
-	t_stack	*smallest;
 	t_stack	*biggest;
-	t_stack	*head_node;
 
-	head_node = *lst;
-	smallest = NULL;
-	biggest = NULL;
-//	printf("Starting sort_three...\n");//delete
-	find_minmax(*lst, &smallest, &biggest);
-//	printf("Sorting list...\n");//delete
-	if (smallest == head_node && biggest == head_node->next)
-	{
-		reverse_rotate(lst);
-		swap(lst);
-	}
-	else if (smallest == head_node->next && biggest != head_node)
-		swap(lst);
-	else if (smallest == head_node->next && biggest == head_node)
-		rotate(lst);
-	else if (biggest == head_node && smallest != head_node->next)
-	{
-		swap(lst);
-		reverse_rotate(lst);
-	}
-	else if (biggest == head_node->next && smallest != head_node)
-		reverse_rotate(lst);
 	printf("List sorted:\n");
 }
 
