@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/23 19:12:51 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/23 19:56:15 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_stack	*min;// DELETE LATER
+//	t_stack	*min;// DELETE LATER
 	a = NULL;
 	b = NULL;
-	min = NULL;
+//	min = NULL;
 
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (-1);
@@ -45,15 +45,15 @@ int	main(int argc, char **argv)
 		 }
 		else if (ft_lstsize(a) == 3)
 			sort_three(&a);
- 		else
-			sort_stacks(&a, &b);
+/*  		else
+			sort_stacks(&a, &b); */
 
 //########## T E S T S ###########
 //	test_push(&a, &b);//TEST
 //	test_reverse_rotate(&a, &b);//TEST
 //	test_swap(&a, &b);//TEST
 //	test_rotate(&a, &b);//TEST
-//	test_print_elements_lst(a, b);//TEST FOR SORT_THREE
+	test_print_elements_lst(a, b);//TEST FOR SORT_THREE
 //################################
 	}
 	else								 //delete later
@@ -63,72 +63,55 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
+//sorts a list of three nodes in ascending order
 void	sort_three(t_stack **lst)
 {
 	t_stack	*biggest;
 
-	printf("List sorted:\n");
+	biggest = find_max(*lst);
+	if (biggest == *lst)
+		rotate(lst);
+	else if (biggest == (*lst)->next)
+		reverse_rotate(lst);
+	if ((*lst)->value > (*lst)->next->value)
+		swap(lst);
+	printf("List sorted:\n");//DELETE LATER
 }
 
-void	find_minmax(t_stack *lst, t_stack **min, t_stack **max)
-{
-	t_stack	*first;
-	t_stack	*second;
-	t_stack	*third;
-	t_stack	*print_min;//delete
-	t_stack	*print_max;//delete
-
-	printf("Finding min and max\n");
-	first = lst;
-	second = lst->next;
-	third = second->next;
-	if (first->value < second->value && first->value < third->value)
-		*min = first;
-	else if (second->value < first->value && second->value < third->value)
-		*min = second;
-	else if (third->value < first->value && third->value < second->value)
-		*min = third;
-	if (first->value > second->value && first->value > third->value)
-		*max = first;
-	else if (second->value > first->value && second->value > third->value)
-		*max = second;
-	else
-		*max = third;
-	print_min = *min;
-	print_max = *max;
-	printf("Min is: %ld\nMax is: %ld\n", print_min->value, print_max->value);
-}
-
-//finds min in a given stack and sets pointer min
-void	find_min(t_stack *lst, t_stack *min)
+//finds min in a given stack and returns a pointer to min
+t_stack	*find_min(t_stack *lst)
 {
 	t_stack	*current;
+	t_stack	*min;
 
 	current = lst;
 	min = current;
-	while (current->next)
+	while (current)
 	{
 		if (current->value < min->value)
 			min = current;
 		current = current->next;
 	}
+	return (min);
 //	printf("Min value: %ld\n", min->value);
 }
 
-//finds max in a given stack and sets pointer max
-void	find_max(t_stack *lst, t_stack *max)
+//finds max in a given stack and returns a pointer to max
+t_stack	*find_max(t_stack *lst)
 {
 	t_stack	*current;
+	t_stack	*max;
 
+	max = NULL;
 	current = lst;
-	max = current;
-	while (current->next)
+	while (current)
 	{
-		if (current->value > max->value)
+		if (!max || current->value > max->value)
 			max = current;
 		current = current->next;
 	}
 //	printf("Max value: %ld\n", max->value);
+	return (max);
 }
 
 //#################################################//

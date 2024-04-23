@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:37:45 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/23 16:29:08 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/23 19:27:06 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	sort_stacks(t_stack **a, t_stack **b)
 		push(a, b);
 	if (len_a-- > 3 && !is_sorted(*a))
 		push(a, b);
-	while (len_a-- > 3 && !is_sorted(*a))
+//	while (len_a-- > 3 && !is_sorted(*a))
 //	{
-		init_nodes_a(*a, *b);
+//		init_nodes_a(*a, *b);
 //		push_a_to_b(a, b);
 /* 	}
 	sort_three(a);
@@ -35,7 +35,7 @@ void	sort_stacks(t_stack **a, t_stack **b)
 	set_index(*a);
 	min_to_top(a);*/
 }
-
+/*
 void	init_nodes_a(t_stack *a, t_stack *b)
 {
 	set_index(a);
@@ -44,4 +44,4 @@ void	init_nodes_a(t_stack *a, t_stack *b)
 	find_cheapest_push(a, b);
 	set_cheapest(a);
 }
-
+ */
