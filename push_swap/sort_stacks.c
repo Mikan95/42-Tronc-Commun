@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:37:45 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/22 16:44:21 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:29:08 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,4 @@ void	init_nodes_a(t_stack *a, t_stack *b)
 	find_cheapest_push(a, b);
 	set_cheapest(a);
 }
+

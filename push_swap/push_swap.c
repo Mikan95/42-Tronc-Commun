@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/22 16:37:30 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:32:14 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
+	t_stack	*min;// DELETE LATER
 	a = NULL;
 	b = NULL;
+	min = NULL;
 
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (-1);
@@ -43,7 +45,7 @@ int	main(int argc, char **argv)
 		 }
 		else if (ft_lstsize(a) == 3)
 			sort_three(&a);
-		else
+ 		else
 			sort_stacks(&a, &b);
 
 //########## T E S T S ###########
@@ -51,7 +53,7 @@ int	main(int argc, char **argv)
 //	test_reverse_rotate(&a, &b);//TEST
 //	test_swap(&a, &b);//TEST
 //	test_rotate(&a, &b);//TEST
-	test_print_elements_lst(a, b);//TEST FOR SORT_THREE
+//	test_print_elements_lst(a, b);//TEST FOR SORT_THREE
 //################################
 	}
 	else								 //delete later
@@ -119,6 +121,38 @@ void	find_minmax(t_stack *lst, t_stack **min, t_stack **max)
 	print_min = *min;
 	print_max = *max;
 	printf("Min is: %ld\nMax is: %ld\n", print_min->value, print_max->value);
+}
+
+//finds min in a given stack and sets pointer min
+void	find_min(t_stack *lst, t_stack *min)
+{
+	t_stack	*current;
+
+	current = lst;
+	min = current;
+	while (current->next)
+	{
+		if (current->value < min->value)
+			min = current;
+		current = current->next;
+	}
+//	printf("Min value: %ld\n", min->value);
+}
+
+//finds max in a given stack and sets pointer max
+void	find_max(t_stack *lst, t_stack *max)
+{
+	t_stack	*current;
+
+	current = lst;
+	max = current;
+	while (current->next)
+	{
+		if (current->value > max->value)
+			max = current;
+		current = current->next;
+	}
+//	printf("Max value: %ld\n", max->value);
 }
 
 //#################################################//
