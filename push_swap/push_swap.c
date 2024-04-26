@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/23 19:56:15 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/26 00:10:04 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-//	t_stack	*min;// DELETE LATER
+//	t_stack	*min;//																	DELETE LATER
 	a = NULL;
 	b = NULL;
 //	min = NULL;
@@ -34,30 +34,32 @@ int	main(int argc, char **argv)
 	ft_printf("Elements in Stack A:\n");
 	test_print_elements_lst(a, b);
 
+
 	if(!is_sorted(a))
 	{
 		printf("sorting...\n");
 		 if (ft_lstsize(a) == 2)
 		 {
 			swap(&a);
-			printf("AFTER SWAP\n");//DELETE LATER
-			test_print_elements_lst(a, b);//DELETE LATER
+			printf("AFTER SWAP\n");//												DELETE LATER
+			test_print_elements_lst(a, b);//										DELETE LATER
 		 }
 		else if (ft_lstsize(a) == 3)
 			sort_three(&a);
-/*  		else
-			sort_stacks(&a, &b); */
-
+		else
+			sort_stacks(&a, &b);
 //########## T E S T S ###########
 //	test_push(&a, &b);//TEST
 //	test_reverse_rotate(&a, &b);//TEST
 //	test_swap(&a, &b);//TEST
 //	test_rotate(&a, &b);//TEST
-	test_print_elements_lst(a, b);//TEST FOR SORT_THREE
+	test_print_elements_lst(a, b);//												TEST
 //################################
 	}
-	else								 //delete later
-		printf("LIST ALREADY SORTED!\n");//delete later
+
+
+	else//																			delete later
+		printf("LIST ALREADY SORTED!\n");//											delete later
 	ft_freelist(a);
 //	test_free(&a);
 	return (0);
@@ -93,7 +95,7 @@ t_stack	*find_min(t_stack *lst)
 		current = current->next;
 	}
 	return (min);
-//	printf("Min value: %ld\n", min->value);
+//	printf("Min value: %ld\n", min->value);//										delete later
 }
 
 //finds max in a given stack and returns a pointer to max
@@ -110,7 +112,7 @@ t_stack	*find_max(t_stack *lst)
 			max = current;
 		current = current->next;
 	}
-//	printf("Max value: %ld\n", max->value);
+//	printf("Max value: %ld\n", max->value);//										delete later
 	return (max);
 }
 
@@ -118,20 +120,21 @@ t_stack	*find_max(t_stack *lst)
 //################ TEST FUNCTIONS #################//
 //#################################################//
 
+//prints all the elements of both stacks
 void	test_print_elements_lst(t_stack *a, t_stack *b)
 {
 	t_stack	*temp;
 
 	ft_printf("Elements in Stack A:\n");
 	temp = a;
-	while(temp)//printing elements of Stack A
+	while(temp)
 	{
 		printf("%ld\n", temp->value);
 		temp = temp->next;
 	}
 	ft_printf("Elements in Stack B:\n");
 	temp = b;
-	while(temp)//printing elements of Stack B
+	while(temp)
 	{
 		printf("%ld\n", temp->value);
 		temp = temp->next;

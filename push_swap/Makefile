@@ -5,7 +5,8 @@ RM = rm -f
 LIBFT_DIR = libft
 
 SRC_FILES = $(addsuffix .c, push_swap push_swap_utils ft_printf ft_printf_utils ft_atol \
-ft_split ft_split_utils init_stack lst_manip sort_stacks sort_stacks_utils)
+ft_split ft_split_utils init_stack lst_manip sort_stacks sort_stacks_utils cheapest rr_rrr \
+prep_for_push)
 OBJ := $(SRC_FILES:.c=.o)
 
 

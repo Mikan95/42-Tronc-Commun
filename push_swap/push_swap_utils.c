@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:44:32 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/19 19:46:39 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/26 02:48:50 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,28 @@ void	swap(t_stack **lst)
 //Pushes the top element of stack "src" to stack "dest"
 void	push(t_stack **src, t_stack **dest)
 {
-	t_stack	*dest_last;
 	t_stack	*pushed_node;
 
 	if (!*src)
 		return ;
-	pushed_node = ft_lstlast(*src);
+	pushed_node = *src;
+	*src = (*src)->next;
+	if (*src)
+	{
+		(*src)->prev = NULL;
+	}
+	pushed_node->prev = NULL;
 	if (!*dest)
+	{
 		*dest = pushed_node;
+		pushed_node->next = NULL;
+	}
 	else
 	{
-		dest_last = ft_lstlast(*dest);
-		dest_last->next = pushed_node;
+		pushed_node->next = *dest;
+		pushed_node->next->prev = pushed_node;
+		*dest = pushed_node;
 	}
-	pushed_node->next = NULL;
-	pushed_node->prev->next = NULL;
 }
 
 void	rotate(t_stack **lst)

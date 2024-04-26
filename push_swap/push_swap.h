@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:27:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/23 19:20:15 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/26 02:18:37 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,26 @@ void		swap(t_stack **lst);
 void		push(t_stack **src, t_stack **dest);
 void		rotate(t_stack **lst);
 void		reverse_rotate(t_stack **lst);
+void		rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node);
+void		rev_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node);
+void		rr(t_stack **a, t_stack **b);
+void		rrr(t_stack **a, t_stack **b);
 void		sort_three(t_stack **lst);
 t_stack		*find_min(t_stack *lst);
 t_stack		*find_max(t_stack *lst);
 void		sort_stacks(t_stack **a, t_stack **b);
-void		init_nodes_a(t_stack *a, t_stack *b);
-//void		init_nodes_b(t_stack *a, t_stack *b);
 void		set_index(t_stack *lst);
+void		init_nodes_a(t_stack *a, t_stack *b);
+void		init_nodes_b(t_stack *a, t_stack *b);
+void		set_target_a(t_stack *a, t_stack *b);
+void		set_target_b(t_stack *a, t_stack *b);
+void		prep_for_push(t_stack **lst, t_stack *top_node);
+void		push_a_to_b(t_stack **a, t_stack **b);
+void		push_b_to_a(t_stack **a, t_stack **b);
+void		find_cheapest(t_stack *a, t_stack *b);
+void		set_cheapest(t_stack *lst);
+t_stack		*get_cheapest(t_stack *lst);
+void		send_cheapest_to_top(t_stack **lst, t_stack *top_node);
 
 //TEST FUCNTIONS
 void		test_print_elements_lst(t_stack *a, t_stack *b);
