@@ -2,6 +2,7 @@
 README.md
 **/*.o
 */a.out
+/.vscode
 #libft exclusions
 /libft/libft.a
 #printf exclusions
