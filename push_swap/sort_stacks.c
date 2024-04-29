@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:37:45 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/29 16:02:59 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/29 22:32:52 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	sort_stacks(t_stack **a, t_stack **b)
 	printf("entered sort_stacks\n");
 	len_a = ft_lstsize(*a);
 	if (len_a-- > 3 && !is_sorted(*a))
-		push(a, b);
+		pb(a, b);
 	if (len_a-- > 3 && !is_sorted(*a))
-		push(a, b);
+		pb(a, b);
 	while (len_a-- > 3 && !is_sorted(*a))
 	{
 		init_nodes_a(*a, *b);
@@ -97,9 +97,9 @@ void	push_a_to_b(t_stack **a, t_stack **b)
 	else if (!(cheapest_node->above_median)
 		&& !(cheapest_node->target_node->above_median))
 		rev_rotate_both(a, b, cheapest_node);
-	prep_for_push(a, cheapest_node);
-	prep_for_push(b, cheapest_node->target_node);
-	push(a, b);
+	prep_for_push(a, cheapest_node, true);
+	prep_for_push(b, cheapest_node->target_node, false);
+	pb(a, b);
 	set_index(*a);
 	set_index(*b);
 }
@@ -107,7 +107,7 @@ void	push_a_to_b(t_stack **a, t_stack **b)
 // pushes top element of stack b above target_node of stack a
 void	push_b_to_a(t_stack **a, t_stack **b)
 {
-	prep_for_push(a, (*b)->target_node);
-	push(b, a);
+	prep_for_push(a, (*b)->target_node, false);
+	pa(b, a);
 }
 

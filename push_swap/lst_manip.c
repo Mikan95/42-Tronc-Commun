@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:48:11 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/29 15:53:20 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/29 22:34:11 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,12 @@ void	min_to_top(t_stack **a)
 	if (min->above_median)
 	{
 		while (*a != min)
-			rotate(a);
+			ra(a);
 	}
 	else
 	{
 		while (*a != min)
-			reverse_rotate(a);
+			rra(a);
 	}
 }
 

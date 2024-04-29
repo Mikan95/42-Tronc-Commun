@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/29 15:59:16 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/29 22:37:24 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,13 @@ int	main(int argc, char **argv)
 		argv = &argv[1];
 //intialises stack, checks for errors, and converts elements from str to long int
 	init_stack_a(&a, argv);
-	printf("list size: %d\n", ft_lstsize(a));
-	test_print_elements_lst(a, b);
+//	printf("list size: %d\n", ft_lstsize(a));
+//	test_print_elements_lst(a, b);
 //sorts list if not sorted
 	if(!is_sorted(a))
 	{
-		printf("sorting...\n");
 		 if (ft_lstsize(a) == 2)
-		 {
-			swap(&a);
-			printf("AFTER SWAP\n");//												DELETE LATER
-			test_print_elements_lst(a, b);//										DELETE LATER
-		 }
+			sa(&a);
 		else if (ft_lstsize(a) == 3)
 			sort_three(&a);
 		else
@@ -48,8 +43,6 @@ int	main(int argc, char **argv)
 //########## T E S T S ###########
 // insert tests here:
 //################################
-	else//																			delete later
-		printf("LIST ALREADY SORTED!\n");//											delete later
 	ft_freelist(a);
 //	test_free(&a);
 	return (0);
@@ -67,11 +60,11 @@ void	sort_three(t_stack **lst)
 
 	biggest = find_max(*lst);
 	if (biggest == *lst)
-		rotate(lst);
+		ra(lst);
 	else if (biggest == (*lst)->next)
-		reverse_rotate(lst);
+		rra(lst);
 	if ((*lst)->value > (*lst)->next->value)
-		swap(lst);
+		sa(lst);
 	printf("List sorted:\n");//DELETE LATER
 }
 

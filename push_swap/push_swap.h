@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:27:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/29 14:24:42 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/29 22:31:39 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,22 @@ void		init_nodes_a(t_stack *a, t_stack *b);
 void		init_nodes_b(t_stack *a, t_stack *b);
 void		set_target_a(t_stack *a, t_stack *b);
 void		set_target_b(t_stack *a, t_stack *b);
-void		prep_for_push(t_stack **lst, t_stack *top_node);
+void		prep_for_push(t_stack **lst, t_stack *top_node, bool is_a);
 void		push_a_to_b(t_stack **a, t_stack **b);
 void		push_b_to_a(t_stack **a, t_stack **b);
 void		find_cheapest(t_stack *a, t_stack *b);
 void		set_cheapest(t_stack *lst);
 t_stack		*get_cheapest(t_stack *lst);
-void		send_cheapest_to_top(t_stack **lst, t_stack *top_node);
+void		send_cheapest_to_top(t_stack **lst, t_stack *top_node, bool is_a);
+void		pa(t_stack **src, t_stack **dest);
+void		pb(t_stack **src, t_stack **dest);
+void		sa(t_stack **lst);
+void		sb(t_stack **lst);
+void		ra(t_stack **lst);
+void		rb(t_stack **lst);
+void		rra(t_stack **lst);
+void		rrb(t_stack **lst);
+
 
 //TEST FUCNTIONS
 void		test_print_elements_lst(t_stack *a, t_stack *b);

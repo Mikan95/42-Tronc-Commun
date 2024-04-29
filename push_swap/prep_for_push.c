@@ -13,17 +13,27 @@
 #include "push_swap.h"
 
 //checks if top_node is at the top of given stack
-void	prep_for_push(t_stack **lst, t_stack *top_node)
+void	prep_for_push(t_stack **lst, t_stack *top_node, bool is_a)
 {
 	while (*lst != top_node)
-		send_cheapest_to_top(lst, top_node);
+		send_cheapest_to_top(lst, top_node, is_a);
 }
 
 //ensures top_node is at the top of given stack
-void	send_cheapest_to_top(t_stack **lst, t_stack *top_node)
+void	send_cheapest_to_top(t_stack **lst, t_stack *top_node, bool is_a)
 {
 		if (top_node->above_median)
-				rotate(lst);
+		{
+			if (is_a)
+				ra(lst);
+			else
+				rb(lst);
+		}
 		else
-				reverse_rotate(lst);
+		{
+			if (is_a)
+				rra(lst);
+			else
+				rrb(lst);
+		}
 }
