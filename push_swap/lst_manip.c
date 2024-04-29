@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:48:11 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/29 22:34:11 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/29 23:32:41 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_lstadd_back(t_stack **lst, long int res)
 	}
 }
 
-//brings smallest element of stack_a to the top
+// brings smallest element of stack_a to the top
 void	min_to_top(t_stack **a)
 {
 	t_stack	*min;
@@ -82,15 +82,3 @@ void	min_to_top(t_stack **a)
 	}
 }
 
-//frees each node of a linked list
-void	ft_freelist(t_stack *stack_a)
-{
-	t_stack	*temp;
-
-	temp = stack_a;
-	while (temp)
-	{
-		free(temp);
-		temp = temp->next;
-	}
-}

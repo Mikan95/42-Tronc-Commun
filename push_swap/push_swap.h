@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:27:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/29 22:31:39 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/29 22:49:05 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ void		send_cheapest_to_top(t_stack **lst, t_stack *top_node, bool is_a);
 void		pa(t_stack **src, t_stack **dest);
 void		pb(t_stack **src, t_stack **dest);
 void		sa(t_stack **lst);
-void		sb(t_stack **lst);
 void		ra(t_stack **lst);
 void		rb(t_stack **lst);
 void		rra(t_stack **lst);

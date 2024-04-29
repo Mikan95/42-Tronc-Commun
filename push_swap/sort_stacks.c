@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:37:45 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/29 22:32:52 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/29 22:44:57 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	sort_stacks(t_stack **a, t_stack **b)
 {
 	int	len_a;
 
-	printf("entered sort_stacks\n");
 	len_a = ft_lstsize(*a);
 	if (len_a-- > 3 && !is_sorted(*a))
 		pb(a, b);
@@ -44,30 +43,12 @@ void	sort_stacks(t_stack **a, t_stack **b)
 // sets indexes, sets target_nodes and finds and sets cheapest_node for stack_a
 void	init_nodes_a(t_stack *a, t_stack *b)
 {
-/*  	t_stack	*current;//												index test
-
-	printf("setting index..\n"); //									DELETE LATER
-	current = a; */
 	set_index(a);
 	set_index(b);
-/* 	while (current)//												index test
-	{
-		printf("%ld:%d\n", current->value, current->index);
-		current = current->next;
-	} */
 
 	set_target_a(a, b);
 	find_cheapest(a, b);
 	set_cheapest(a);
-/* 	while (a)//														cheapest test
-	{
-		if (a->cheapest)
-		{
-			printf("cheapest node: %ld\n", a->value);
-			break ;
-		}
-		a = a->next;
-	} */
 }
 
 // sets indexes, sets target_nodes and finds and sets cheapest_node for stack_a
@@ -76,13 +57,6 @@ void	init_nodes_b(t_stack *a, t_stack *b)
 	set_index(a);
 	set_index(b);
 	set_target_b(a, b);
-/* 	printf("cheapest node: %ld\n", (get_cheapest(b))->value);//		Prints cheapest_node
-	printf("target nodes:\n");//									Prints Target Nodes
-	while (b)
-	{
-		printf("%ld -> %ld\n",b->value, b->target_node->value);
-		b = b->next;
-	} */
 }
 
 // pushes the cheapest node from stack a to stack b

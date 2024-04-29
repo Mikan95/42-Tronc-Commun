@@ -30,7 +30,6 @@ void	find_cheapest(t_stack *a, t_stack *b)
 			a->push_cost += a->target_node->index;
 		else
 			a->push_cost += len_b - a->target_node->index;
-//		printf("%ld's push cost: %i\n", a->value, a->push_cost);//					TEST
 		a = a->next;
 	}
 }
