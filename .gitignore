@@ -12,4 +12,4 @@ README.md
 /get_next_line/*.h.gch
 #Push_swap exclusions
 /push_swap/push_swap
-
+/push_swap/visualiser
