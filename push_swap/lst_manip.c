@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:48:11 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/29 23:32:41 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/29 23:35:04 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,3 +82,15 @@ void	min_to_top(t_stack **a)
 	}
 }
 
+//frees each node of a linked list
+void	ft_freelist(t_stack *stack_a)
+{
+	t_stack	*temp;
+
+	temp = stack_a;
+	while (temp)
+	{
+		free(temp);
+		temp = temp->next;
+	}
+}
