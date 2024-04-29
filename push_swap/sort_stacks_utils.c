@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:46:37 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/26 00:53:53 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:12:47 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	set_target_a(t_stack *a, t_stack *b)
 	t_stack	*target_node;
 	long	best_match;
 
+	printf("Setting Target Nodes:\n");
 	while (a)
 	{
 		best_match = LONG_MIN;
@@ -61,6 +62,7 @@ void	set_target_a(t_stack *a, t_stack *b)
 			a->target_node = find_max(b);
 		else
 			a->target_node = target_node;
+		printf("%ld → %ld\n", a->value, a->target_node->value);
 		a = a->next;
 	}
 }

@@ -13,7 +13,7 @@
 #include "push_swap.h"
 
 /* calculates and sets the combined push cost of
-each node and its respective target_node in a list */
+each node in a list and their respective target_node(s) */
 void	find_cheapest(t_stack *a, t_stack *b)
 {
 	int	len_a;
@@ -30,13 +30,13 @@ void	find_cheapest(t_stack *a, t_stack *b)
 			a->push_cost += a->target_node->index;
 		else
 			a->push_cost += len_b - a->target_node->index;
-//		printf("%ld's push cost: %i\n", src->value, src->push_cost);//					TEST
+//		printf("%ld's push cost: %i\n", a->value, a->push_cost);//					TEST
 		a = a->next;
 	}
 }
 
 /* traverses a linked list to find cheapest node
-and does (found_node->cheapest = true) */
+and sets (cheapest_node->cheapest = true) */
 void	set_cheapest(t_stack *lst)
 {
 	long	current_cheapest;

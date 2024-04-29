@@ -12,14 +12,14 @@
 
 #include "push_swap.h"
 
-//checks that both stacks have cheapest_node at top
+//checks if top_node is at the top of given stack
 void	prep_for_push(t_stack **lst, t_stack *top_node)
 {
-	if (*lst != top_node)
+	while (*lst != top_node)
 		send_cheapest_to_top(lst, top_node);
 }
 
-//ensures cheapest_node and target_node are at the top of each stack
+//ensures top_node is at the top of given stack
 void	send_cheapest_to_top(t_stack **lst, t_stack *top_node)
 {
 		if (top_node->above_median)

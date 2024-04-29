@@ -6,13 +6,13 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:48:11 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/25 20:06:11 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:53:20 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//returns the number of nodes in a linked list
+// returns the number of nodes in a linked list
 int	ft_lstsize(t_stack *lst)
 {
 	t_stack	*temp;
@@ -39,7 +39,7 @@ t_stack	*ft_lstlast(t_stack *lst)
 	return (current);
 }
 
-//adds a new node to the end of a single linked list
+// adds a new node to the end of a single linked list
 void	ft_lstadd_back(t_stack **lst, long int res)
 {
 	t_stack	*last;
@@ -52,11 +52,8 @@ void	ft_lstadd_back(t_stack **lst, long int res)
 	new_node->value = res;
 	if (!*lst)
 	{
-//		printf("initialising stack a for first time..\n");
 		*lst = new_node;
 		new_node->prev = NULL;
-//		printf("First value: %ld\n", new_node->value);
-//		printf("last after first value = %ld\n\n", ft_lstlast(*lst)->value);
 		return ;
 	}
 	else
@@ -65,8 +62,24 @@ void	ft_lstadd_back(t_stack **lst, long int res)
 		last->next = new_node;
 		new_node->prev = last;
 	}
-//	printf("Last value: %ld\n", last->value);
-//	printf("New value: %ld\n", new_node->value);
+}
+
+//brings smallest element of stack_a to the top
+void	min_to_top(t_stack **a)
+{
+	t_stack	*min;
+
+	min = find_min(*a);
+	if (min->above_median)
+	{
+		while (*a != min)
+			rotate(a);
+	}
+	else
+	{
+		while (*a != min)
+			reverse_rotate(a);
+	}
 }
 
 //frees each node of a linked list

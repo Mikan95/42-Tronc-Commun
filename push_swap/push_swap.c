@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/26 00:10:04 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:59:16 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-//	t_stack	*min;//																	DELETE LATER
 	a = NULL;
 	b = NULL;
-//	min = NULL;
 
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (-1);
@@ -30,11 +28,9 @@ int	main(int argc, char **argv)
 		argv = &argv[1];
 //intialises stack, checks for errors, and converts elements from str to long int
 	init_stack_a(&a, argv);
-	ft_printf("list size: %d\n", ft_lstsize(a));
-	ft_printf("Elements in Stack A:\n");
+	printf("list size: %d\n", ft_lstsize(a));
 	test_print_elements_lst(a, b);
-
-
+//sorts list if not sorted
 	if(!is_sorted(a))
 	{
 		printf("sorting...\n");
@@ -48,22 +44,21 @@ int	main(int argc, char **argv)
 			sort_three(&a);
 		else
 			sort_stacks(&a, &b);
-//########## T E S T S ###########
-//	test_push(&a, &b);//TEST
-//	test_reverse_rotate(&a, &b);//TEST
-//	test_swap(&a, &b);//TEST
-//	test_rotate(&a, &b);//TEST
-	test_print_elements_lst(a, b);//												TEST
-//################################
 	}
-
-
+//########## T E S T S ###########
+// insert tests here:
+//################################
 	else//																			delete later
 		printf("LIST ALREADY SORTED!\n");//											delete later
 	ft_freelist(a);
 //	test_free(&a);
 	return (0);
 }
+//	test_push(&a, &b);//															TEST
+//	test_reverse_rotate(&a, &b);//													TEST
+//	test_swap(&a, &b);//															TEST
+//	test_rotate(&a, &b);//															TEST
+//	test_print_elements_lst(a, b);//												TEST
 
 //sorts a list of three nodes in ascending order
 void	sort_three(t_stack **lst)
@@ -95,8 +90,8 @@ t_stack	*find_min(t_stack *lst)
 		current = current->next;
 	}
 	return (min);
-//	printf("Min value: %ld\n", min->value);//										delete later
 }
+//	printf("Min value: %ld\n", min->value);//										Prints min
 
 //finds max in a given stack and returns a pointer to max
 t_stack	*find_max(t_stack *lst)
@@ -112,10 +107,10 @@ t_stack	*find_max(t_stack *lst)
 			max = current;
 		current = current->next;
 	}
-//	printf("Max value: %ld\n", max->value);//										delete later
 	return (max);
 }
-
+//	printf("Max value: %ld\n", max->value);//										Prints max
+/*
 //#################################################//
 //################ TEST FUNCTIONS #################//
 //#################################################//
@@ -125,14 +120,14 @@ void	test_print_elements_lst(t_stack *a, t_stack *b)
 {
 	t_stack	*temp;
 
-	ft_printf("Elements in Stack A:\n");
+	printf("Elements in Stack A:\n");
 	temp = a;
 	while(temp)
 	{
 		printf("%ld\n", temp->value);
 		temp = temp->next;
 	}
-	ft_printf("Elements in Stack B:\n");
+	printf("Elements in Stack B:\n");
 	temp = b;
 	while(temp)
 	{
@@ -180,4 +175,4 @@ void		test_free(t_stack **lst)
 		printf("%ld\n", temp->value);
 		temp = temp->next;
 	}
-}
+} */

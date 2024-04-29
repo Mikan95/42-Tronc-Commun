@@ -6,21 +6,19 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:44:21 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/15 15:07:39 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:51:44 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-initialises the stack, adding each element of argv to the end of the list,
-once each str has been converted to long ints using ft_atol().
-*/
+/* initialises the stack, adding each element of argv to the end of the list,
+once each str has been converted to long ints using ft_atol() */
 void	init_stack_a(t_stack **stack_a, char **argv)
 {
 	int			i;
 	long int	res;
-//	t_stack		*last;
+//	t_stack		*last;//												TEST
 
 	if (ft_error_check(argv))
 	{
@@ -35,8 +33,8 @@ void	init_stack_a(t_stack **stack_a, char **argv)
 		{
 			res = ft_atol(argv[i]);
 			ft_lstadd_back(stack_a, res);
-//			last = ft_lstlast(*stack_a);
-//			printf("Last of stack A: %ld\n", last->value);
+//			last = ft_lstlast(*stack_a);//								TEST
+//			printf("Last of stack A: %ld\n", last->value);				TEST
 			i++;
 		}
 	}
@@ -61,8 +59,8 @@ int	ft_error_check(char **argv)
 	return (0);
 }
 
-//reads an element from an array, checks for syntax errors.
-//returns 1 if error is found.
+/* reads elements from an array, checks for syntax errors.
+returns 1 if error is found */
 int	ft_check_syntax(char *str)
 {
 	int	i;
@@ -83,8 +81,8 @@ int	ft_check_syntax(char *str)
 	return (0);
 }
 
-//checks for duplicates in an array and returns 1 if found.
-//also checks for integer overflow.
+/* checks for duplicates in an array and returns 1 if found.
+also checks for integer overflow */
 int	ft_check_dupli(char **argv)
 {
 	int	i;

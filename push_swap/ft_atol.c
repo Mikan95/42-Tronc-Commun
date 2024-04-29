@@ -6,12 +6,13 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:59:33 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/07 17:51:07 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:47:39 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+//copnverts from ascii to long int
 long int	ft_atol(char *str)
 {
 	long int	res = 0;

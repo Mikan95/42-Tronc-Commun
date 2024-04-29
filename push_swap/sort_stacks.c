@@ -6,19 +6,22 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:37:45 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/26 03:00:16 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/29 16:02:59 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/* sorts stack of size 4 or bigger by progressively pushing from A to B
+while simultaneously sorting B in ascending order.
+Then sorts last three elements in A and pushes everyhting back from B
+in ascending order */
 void	sort_stacks(t_stack **a, t_stack **b)
 {
 	int	len_a;
 
 	printf("entered sort_stacks\n");
 	len_a = ft_lstsize(*a);
-	printf("len_a: %i\n", len_a);
 	if (len_a-- > 3 && !is_sorted(*a))
 		push(a, b);
 	if (len_a-- > 3 && !is_sorted(*a))
@@ -35,15 +38,15 @@ void	sort_stacks(t_stack **a, t_stack **b)
 		push_b_to_a(a, b);
 	}
 	set_index(*a);
-//	min_to_top(a);
+	min_to_top(a);
 }
 
-//sets indexes, sets target_nodes and finds and sets cheapest_node for stack_a
+// sets indexes, sets target_nodes and finds and sets cheapest_node for stack_a
 void	init_nodes_a(t_stack *a, t_stack *b)
 {
-/* 	t_stack	*current;//												index test
+/*  	t_stack	*current;//												index test
 
-	printf("setting index..\n");//									DELETE LATER
+	printf("setting index..\n"); //									DELETE LATER
 	current = a; */
 	set_index(a);
 	set_index(b);
@@ -51,8 +54,8 @@ void	init_nodes_a(t_stack *a, t_stack *b)
 	{
 		printf("%ld:%d\n", current->value, current->index);
 		current = current->next;
-	}
- */
+	} */
+
 	set_target_a(a, b);
 	find_cheapest(a, b);
 	set_cheapest(a);
@@ -67,7 +70,7 @@ void	init_nodes_a(t_stack *a, t_stack *b)
 	} */
 }
 
-//sets indexes, sets target_nodes and finds and sets cheapest_node for stack_a
+// sets indexes, sets target_nodes and finds and sets cheapest_node for stack_a
 void	init_nodes_b(t_stack *a, t_stack *b)
 {
 	set_index(a);
@@ -82,7 +85,7 @@ void	init_nodes_b(t_stack *a, t_stack *b)
 	} */
 }
 
-//pushes the cheapest node from stack a to stack b
+// pushes the cheapest node from stack a to stack b
 void	push_a_to_b(t_stack **a, t_stack **b)
 {
 	t_stack	*cheapest_node;
@@ -101,7 +104,7 @@ void	push_a_to_b(t_stack **a, t_stack **b)
 	set_index(*b);
 }
 
-//pushes top element of stack b above target_node of stack a
+// pushes top element of stack b above target_node of stack a
 void	push_b_to_a(t_stack **a, t_stack **b)
 {
 	prep_for_push(a, (*b)->target_node);

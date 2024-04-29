@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:44:32 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/26 02:48:50 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:55:32 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	push(t_stack **src, t_stack **dest)
 	}
 }
 
+//shifts all elements of a stack up by one (first becomes last)
 void	rotate(t_stack **lst)
 {
 	t_stack	*old_first;
@@ -89,6 +90,7 @@ void	rotate(t_stack **lst)
 	old_last->next = old_first;
 }
 
+//shifts all elements of a stack down by one (last becomes first)
 void		reverse_rotate(t_stack **lst)
 {
 	t_stack	*old_first;
