@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:44:32 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/29 22:35:26 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:33:56 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,11 @@ void	swap(t_stack **lst)
 
 	old_first = *lst;
 	new_first = old_first->next;
-// adjust next pointers
 	old_first->next = new_first->next;
 	new_first->next->prev = old_first;
 	new_first->next = old_first;
-// adjust prev pointers
 	new_first->prev = NULL;
 	old_first->prev = new_first;
-// adjust head_node
 	*lst = new_first;
 }
 

@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/29 22:37:24 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:27:04 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,12 @@ int	main(int argc, char **argv)
 
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (-1);
-//	uses ft_split to put each argument into argv
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
 	else
 		argv = &argv[1];
-//intialises stack, checks for errors, and converts elements from str to long int
 	init_stack_a(&a, argv);
-//	printf("list size: %d\n", ft_lstsize(a));
-//	test_print_elements_lst(a, b);
-//sorts list if not sorted
+
 	if(!is_sorted(a))
 	{
 		 if (ft_lstsize(a) == 2)
@@ -40,18 +36,10 @@ int	main(int argc, char **argv)
 		else
 			sort_stacks(&a, &b);
 	}
-//########## T E S T S ###########
-// insert tests here:
-//################################
 	ft_freelist(a);
-//	test_free(&a);
+	ft_freelist(b);
 	return (0);
 }
-//	test_push(&a, &b);//															TEST
-//	test_reverse_rotate(&a, &b);//													TEST
-//	test_swap(&a, &b);//															TEST
-//	test_rotate(&a, &b);//															TEST
-//	test_print_elements_lst(a, b);//												TEST
 
 //sorts a list of three nodes in ascending order
 void	sort_three(t_stack **lst)
@@ -65,7 +53,6 @@ void	sort_three(t_stack **lst)
 		rra(lst);
 	if ((*lst)->value > (*lst)->next->value)
 		sa(lst);
-	printf("List sorted:\n");//DELETE LATER
 }
 
 //finds min in a given stack and returns a pointer to min
@@ -84,7 +71,6 @@ t_stack	*find_min(t_stack *lst)
 	}
 	return (min);
 }
-//	printf("Min value: %ld\n", min->value);//										Prints min
 
 //finds max in a given stack and returns a pointer to max
 t_stack	*find_max(t_stack *lst)

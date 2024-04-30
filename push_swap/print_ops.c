@@ -30,12 +30,6 @@ void	sa(t_stack **lst)
 	ft_printf("sa\n");
 }
 
-void	sb(t_stack **lst)
-{
-	swap(lst);
-	ft_printf("sb\n");
-}
-
 void	ra(t_stack **lst)
 {
 	rotate(lst);
@@ -46,16 +40,4 @@ void	rb(t_stack **lst)
 {
 	rotate(lst);
 	ft_printf("rb\n");
-}
-
-void	rra(t_stack **lst)
-{
-	reverse_rotate(lst);
-	ft_printf("rra\n");
-}
-
-void	rrb(t_stack **lst)
-{
-	reverse_rotate(lst);
-	ft_printf("rrb\n");
 }

@@ -30,7 +30,6 @@ void	find_cheapest(t_stack *a, t_stack *b)
 			a->push_cost += a->target_node->index;
 		else
 			a->push_cost += len_b - a->target_node->index;
-//		printf("%ld's push cost: %i\n", a->value, a->push_cost);//					TEST
 		a = a->next;
 	}
 }
@@ -66,8 +65,5 @@ t_stack	*get_cheapest(t_stack *lst)
 			return (lst);
 		lst = lst->next;
 	}
-	ft_freelist(lst);
-	write (2, "Error\n", 6);
-	write (1, "No cheapest node found\n", 23);
 	exit (-1);
 }
