@@ -65,8 +65,7 @@ t_stack	*get_cheapest(t_stack *lst)
 			return (lst);
 		lst = lst->next;
 	}
-	ft_freelist(lst);
-	write (2, "Error\n", 6);
-	write (1, "No cheapest node found\n", 23);
-	exit (-1);
+	ft_freelist(&lst);
+	write(2, "Error\n", 6);
+	exit (0);
 }

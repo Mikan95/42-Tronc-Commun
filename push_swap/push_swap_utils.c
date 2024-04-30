@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:44:32 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/30 14:33:40 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/30 16:03:53 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ int	is_sorted(t_stack *lst)
 	current = lst;
 	if (!lst || ft_lstsize(lst) < 2)
 		return (1);
-	while (current->value < current->next->value)
+	while (current && current->next)
 	{
+		if (current->value > current->next->value)
+			return (0);
 		current = current->next;
-		if (current->next == NULL)
-			return (1);
 	}
-	return (0);
+	return (1);
 }
 
 // swaps the top two elements of stack "lst"

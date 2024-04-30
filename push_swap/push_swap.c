@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/30 14:32:21 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/30 16:32:27 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,31 @@
 
 int	main(int argc, char **argv)
 {
-	t_stack	*a;
-	t_stack	*b;
+	t_stack	**a;
+	t_stack	**b;
 
+	a = (t_stack **)malloc(sizeof(t_stack *));
+	b = (t_stack **)malloc(sizeof(t_stack *));
 	a = NULL;
 	b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
-		return (-1);
+		return (0);
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
 	else
 		argv = &argv[1];
-	init_stack_a(&a, argv);
-	if (!is_sorted(a))
+	init_stack_a(a, b, argv);
+	if (!is_sorted(*a))
 	{
-		if (ft_lstsize(a) == 2)
-			sa(&a);
-		else if (ft_lstsize(a) == 3)
-			sort_three(&a);
+		if (ft_lstsize(*a) == 2)
+			sa(a);
+		else if (ft_lstsize(*a) == 3)
+			sort_three(a);
 		else
-			sort_stacks(&a, &b);
+			sort_stacks(a, b);
 	}
 	ft_freelist(a);
+	ft_freelist(b);
 	return (0);
 }
 
@@ -87,12 +90,10 @@ t_stack	*find_max(t_stack *lst)
 	return (max);
 }
 
-/*
-printf("Max value: %ld\n", max->value);//										Prints max
+//printf("Max value: %ld\n", max->value);//										Prints max
 //#################################################//
 //################ TEST FUNCTIONS #################//
 //#################################################//
-
 //prints all the elements of both stacks
 void	test_print_elements_lst(t_stack *a, t_stack *b)
 {
@@ -113,7 +114,7 @@ void	test_print_elements_lst(t_stack *a, t_stack *b)
 		temp = temp->next;
 	}
 }
-
+/*
 void		test_swap(t_stack **a, t_stack **b)
 {
 	swap(a);

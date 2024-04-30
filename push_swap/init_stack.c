@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:44:21 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/30 14:30:23 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/30 16:38:57 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 
 /* initialises the stack, adding each element of argv to the end of the list,
 once each str has been converted to long ints using ft_atol() */
-void	init_stack_a(t_stack **stack_a, char **argv)
+void	init_stack_a(t_stack **stack_a, t_stack **stack_b, char **argv)
 {
 	int			i;
 	long int	res;
 
 	if (ft_error_check(argv))
 	{
-		ft_freelist(*stack_a);
-		write (2, "Error\n", 6);
-		exit (-1);
+		ft_freelist(stack_a);
+		ft_freelist(stack_b);
+		write(2, "Error\n", 6);
+		exit (0);
 	}
 	else
 	{

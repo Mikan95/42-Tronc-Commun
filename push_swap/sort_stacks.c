@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:37:45 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/30 14:34:38 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:42:15 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ void	push_a_to_b(t_stack **a, t_stack **b)
 // pushes top element of stack b above target_node of stack a
 void	push_b_to_a(t_stack **a, t_stack **b)
 {
-	prep_for_push(a, (*b)->target_node, false);
+	prep_for_push(a, (*b)->target_node, true);
 	pa(b, a);
 }

@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:27:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/30 14:33:15 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/30 16:38:48 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ char		*ft_strdup(const char *s1);
 t_stack		*ft_lstlast(t_stack *lst);
 void		ft_lstadd_back(t_stack **lst, long int res);
 int			ft_lstsize(t_stack *lst);
-void		init_stack_a(t_stack **stack_a, char **argv);
+void		init_stack_a(t_stack **stack_a, t_stack **stack_b, char **argv);
 int			ft_error_check(char **argv);
 int			ft_check_syntax(char *str);
 int			ft_check_dupli(char **argv);
-void		ft_freelist(t_stack *stack_a);
+void		ft_freelist(t_stack **stack);
 int			is_sorted(t_stack *lst);
 void		swap(t_stack **lst);
 void		push(t_stack **src, t_stack **dest);
