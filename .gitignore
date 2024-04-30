@@ -3,6 +3,7 @@ README.md
 **/*.o
 */a.out
 /.vscode
+/.DS_Store
 #libft exclusions
 /libft/libft.a
 #printf exclusions
@@ -13,3 +14,5 @@ README.md
 #Push_swap exclusions
 /push_swap/push_swap
 /push_swap/visualiser
+/push_swap/checker_Mac
+/push_swap/push_swap_tester
