@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:27:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/29 22:49:05 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/30 14:33:15 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void		init_stack_a(t_stack **stack_a, char **argv);
 int			ft_error_check(char **argv);
 int			ft_check_syntax(char *str);
 int			ft_check_dupli(char **argv);
-void		ft_error();
 void		ft_freelist(t_stack *stack_a);
 int			is_sorted(t_stack *lst);
 void		swap(t_stack **lst);
@@ -89,7 +88,6 @@ void		ra(t_stack **lst);
 void		rb(t_stack **lst);
 void		rra(t_stack **lst);
 void		rrb(t_stack **lst);
-
 
 //TEST FUCNTIONS
 void		test_print_elements_lst(t_stack *a, t_stack *b);

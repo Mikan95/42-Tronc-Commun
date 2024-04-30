@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   print_ops_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/01 15:59:33 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/30 14:29:57 by ameechan         ###   ########.fr       */
+/*   Created: 2024/04/30 14:35:36 by ameechan          #+#    #+#             */
+/*   Updated: 2024/04/30 14:35:48 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//converts from ascii to long int
-long int	ft_atol(char *str)
+void	rra(t_stack **lst)
 {
-	long int	res;
-	long int	sign;
+	reverse_rotate(lst);
+	ft_printf("rra\n");
+}
 
-	res = 0;
-	sign = 1;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sign = -1;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		res = res * 10 + *str - '0';
-		str++;
-	}
-	return (sign * res);
+void	rrb(t_stack **lst)
+{
+	reverse_rotate(lst);
+	ft_printf("rrb\n");
 }

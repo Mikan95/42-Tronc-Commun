@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/29 22:40:32 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/30 14:32:21 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
+
 	a = NULL;
 	b = NULL;
-
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (-1);
 	else if (argc == 2)
@@ -26,9 +26,9 @@ int	main(int argc, char **argv)
 	else
 		argv = &argv[1];
 	init_stack_a(&a, argv);
-	if(!is_sorted(a))
+	if (!is_sorted(a))
 	{
-		 if (ft_lstsize(a) == 2)
+		if (ft_lstsize(a) == 2)
 			sa(&a);
 		else if (ft_lstsize(a) == 3)
 			sort_three(&a);
@@ -38,7 +38,6 @@ int	main(int argc, char **argv)
 	ft_freelist(a);
 	return (0);
 }
-
 
 //sorts a list of three nodes in ascending order
 void	sort_three(t_stack **lst)

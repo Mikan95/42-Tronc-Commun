@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:44:21 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/29 23:31:10 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/30 14:30:23 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	init_stack_a(t_stack **stack_a, char **argv)
 //runs through multiple checks and returns 1 if an error has been found.
 int	ft_error_check(char **argv)
 {
-	int i;
+	int	i;
 	int	flag;
 
 	flag = 0;
