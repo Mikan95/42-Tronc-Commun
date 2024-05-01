@@ -16,12 +16,6 @@
 //if not, ensures top_node is at the top of given stack
 void	prep_for_push(t_stack **lst, t_stack *top_node, bool is_a)
 {
-	if(is_a)
-	{
-		printf("prep_for_push:\n");
-		printf("top of stack: %ld\n", (*lst)->value);
-		printf("cheapest_node and target: %ld -> %ld\n", top_node->value, top_node->target_node->value);
-	}
 	while ((*lst)->value != top_node->value)
 	{
 		if (is_a)
@@ -39,6 +33,4 @@ void	prep_for_push(t_stack **lst, t_stack *top_node, bool is_a)
 				rra(lst);
 		}
 	}
-	if(is_a)
-		printf("top of stack after rotations: %ld\n", (*lst)->value);
 }
