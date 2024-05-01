@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:27:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/05/01 16:55:20 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/05/01 18:00:43 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void		ra(t_stack **lst);
 void		rb(t_stack **lst);
 void		rra(t_stack **lst);
 void		rrb(t_stack **lst);
-
+void	free_all(t_stack *a, t_stack *b, char **argv, int argc);
 
 //TEST FUCNTIONS
 void		test_print_elements_lst(t_stack *a, t_stack *b);

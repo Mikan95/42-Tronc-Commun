@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/05/01 17:37:10 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/05/01 18:00:32 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,23 @@ int	main(int argc, char **argv)
 		else
 			sort_stacks(&a, &b);
 	}
+	free_all(a, b, argv, argc);
+	return (0);
+}
+
+void	free_all(t_stack *a, t_stack *b, char **argv, int argc)
+{
+	int	i;
+
 	ft_freelist(a);
 	ft_freelist(b);
-	return (0);
+	if (argc == 2)
+	{
+		i = 0;
+		while (argv[i])
+			free(argv[i++]);
+		free (argv);
+	}
 }
 
 //sorts a list of three nodes in ascending order
