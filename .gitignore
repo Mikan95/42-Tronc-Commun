@@ -4,6 +4,7 @@ README.md
 */a.out
 /.vscode
 /.DS_store
+/test
 #libft exclusions
 /libft/libft.a
 #printf exclusions
