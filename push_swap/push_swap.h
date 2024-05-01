@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:27:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/05/01 14:18:58 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/05/01 16:55:20 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ void		init_nodes_a(t_stack *a, t_stack *b);
 void		init_nodes_b(t_stack *a, t_stack *b);
 void		set_target_a(t_stack *a, t_stack *b);
 void		set_target_b(t_stack *a, t_stack *b);
-void		prep_for_push(t_stack **lst, t_stack *top_node, bool is_a);
+void		prep_a_for_push(t_stack **a, t_stack *top_node);
+void		prep_b_for_push(t_stack **b, t_stack *top_node);
 void		push_a_to_b(t_stack **a, t_stack **b);
 void		push_b_to_a(t_stack **a, t_stack **b);
 void		find_cheapest(t_stack *a, t_stack *b);

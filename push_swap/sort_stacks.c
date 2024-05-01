@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:37:45 by ameechan          #+#    #+#             */
-/*   Updated: 2024/05/01 15:43:32 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/05/01 16:55:42 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void	push_a_to_b(t_stack **a, t_stack **b)
 	else if (!(cheapest_node->above_median)
 		&& !(cheapest_node->target_node->above_median))
 		rev_rotate_both(a, b, cheapest_node);
-	prep_for_push(a, cheapest_node, true);
-	prep_for_push(b, cheapest_node->target_node, false);
+	prep_a_for_push(a, cheapest_node);
+	prep_b_for_push(b, cheapest_node->target_node);
 	pb(a, b);
 	set_index(*a);
 	set_index(*b);
@@ -82,7 +82,7 @@ void	push_a_to_b(t_stack **a, t_stack **b)
 // pushes top element of stack b above target_node of stack a
 void	push_b_to_a(t_stack **a, t_stack **b)
 {
-	prep_for_push(a, (*b)->target_node, true);
+	prep_a_for_push(a, (*b)->target_node);
 	pa(b, a);
 }
 
