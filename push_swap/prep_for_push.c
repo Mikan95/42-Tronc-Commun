@@ -36,7 +36,7 @@ void	prep_for_push(t_stack **lst, t_stack *top_node, bool is_a)
 			if (top_node->above_median)
 				rb(lst);
 			else
-				rra(lst);
+				rrb(lst);
 		}
 	}
 	if(is_a)
