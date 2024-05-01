@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/05/01 15:38:42 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/05/01 17:15:04 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	b = NULL;
 
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
-		return (-1);
+		return (0);
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
 	else
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 		else
 			sort_stacks(&a, &b);
 	}
-	test_print_elements_lst(a, b);
+//	test_print_elements_lst(a, b);
 	ft_freelist(a);
 	ft_freelist(b);
 	return (0);
