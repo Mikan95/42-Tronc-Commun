@@ -59,11 +59,13 @@ void	set_cheapest(t_stack *lst)
 //finds which node in a list is set to (current->cheapest = true)
 t_stack	*get_cheapest(t_stack *lst)
 {
+	if (!lst)
+		return (NULL);
 	while (lst)
 	{
 		if (lst->cheapest == true)
 			return (lst);
 		lst = lst->next;
 	}
-	exit (-1);
+	return (NULL);
 }
