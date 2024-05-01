@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/05/01 17:16:29 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/05/01 17:37:10 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	main(int argc, char **argv)
 	else
 		argv = &argv[1];
 	init_stack_a(&a, argv);
-//	test_print_elements_lst(a, b);
 	if(!is_sorted(a))
 	{
 		 if (ft_lstsize(a) == 2)
@@ -36,7 +35,6 @@ int	main(int argc, char **argv)
 		else
 			sort_stacks(&a, &b);
 	}
-//	test_print_elements_lst(a, b);
 	ft_freelist(a);
 	ft_freelist(b);
 	return (0);
@@ -90,11 +88,10 @@ t_stack	*find_max(t_stack *lst)
 	return (max);
 }
 //	printf("Max value: %ld\n", max->value);//										Prints max
-
 //#################################################//
 //################ TEST FUNCTIONS #################//
 //#################################################//
-
+/*
 //prints all the elements of both stacks
 void	test_print_elements_lst(t_stack *a, t_stack *b)
 {
@@ -114,7 +111,7 @@ void	test_print_elements_lst(t_stack *a, t_stack *b)
 		printf("%ld\n", temp->value);
 		temp = temp->next;
 	}
-}
+} */
 /*
 void		test_swap(t_stack **a, t_stack **b)
 {
