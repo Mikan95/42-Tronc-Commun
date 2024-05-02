@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:48:11 by ameechan          #+#    #+#             */
-/*   Updated: 2024/05/02 13:58:48 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:19:38 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,5 @@ void	ft_freelist(t_stack *stack_a)
 		first = first->next;
 		free(temp);
 	}
+	free(first);
 }
-//	free(first);

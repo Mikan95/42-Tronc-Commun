@@ -1,6 +1,6 @@
 NAME = push_swap
 CC = gcc
-CCFLAGS = -Wall -Werror -Wextra -fsanitize=address
+CCFLAGS = -Wall -Werror -Wextra
 RM = rm -f
 LIBFT_DIR = libft
 
