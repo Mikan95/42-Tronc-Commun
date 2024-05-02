@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/05/01 18:00:32 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:57:30 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
+
 	a = NULL;
 	b = NULL;
-
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (0);
 	else if (argc == 2)
@@ -26,9 +26,9 @@ int	main(int argc, char **argv)
 	else
 		argv = &argv[1];
 	init_stack_a(&a, argv);
-	if(!is_sorted(a))
+	if (!is_sorted(a))
 	{
-		 if (ft_lstsize(a) == 2)
+		if (ft_lstsize(a) == 2)
 			sa(&a);
 		else if (ft_lstsize(a) == 3)
 			sort_three(&a);
@@ -101,69 +101,3 @@ t_stack	*find_max(t_stack *lst)
 	}
 	return (max);
 }
-//	printf("Max value: %ld\n", max->value);//										Prints max
-//#################################################//
-//################ TEST FUNCTIONS #################//
-//#################################################//
-/*
-//prints all the elements of both stacks
-void	test_print_elements_lst(t_stack *a, t_stack *b)
-{
-	t_stack	*temp;
-
-	printf("Elements in Stack A:\n");
-	temp = a;
-	while(temp)
-	{
-		printf("%ld\n", temp->value);
-		temp = temp->next;
-	}
-	printf("Elements in Stack B:\n");
-	temp = b;
-	while(temp)
-	{
-		printf("%ld\n", temp->value);
-		temp = temp->next;
-	}
-} */
-/*
-void		test_swap(t_stack **a, t_stack **b)
-{
-	swap(a);
-	printf("AFTER SWAP\n");
-	test_print_elements_lst(*a, *b);
-}
-
-void		test_push(t_stack **a, t_stack **b)
-{
-	push(a, b);
-	printf("AFTER PUSH\n");
-	test_print_elements_lst(*a, *b);
-}
-
-void		test_rotate(t_stack **a, t_stack **b)
-{
-	rotate(a);
-	printf("AFTER ROTATE\n");
-	test_print_elements_lst(*a, *b);
-}
-
-void		test_reverse_rotate(t_stack **a, t_stack **b)
-{
-	reverse_rotate(a);
-	printf("AFTER REVERSE ROTATE\n");
-	test_print_elements_lst(*a, *b);
-}
-
-void		test_free(t_stack **lst)
-{
-	t_stack	*temp;
-
-	temp = *lst;
-	printf("AFTER FREE\n");
-	while(temp)
-	{
-		printf("%ld\n", temp->value);
-		temp = temp->next;
-	}
-} */

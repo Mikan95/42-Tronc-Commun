@@ -16,8 +16,6 @@
 //if not, ensures top_node is at the top of given stack
 void	prep_a_for_push(t_stack **a, t_stack *top_node)
 {
-//	printf("a-value: %ld\n", (*a)->value);
-//	printf("top_node: %ld\n", top_node->value);
 	while (*a != top_node)
 	{
 		if (top_node->above_median)
@@ -25,7 +23,6 @@ void	prep_a_for_push(t_stack **a, t_stack *top_node)
 		else
 			rra(a);
 	}
-//	printf("left prep_a_for_push\n\n");
 }
 
 void	prep_b_for_push(t_stack **b, t_stack *top_node)

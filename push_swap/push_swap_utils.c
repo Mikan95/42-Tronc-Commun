@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:44:32 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/30 17:33:56 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:00:23 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	rotate(t_stack **lst)
 }
 
 //shifts all elements of a stack down by one (last becomes first)
-void		reverse_rotate(t_stack **lst)
+void	reverse_rotate(t_stack **lst)
 {
 	t_stack	*old_first;
 	t_stack	*old_last;
