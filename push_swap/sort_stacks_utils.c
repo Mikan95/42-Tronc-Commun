@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:46:37 by ameechan          #+#    #+#             */
-/*   Updated: 2024/05/02 14:01:58 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:10:31 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	set_index(t_stack *lst)
 	}
 }
 
-/* for each a_node finds the b_node which is the closest smallest nbr to it
+/* for each a_node finds the b_node which is the closest, smallest nbr to it
 then assigns found node to a_node->target_node */
 void	set_target_a(t_stack *a, t_stack *b)
 {
@@ -65,7 +65,7 @@ void	set_target_a(t_stack *a, t_stack *b)
 	}
 }
 
-/* for each b_node finds the a_node which is the closest biggest nbr to it
+/* for each b_node finds the a_node which is the closest, biggest nbr to it
 then assigns found node to b_node->target_node */
 void	set_target_b(t_stack *a, t_stack *b)
 {

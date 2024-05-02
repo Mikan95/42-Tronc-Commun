@@ -12,8 +12,8 @@
 
 #include "push_swap.h"
 
-//checks if top_node is at the top of given stack
-//if not, ensures top_node is at the top of given stack
+/* checks if top_node is at the top of given stack
+if not, ensures top_node is at the top of given stack */
 void	prep_a_for_push(t_stack **a, t_stack *top_node)
 {
 	while (*a != top_node)
@@ -25,6 +25,8 @@ void	prep_a_for_push(t_stack **a, t_stack *top_node)
 	}
 }
 
+/* checks if top_node is at the top of given stack
+if not, ensures top_node is at the top of given stack */
 void	prep_b_for_push(t_stack **b, t_stack *top_node)
 {
 	while (*b != top_node)

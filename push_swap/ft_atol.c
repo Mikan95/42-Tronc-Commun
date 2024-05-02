@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:59:33 by ameechan          #+#    #+#             */
-/*   Updated: 2024/05/02 13:54:15 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:04:02 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,3 @@ long int	ft_atol(char *str)
 	}
 	return (sign * res);
 }
-
-/* int	main (int argc, char **argv)
-{
-	(void)argc;
-	printf("converted number: %ld\n", ft_atol(argv[1]));
-}
- */

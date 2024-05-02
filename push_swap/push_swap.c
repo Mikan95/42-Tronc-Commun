@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:43:41 by ameechan          #+#    #+#             */
-/*   Updated: 2024/05/02 13:57:30 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:09:39 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
+//frees all allocated memory at end of process
 void	free_all(t_stack *a, t_stack *b, char **argv, int argc)
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:37:45 by ameechan          #+#    #+#             */
-/*   Updated: 2024/05/02 14:01:31 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:12:46 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* sorts stack of size 4 or bigger by progressively pushing from A to B
 while simultaneously sorting B in ascending order.
 Then sorts last three elements in A and pushes everyhting back from B
-in ascending order */
+in the correct position for ascending order */
 void	sort_stacks(t_stack **a, t_stack **b)
 {
 	int	len_a;
@@ -40,7 +40,7 @@ void	sort_stacks(t_stack **a, t_stack **b)
 	min_to_top(a);
 }
 
-// sets indexes, sets target_nodes and finds and sets cheapest_node for stack_a
+// sets indexes, sets target_nodes, finds and sets cheapest_node for stack_a
 void	init_nodes_a(t_stack *a, t_stack *b)
 {
 	set_index(a);
@@ -50,7 +50,7 @@ void	init_nodes_a(t_stack *a, t_stack *b)
 	set_cheapest(a);
 }
 
-// sets indexes, sets target_nodes and finds and sets cheapest_node for stack_a
+// sets indexes and sets target_nodes for all nodes in stack_b
 void	init_nodes_b(t_stack *a, t_stack *b)
 {
 	set_index(a);
@@ -77,7 +77,7 @@ void	push_a_to_b(t_stack **a, t_stack **b)
 	set_index(*b);
 }
 
-// pushes top element of stack b above target_node of stack a
+// pushes top element of stack b above appropriate target_node in stack a
 void	push_b_to_a(t_stack **a, t_stack **b)
 {
 	prep_a_for_push(a, (*b)->target_node);
