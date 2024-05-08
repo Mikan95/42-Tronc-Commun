@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 12:27:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/05/01 14:18:58 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/05/02 13:59:58 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void		init_stack_a(t_stack **stack_a, char **argv);
 int			ft_error_check(char **argv);
 int			ft_check_syntax(char *str);
 int			ft_check_dupli(char **argv);
-void		ft_error();
 void		ft_freelist(t_stack *stack_a);
 int			is_sorted(t_stack *lst);
 void		swap(t_stack **lst);
@@ -75,7 +74,8 @@ void		init_nodes_a(t_stack *a, t_stack *b);
 void		init_nodes_b(t_stack *a, t_stack *b);
 void		set_target_a(t_stack *a, t_stack *b);
 void		set_target_b(t_stack *a, t_stack *b);
-void		prep_for_push(t_stack **lst, t_stack *top_node, bool is_a);
+void		prep_a_for_push(t_stack **a, t_stack *top_node);
+void		prep_b_for_push(t_stack **b, t_stack *top_node);
 void		push_a_to_b(t_stack **a, t_stack **b);
 void		push_b_to_a(t_stack **a, t_stack **b);
 void		find_cheapest(t_stack *a, t_stack *b);
@@ -89,7 +89,7 @@ void		ra(t_stack **lst);
 void		rb(t_stack **lst);
 void		rra(t_stack **lst);
 void		rrb(t_stack **lst);
-
+void		free_all(t_stack *a, t_stack *b, char **argv, int argc);
 
 //TEST FUCNTIONS
 void		test_print_elements_lst(t_stack *a, t_stack *b);

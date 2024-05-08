@@ -26,7 +26,7 @@ void	find_cheapest(t_stack *a, t_stack *b)
 		a->push_cost = a->index;
 		if (!(a->above_median))
 			a->push_cost = len_a - (a->index);
-		if(a->target_node->above_median)
+		if (a->target_node->above_median)
 			a->push_cost += a->target_node->index;
 		else
 			a->push_cost += len_b - a->target_node->index;

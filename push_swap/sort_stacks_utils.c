@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:46:37 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/30 17:34:54 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:10:31 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	set_index(t_stack *lst)
 	}
 }
 
-/* for each a_node finds the b_node which is the closest smallest nbr to it
+/* for each a_node finds the b_node which is the closest, smallest nbr to it
 then assigns found node to a_node->target_node */
 void	set_target_a(t_stack *a, t_stack *b)
 {
@@ -47,7 +47,7 @@ void	set_target_a(t_stack *a, t_stack *b)
 	{
 		best_match = LONG_MIN;
 		current_b = b;
-		while(current_b)
+		while (current_b)
 		{
 			if (current_b->value < a->value
 				&& current_b->value > best_match)
@@ -65,7 +65,7 @@ void	set_target_a(t_stack *a, t_stack *b)
 	}
 }
 
-/* for each b_node finds the a_node which is the closest biggest nbr to it
+/* for each b_node finds the a_node which is the closest, biggest nbr to it
 then assigns found node to b_node->target_node */
 void	set_target_b(t_stack *a, t_stack *b)
 {
@@ -77,7 +77,7 @@ void	set_target_b(t_stack *a, t_stack *b)
 	{
 		best_match = LONG_MAX;
 		current_a = a;
-		while(current_a)
+		while (current_a)
 		{
 			if (current_a->value > b->value
 				&& current_a->value < best_match)

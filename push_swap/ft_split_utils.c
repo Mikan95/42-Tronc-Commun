@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_functions.c                                  :+:      :+:    :+:   */
+/*   ft_split_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 16:57:45 by ameechan          #+#    #+#             */
-/*   Updated: 2024/03/20 17:02:44 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/05/01 17:51:57 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		len = ft_strlen(s + start);
 	ptr = ft_calloc(len + 1, sizeof(char));
 	if (!ptr)
+	{
+		free(ptr);
 		return (NULL);
+	}
 	while (i < len)
 	{
 		ptr[i] = s[start + i];
@@ -42,7 +45,10 @@ char	*ft_strdup(const char *s1)
 
 	ptr = (char *)malloc(ft_strlen(s1) + 1);
 	if (!ptr)
+	{
+		free(ptr);
 		return (NULL);
+	}
 	i = 0;
 	while (i < ft_strlen(s1))
 	{
@@ -61,7 +67,10 @@ void	*ft_calloc(size_t count, size_t size)
 	i = 0;
 	ptr = (void *)malloc(count * size);
 	if (!ptr)
+	{
+		free(ptr);
 		return (NULL);
+	}
 	while (i < count * size)
 	{
 		*(ptr + i) = '\0';
