@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 15:59:33 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/30 17:29:24 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/05/02 14:04:02 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 //converts from ascii to long int
 long int	ft_atol(char *str)
 {
-	long int	res = 0;
-	long int	sign = 1;
+	long int	res;
+	long int	sign;
 
+	res = 0;
+	sign = 1;
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
@@ -31,10 +33,3 @@ long int	ft_atol(char *str)
 	}
 	return (sign * res);
 }
-
-/* int	main (int argc, char **argv)
-{
-	(void)argc;
-	printf("converted number: %ld\n", ft_atol(argv[1]));
-}
- */

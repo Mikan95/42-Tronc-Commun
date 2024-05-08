@@ -12,10 +12,11 @@
 
 #include "push_swap.h"
 
-//checks if top_node is at the top of given stack
-//if not, ensures top_node is at the top of given stack
-void	prep_for_push(t_stack **lst, t_stack *top_node, bool is_a)
+/* checks if top_node is at the top of given stack
+if not, ensures top_node is at the top of given stack */
+void	prep_a_for_push(t_stack **a, t_stack *top_node)
 {
+<<<<<<< HEAD
 /* 	if(is_a)
 	{
 		printf("prep_for_push:\n");
@@ -41,4 +42,26 @@ void	prep_for_push(t_stack **lst, t_stack *top_node, bool is_a)
 	}
 /* 	if(is_a)
 		printf("top of stack after rotations: %ld\n", (*lst)->value); */
+=======
+	while (*a != top_node)
+	{
+		if (top_node->above_median)
+			ra(a);
+		else
+			rra(a);
+	}
+}
+
+/* checks if top_node is at the top of given stack
+if not, ensures top_node is at the top of given stack */
+void	prep_b_for_push(t_stack **b, t_stack *top_node)
+{
+	while (*b != top_node)
+	{
+		if (top_node->above_median)
+			rb(b);
+		else
+			rrb(b);
+	}
+>>>>>>> turnin
 }
