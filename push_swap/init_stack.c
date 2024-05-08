@@ -6,16 +6,14 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 15:44:21 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/07 18:14:08 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:31:01 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-initialises the stack, adding each element of argv to the end of the list,
-once each str has been converted to long ints using ft_atol().
-*/
+/* initialises the stack, adding each element of argv to the end of the list,
+once each str has been converted to long ints using ft_atol() */
 void	init_stack_a(t_stack **stack_a, char **argv)
 {
 	int			i;
@@ -58,23 +56,30 @@ int	ft_error_check(char **argv)
 	return (0);
 }
 
-//reads an element from an array, checks for syntax errors.
-//returns 1 if error is found.
+/* reads elements from an array, checks for syntax errors.
+returns 1 if error is found */
 int	ft_check_syntax(char *str)
 {
-	if (*str == '-' || *str == '+')
-		str++;
-	while (*str)
+	int	i;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (*str < '0' || *str > '9')
+		if (str[i + 1] < '0' || str[i] > '9')
 			return (1);
-		str++;
+		i++;
+	}
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (1);
+		i++;
 	}
 	return (0);
 }
 
-//checks for duplicates in an array and returns 1 if found.
-//also checks for integer overflow.
+/* checks for duplicates in an array and returns 1 if found.
+also checks for integer overflow */
 int	ft_check_dupli(char **argv)
 {
 	int	i;

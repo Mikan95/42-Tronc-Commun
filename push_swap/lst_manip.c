@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_lst.c                                        :+:      :+:    :+:   */
+/*   lst_manip.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:48:11 by ameechan          #+#    #+#             */
-/*   Updated: 2024/04/07 18:20:02 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/05/01 13:20:58 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// returns the number of nodes in a linked list
+int	ft_lstsize(t_stack *lst)
+{
+	t_stack	*temp;
+	int		i;
+
+	i = 0;
+	temp = lst;
+	while (temp)
+	{
+		temp = temp->next;
+		i++;
+	}
+	return (i);
+}
 
 // finds and returns the last node of a linked list
 t_stack	*ft_lstlast(t_stack *lst)
@@ -23,7 +39,7 @@ t_stack	*ft_lstlast(t_stack *lst)
 	return (current);
 }
 
-//adds a new node to the end of a linked list
+// adds a new node to the end of a single linked list
 void	ft_lstadd_back(t_stack **lst, long int res)
 {
 	t_stack	*last;
@@ -32,50 +48,52 @@ void	ft_lstadd_back(t_stack **lst, long int res)
 	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
 		return ;
+	new_node->next = NULL;
 	new_node->value = res;
 	if (!*lst)
 	{
-//		printf("initialising stack a for first time..\n");
 		*lst = new_node;
-		new_node->next = NULL;
 		new_node->prev = NULL;
-//		printf("First value: %ld\n", new_node->value);
-//		printf("last after first value = %ld\n\n", ft_lstlast(*lst)->value);
 		return ;
 	}
-	last = ft_lstlast(*lst);
-	last->next = new_node;
-	new_node->prev = last;
-	new_node->next = NULL;
-//	printf("Last value: %ld\n", last->value);
-//	printf("New value: %ld\n", new_node->value);
+	else
+	{
+		last = ft_lstlast(*lst);
+		last->next = new_node;
+		new_node->prev = last;
+	}
 }
 
-//returns the number of nodes in a linked list
-int	ft_lstsize(t_stack *lst)
+//brings smallest element of stack_a to the top
+void	min_to_top(t_stack **a)
 {
-	t_stack	*temp;
-	int		i;
+	t_stack	*min;
 
-	temp = lst;
-	i = 0;
-	while (temp != NULL)
+	min = find_min(*a);
+	if (min->above_median)
 	{
-		i++;
-		temp = temp->next;
+		while (*a != min)
+			ra(a);
 	}
-	return (i);
+	else
+	{
+		while (*a != min)
+			rra(a);
+	}
 }
 
 //frees each node of a linked list
 void	ft_freelist(t_stack *stack_a)
 {
 	t_stack	*temp;
+	t_stack	*first;
 
-	while (stack_a)
+	first = stack_a;
+	while (first)
 	{
-		temp = stack_a;
-		stack_a = stack_a->next;
+		temp = first;
+		first = first->next;
 		free(temp);
 	}
+//	free(stack_a);
 }
