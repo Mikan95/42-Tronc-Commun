@@ -16,12 +16,12 @@ all: $(SERVER) $(CLIENT)
 
 #compiles server object files
 $(SERVER): $(SRV_OBJ) $(FT_PRINTF_LIB)
-	$(CC) $(CCFLAGS) $(SRV_OBJ) -o $(SERVER) $(FT_PRINTF_LIB)
+	$(CC) $(CCFLAGS) -o $@ $(SRV_OBJ) -L$(FT_PRINTF_DIR) -lftprintf
 	@echo "Server compilation done"
 
 #compiles client object files
 $(CLIENT): $(CLIENT_OBJ) $(FT_PRINTF_LIB)
-	$(CC) $(CCFLAGS) $(CLIENT_OBJ) -o $(CLIENT) $(FT_PRINTF_LIB)
+	$(CC) $(CCFLAGS) -o $@ $(CLIENT_OBJ) -L$(FT_PRINTF_DIR) -lftprintf
 	@echo "Client compilation done"
 
 %.o : %.c
@@ -31,10 +31,12 @@ $(FT_PRINTF_LIB):
 	make -C $(FT_PRINTF_DIR)
 
 clean:
+	$(MAKE) -C $(FT_PRINTF_DIR) clean
 	$(RM) $(SRV_OBJ) $(CLIENT_OBJ)
 	@echo "Clean done"
 
 fclean: clean
+	$(MAKE) -C $(FT_PRINTF_DIR) fclean
 	$(RM) $(SERVER) $(CLIENT)
 	@echo "Fclean done"
 
