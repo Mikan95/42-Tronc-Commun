@@ -17,3 +17,8 @@ README.md
 /push_swap/visualiser
 /push_swap/checker_Mac
 /push_swap/push_swap_tester
+#minitalk exclusions
+/minitalk/server
+/minitalk/client
+/minitalk/ft_printf/libftprintf.a
+/minitalk/ft_printf/libft/libft.a

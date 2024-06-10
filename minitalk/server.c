@@ -15,6 +15,10 @@
 #include <stdio.h>
 #include "minitalk.h"
 
+/*
+decodes signals from client by assigning the result of (signal == SIGUSR1)
+to the right most (least significant bit) bit of current_char.
+*/
 void	ft_decode(int signal)
 {
 	static unsigned char	current_char;
@@ -33,7 +37,10 @@ void	ft_decode(int signal)
 	else
 		current_char <<= 1;
 }
-
+/*
+finds PID of server and prints it to stdout
+then waits for signals from client and decodes them
+*/
 int	main(void)
 {
 	ft_printf("%d\n", getpid());

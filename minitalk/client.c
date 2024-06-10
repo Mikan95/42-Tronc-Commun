@@ -12,7 +12,7 @@
 
 #include "minitalk.h"
 
-//converts from ascii to long int
+//converts from ascii to int
 int	ft_atol(char *str)
 {
 	int	res;
@@ -34,18 +34,21 @@ int	ft_atol(char *str)
 	return (sign * res);
 }
 
-//sends signals to server
+/*
+sends signals to server starting from left most bit (most significant bit)
+if bit == 1, sends SIGUSR1, else sends SIGUSR2
+*/
 void	ft_send_signal(int pid, unsigned char char_to_send)
 {
-	int	i;
+	int	shift_index;
 	unsigned char	temp_char;
 
-	i = 8;
+	shift_index = 8;
 	temp_char = char_to_send;
-	while (i > 0)
+	while (shift_index > 0)
 	{
-		i--;
-		temp_char = char_to_send >> i;
+		shift_index--;
+		temp_char = char_to_send >> shift_index;
 		if (temp_char % 2 == 0)
 			kill(pid, SIGUSR2);
 		else
@@ -54,6 +57,10 @@ void	ft_send_signal(int pid, unsigned char char_to_send)
 	}
 }
 
+/*
+checks if the number of arguments is correct,
+then sends signals to the server letter by letter.
+*/
 int	main(int argc, char **argv)
 {
 	pid_t	server_pid;
