@@ -10,20 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <signal.h>
-#include <stdio.h>
 #include "minitalk.h"
 
 /*
 decodes signals from client by assigning the result of (signal == SIGUSR1)
 to the right most (least significant bit) bit of current_char.
+Then, sends read receipt to client
 */
-void	ft_decode(int signal)
+void	ft_decode_send_receipt(int signal, siginfo_t *info, void *context)
 {
 	static unsigned char	current_char;
 	static int				bit_index;
 
+	(void)context;
 	current_char |= (signal == SIGUSR1);
 	bit_index++;
 	if(bit_index == 8)
@@ -36,16 +35,25 @@ void	ft_decode(int signal)
 	}
 	else
 		current_char <<= 1;
+	if (signal == SIGUSR1)
+		kill(info->si_pid, SIGUSR1);
+	else if (signal == SIGUSR2)
+		kill(info->si_pid, SIGUSR2);
 }
 /*
 finds PID of server and prints it to stdout
-then waits for signals from client and decodes them
+then waits for and decodes signals from client.
 */
 int	main(void)
 {
+	struct sigaction	sa;
+
+	sa.sa_sigaction = ft_decode_send_receipt;
+	sa.sa_flags = SA_SIGINFO;
+	sigemptyset(&sa.sa_mask);
 	ft_printf("%d\n", getpid());
-	signal(SIGUSR1, ft_decode);
-	signal(SIGUSR2, ft_decode);
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
 		pause();
 	return (0);

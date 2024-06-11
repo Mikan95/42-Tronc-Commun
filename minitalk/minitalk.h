@@ -15,9 +15,13 @@
 # include "ft_printf/ft_printf.h"
 # include <unistd.h>
 # include <signal.h>
+# include <stdio.h>
+# include <signal.h>
 
 int		ft_atol(char *str);
 void	ft_send_signal(int pid, unsigned char char_to_send);
 void	ft_decode(int signal);
+void	handle_read_receipt(int signal);
+void	ft_decode_send_receipt(int signal, siginfo_t *info, void *context);
 
 #endif

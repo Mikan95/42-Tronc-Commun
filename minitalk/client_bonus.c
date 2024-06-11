@@ -53,8 +53,16 @@ void	ft_send_signal(int pid, unsigned char char_to_send)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
-		usleep(100);
+		usleep(420);
 	}
+}
+
+void	handle_read_receipt(int signal)
+{
+	if (signal == SIGUSR1)
+		ft_printf("Server received 1\n");
+	else
+		ft_printf("Server received 0\n");
 }
 
 /*
@@ -67,6 +75,8 @@ int	main(int argc, char **argv)
 	const char	*str;
 	int		i;
 
+	signal(SIGUSR1, handle_read_receipt);
+	signal(SIGUSR2, handle_read_receipt);
 	if (argc != 3)
 	{
 		ft_printf("Incorrect number of arguments\n");
