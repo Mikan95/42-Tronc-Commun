@@ -49,12 +49,12 @@ $(FT_PRINTF_LIB):
 
 clean:
 	$(MAKE) -C $(FT_PRINTF_DIR) clean
-	$(RM) $(SRV_OBJ) $(CLIENT_OBJ)
+	$(RM) $(SRV_OBJ) $(CLIENT_OBJ) $(SRV_BONUS_OBJ) $(CLIENT_BONUS_OBJ)
 	@echo "Clean done"
 
 fclean: clean
 	$(MAKE) -C $(FT_PRINTF_DIR) fclean
-	$(RM) $(SERVER) $(CLIENT)
+	$(RM) $(SERVER) $(CLIENT) $(SERVER_BONUS) $(CLIENT_BONUS)
 	@echo "Fclean done"
 
 re: fclean all
