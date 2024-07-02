@@ -24,3 +24,5 @@ README.md
 /minitalk/client_bonus
 /minitalk/ft_printf/libftprintf.a
 /minitalk/ft_printf/libft/libft.a
+#So_long exclusions
+/so_long/minilibx-linux/
