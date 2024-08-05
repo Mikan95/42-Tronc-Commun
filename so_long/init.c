@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <mlx.h>
+#include "ft_printf.h"
 #include "so_long.h"
 
 int	close_window(t_data *data)
@@ -24,7 +25,7 @@ int	close_window(t_data *data)
 
 int	key_hook(int keycode, t_data *data)
 {
-//	printf("keycode: %d\n", keycode);
+//	ft_printf("keycode: %d\n", keycode);
 	if (keycode == ESC_KEY)
 		close_window(data);
 	return (0);
