@@ -40,7 +40,7 @@ int	main(void)
 	variables.mlx = mlx_init();
 	if (!variables.mlx)
 		return (1);
-	variables.win = mlx_new_window(variables.mlx, 1024, 768, "Hello world!");
+	variables.win = mlx_new_window(variables.mlx, 1024, 768, "My game");
 	if (!variables.win)
 		return (free(variables.mlx), 1);
 	mlx_hook(variables.win, 17, 0, close_window, &variables);
