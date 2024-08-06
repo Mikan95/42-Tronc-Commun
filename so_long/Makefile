@@ -18,7 +18,7 @@ ifeq ($(UNAME_S), Darwin)
 endif
 
 #define source files
-SRC_FILES = $(addsuffix .c, init)
+SRC_FILES = $(addsuffix .c, init error_checks)
 #define object files
 OBJ := $(SRC_FILES:.c=.o)
 

@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include "ft_printf.h"
 #include "so_long.h"
 
 int	close_window(t_data *data)
@@ -33,34 +31,25 @@ int	key_hook(int keycode, t_data *data)
 
 int	main(int argc, char **argv)
 {
-	t_data	variables;
+	t_data	var;
 	char	*path = "./assets/Background.xpm";
 	int		img_width;
 	int		img_height;
 	int		fd;
 
-	if (argc != 2)
-	{
-		ft_printf("Error\nUsage: %s <map_file>\n", argv[0]);
+	fd = arg_check(argc, argv);
+	ft_printf("first line of %s is:\n%s\n", argv[1], get_next_line(fd));
+	var.mlx = mlx_init();
+	if (!var.mlx)
 		return (1);
-	}
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-	{
-		ft_printf("Error\nCould not open file %s\n", argv[1]);
-		return (1);
-	}
-	variables.mlx = mlx_init();
-	if (!variables.mlx)
-		return (1);
-	variables.win = mlx_new_window(variables.mlx, 1024, 768, "My game");
-	if (!variables.win)
-		return (free(variables.mlx), 1);
-	mlx_hook(variables.win, 17, 0, close_window, &variables);
-	mlx_key_hook(variables.win, key_hook, &variables);
-	variables.img_ptr = mlx_xpm_file_to_image(variables.mlx, path, &img_width, &img_height);
-	mlx_put_image_to_window(variables.mlx, variables.win, variables.img_ptr, 0, 0);
-	mlx_loop(variables.mlx);
+	var.win = mlx_new_window(var.mlx, 1024, 768, "My game");
+	if (!var.win)
+		return (free(var.mlx), 1);
+	mlx_hook(var.win, 17, 0, close_window, &var);
+	mlx_key_hook(var.win, key_hook, &var);
+	var.img_ptr = mlx_xpm_file_to_image(var.mlx, path, &img_width, &img_height);
+	mlx_put_image_to_window(var.mlx, var.win, var.img_ptr, 0, 0);
+	mlx_loop(var.mlx);
 }
 
 //gcc init.c -o init -Iminilibx-linux/ -Lminilibx-linux/ -lmlx -lX11 -lXext

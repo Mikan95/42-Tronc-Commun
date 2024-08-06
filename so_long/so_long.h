@@ -17,7 +17,12 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include "get_next_line.h"
+#include "ft_printf.h"
 
+//define function prototypes
+int	arg_check(int argc, char **argv);
+
+//define struct for map
 typedef struct s_data
 {
 	void	*mlx;
