@@ -29,4 +29,7 @@ README.md
 /so_long/minilibx-linux.tgz
 /so_long/minilibx-linux.tgz*Zone.Identifier
 /so_long/play
-
+/so_long/lib/libmlx.a
+/so_long/lib/libftprintf.a
+/so_long/lib/libgnl.a
+/so_long/lib/ft_printf/libft/libft.a
