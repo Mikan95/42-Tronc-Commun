@@ -6,16 +6,16 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 16:29:54 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/14 17:49:40 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/08/06 12:01:59 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+f_list	*ft_lstmap(f_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_lst;
-	t_list	*new_elem;
+	f_list	*new_lst;
+	f_list	*new_elem;
 	void	*set;
 
 	if (!lst || !f || !del)

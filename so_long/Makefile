@@ -10,10 +10,11 @@ RM = rm -f
 
 #check if the operating system is MacOS and change ldflags
 ifeq ($(UNAME_S), Darwin)
-	CCFLAGS = -Wall -Werror -Wextra -I./lib/minilibx_macos/ -I./lib/ft_printf/
-	LDFLAGS = -L./lib -lmlx -lftprintf -framework OpenGL -framework AppKit
+	CCFLAGS = -Wall -Werror -Wextra -I./lib/minilibx_macos/ -I./lib/ft_printf/ -I./lib/get_next_line/
+	LDFLAGS = -L./lib -lmlx -lftprintf -lgnl -framework OpenGL -framework AppKit
 	MLX = ./lib/libmlx.a
 	FTPRINTF = ./lib/libftprintf.a
+	GNL = ./lib/libgnl.a
 endif
 
 #define source files
@@ -24,11 +25,13 @@ OBJ := $(SRC_FILES:.c=.o)
 #default rules
 all: $(NAME)
 
-#build minilibx and ft_printf
+#build minilibx, ft_printf and GNL
 $(MLX):
 	make -C ./lib/minilibx_macos/ -f Makefile
 $(FTPRINTF):
 	make -C ./lib/ft_printf/ -f Makefile
+$(GNL):
+	make -C ./lib/get_next_line/ -f Makefile
 
 #compile the object files
 %.o : %.c
@@ -36,7 +39,7 @@ $(FTPRINTF):
 
 # $(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 #compile the project
-$(NAME): $(OBJ) $(MLX) $(FTPRINTF)
+$(NAME): $(OBJ) $(MLX) $(FTPRINTF) $(GNL)
 	$(CC) $(CCFLAGS) $(LDFLAGS) $(OBJ) -o $(NAME)
 	@echo "Compilation done"
 
@@ -45,11 +48,12 @@ clean:
 	$(RM) $(OBJ)
 	@make clean -C ./lib/minilibx_macos/
 	@make clean -C ./lib/ft_printf/
+	@make clean -C ./lib/get_next_line/
 	@echo "Clean done"
 
 #clean the object files and the project
 fclean: clean
-	$(RM) $(NAME) $(MLX) $(FTPRINTF)
+	$(RM) $(NAME) $(MLX) $(FTPRINTF) $(GNL)
 	@echo "Fclean done"
 
 #recompile the project

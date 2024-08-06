@@ -6,15 +6,15 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 14:48:11 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/10 18:09:09 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/08/06 12:01:59 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(f_list **lst, f_list *new)
 {
-	t_list	*last;
+	f_list	*last;
 
 	if (!new)
 		return ;

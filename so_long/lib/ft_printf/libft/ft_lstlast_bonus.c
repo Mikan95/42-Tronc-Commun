@@ -6,15 +6,15 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:16:13 by ameechan          #+#    #+#             */
-/*   Updated: 2023/11/10 16:46:29 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/08/06 12:01:59 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+f_list	*ft_lstlast(f_list *lst)
 {
-	t_list	*current;
+	f_list	*current;
 
 	if (lst == NULL)
 		return (NULL);

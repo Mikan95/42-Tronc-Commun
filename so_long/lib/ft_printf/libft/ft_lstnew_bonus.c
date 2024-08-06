@@ -6,17 +6,17 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 17:37:27 by ameechan          #+#    #+#             */
-/*   Updated: 2024/03/20 13:58:27 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/08/06 12:01:59 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+f_list	*ft_lstnew(void *content)
 {
-	struct s_list	*newlst;
+	struct ListNode	*newlst;
 
-	newlst = (struct s_list *)malloc(sizeof(struct s_list));
+	newlst = (struct ListNode *)malloc(sizeof(struct ListNode));
 	if (!newlst)
 		return (NULL);
 	newlst->content = content;

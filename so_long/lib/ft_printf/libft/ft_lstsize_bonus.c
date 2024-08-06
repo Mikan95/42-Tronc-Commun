@@ -6,15 +6,15 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 13:06:54 by ameechan          #+#    #+#             */
-/*   Updated: 2024/03/20 13:58:27 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/08/06 12:01:59 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+int	ft_lstsize(f_list *lst)
 {
-	struct s_list	*temp;
+	struct ListNode	*temp;
 	int				i;
 
 	temp = lst;

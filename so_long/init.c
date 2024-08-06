@@ -31,13 +31,25 @@ int	key_hook(int keycode, t_data *data)
 	return (0);
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_data	variables;
 	char	*path = "./assets/Background.xpm";
 	int		img_width;
 	int		img_height;
+	int		fd;
 
+	if (argc != 2)
+	{
+		ft_printf("Error\nUsage: %s <map_file>\n", argv[0]);
+		return (1);
+	}
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+	{
+		ft_printf("Error\nCould not open file %s\n", argv[1]);
+		return (1);
+	}
 	variables.mlx = mlx_init();
 	if (!variables.mlx)
 		return (1);

@@ -6,15 +6,15 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 11:48:58 by ameechan          #+#    #+#             */
-/*   Updated: 2024/03/20 13:58:27 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/08/06 12:01:59 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(f_list **lst, f_list *new)
 {
-	struct s_list	*new_node;
+	struct ListNode	*new_node;
 
 	new_node = new;
 	new_node->next = *lst;
