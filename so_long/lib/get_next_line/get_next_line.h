@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:28:46 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/06 12:04:39 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/08/06 17:19:24 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 1042
 # endif
 
 typedef struct ListNode

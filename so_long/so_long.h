@@ -15,12 +15,17 @@
 #include <mlx.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include <fcntl.h>
 #include "get_next_line.h"
 #include "ft_printf.h"
 
 //define function prototypes
-int	arg_check(int argc, char **argv);
+int		arg_check(int argc, char **argv);
+void	map_check(int fd , char *map_path);
+void	map_malloc(int fd, char ***map , char *map_path);
+void	map_fill(int fd, char **map);
+int		count_lines(int *fd, char *map_path);
 
 //define struct for map
 typedef struct s_data
@@ -28,6 +33,8 @@ typedef struct s_data
 	void	*mlx;
 	void	*win;
 	void	*img_ptr;
+	int		width;
+	int		height;
 }				t_data;
 
 //DEFINE KEYCODES WSL2

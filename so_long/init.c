@@ -33,12 +33,11 @@ int	main(int argc, char **argv)
 {
 	t_data	var;
 	char	*path = "./assets/Background.xpm";
-	int		img_width;
-	int		img_height;
 	int		fd;
 
 	fd = arg_check(argc, argv);
-	ft_printf("first line of %s is:\n%s\n", argv[1], get_next_line(fd));
+//	ft_printf("first line of %s is:\n%s\n", argv[1], get_next_line(fd));	//DELETE LATER
+	map_check(fd, argv[1]);
 	var.mlx = mlx_init();
 	if (!var.mlx)
 		return (1);
@@ -47,7 +46,7 @@ int	main(int argc, char **argv)
 		return (free(var.mlx), 1);
 	mlx_hook(var.win, 17, 0, close_window, &var);
 	mlx_key_hook(var.win, key_hook, &var);
-	var.img_ptr = mlx_xpm_file_to_image(var.mlx, path, &img_width, &img_height);
+	var.img_ptr = mlx_xpm_file_to_image(var.mlx, path, &var.width, &var.height);
 	mlx_put_image_to_window(var.mlx, var.win, var.img_ptr, 0, 0);
 	mlx_loop(var.mlx);
 }

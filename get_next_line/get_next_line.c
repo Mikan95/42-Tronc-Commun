@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:32:53 by ameechan          #+#    #+#             */
-/*   Updated: 2024/02/23 17:10:09 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/08/06 15:15:44 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*get_next_line(int fd)
 	static t_list	*line_stash;
 	char			*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &line, 0) < 0)
+	if (fd < 0 || GNL_BUFFER_SIZE <= 0 || read(fd, &line, 0) < 0)
 	{
 		free_stash(line_stash);
 		line_stash = NULL;
@@ -48,10 +48,10 @@ void	read_and_stash(int fd, t_list **line_stash)
 	readed = 1;
 	while (!found_newline(*line_stash) && readed != 0)
 	{
-		buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+		buffer = malloc(sizeof(char) * (GNL_BUFFER_SIZE + 1));
 		if (!buffer)
 			return ;
-		readed = (int)read(fd, buffer, BUFFER_SIZE);
+		readed = (int)read(fd, buffer, GNL_BUFFER_SIZE);
 		if ((*line_stash == NULL && readed == 0) || readed == -1)
 		{
 			free(buffer);

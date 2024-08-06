@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 12:43:33 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/06 12:46:58 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/08/06 15:38:19 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	arg_check(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("Error\nCould not open file %s\n", argv[1]);
+		perror("Error\nCould not open file\n");
 		exit(1);
 	}
 	i = 0;
