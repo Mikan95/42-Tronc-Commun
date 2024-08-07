@@ -25,7 +25,7 @@ README.md
 /minitalk/ft_printf/libftprintf.a
 /minitalk/ft_printf/libft/libft.a
 #So_long exclusions
-/so_long/minilibx-linux/
+/so_long/lib/minilibx-linux/
 /so_long/minilibx-linux.tgz
 /so_long/minilibx-linux.tgz*Zone.Identifier
 /so_long/play
