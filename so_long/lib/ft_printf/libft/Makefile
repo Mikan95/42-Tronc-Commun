@@ -10,7 +10,7 @@ ft_lstsize ft_lstlast ft_lstadd_back ft_lstdelone ft_lstclear ft_lstiter ft_lstm
 
 BONUS_OBJS := $(BONUS_SRC:%.c=%.o)
 
-NAME = libft.a
+NAME = ../libft.a
 
 CC = gcc
 

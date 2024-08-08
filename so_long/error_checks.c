@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 12:43:33 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/06 15:38:19 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/08/08 15:41:49 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,3 +45,57 @@ int	arg_check(int argc, char **argv)
 	}
 	return (fd);
 }
+
+/*
+Checks that only valid characters are used in the map file
+Exits the program with an error message if an invalid character is found
+*/
+int	valid_char(char c)
+{
+	if (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P')
+		return (1);
+	else
+	{
+		perror("Error\nInvalid character used in map file");
+		exit(1);
+	}
+	return (0);
+}
+
+int	ft_mystrlen(char *str)
+{
+	int	len;
+
+	len = 0;
+	while (str[len] != '\0')
+		len++;
+	return (len);
+}
+
+int	same_line_length(char *map, int i)
+{
+	int		len1;
+	int		len2;
+	char	*temp;
+
+	temp = map;
+	len1 = ft_mystrlen(temp);
+	len2 = ft_mystrlen(++temp);
+	ft_printf("len1: %d\n", len1);
+	ft_printf("len2: %d\n", len2);
+	if (!temp)
+		return (1);
+	if (len1 == len2)
+	{
+		ft_printf("Lines %d and %d are the same length\n", i, i+1);
+		return (1);
+	}
+	else
+		return (1);
+/* 	{
+		perror("Error\nMap is not rectangle or square");
+		exit(1);
+	} */
+	return (0);
+}
+

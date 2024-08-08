@@ -1,36 +1,39 @@
 NAME = ../libftprintf.a
 CC = gcc
-CCFLAGS = -Wall -Wextra -Werror
+CCFLAGS = -Wall -Wextra -Werror -I./libft
 RM = rm -f
-LIBFT_DIR = libft
+
 
 SRC_FILES = $(addprefix ft_, $(addsuffix .c, printf conversion char str putptr \
 putint putnbr_hex putnbr_dec))
 
-OBJ = $(SRC_FILES:.c=.o)
+LIBFT_SRC_FILES = $(addprefix libft/ft_, $(addsuffix .c, atoi bzero calloc isalnum isalpha isascii \
+isdigit isprint memchr memcmp memcpy memmove memset strchr strdup strlcat strlcpy \
+strlen strncmp strnstr strrchr substr tolower toupper strjoin strtrim split itoa \
+strmapi striteri putchar_fd putstr_fd putendl_fd putnbr_fd))
+
+OBJ = $(SRC_FILES:.c=.o) $(LIBFT_SRC_FILES:.c=.o)
 
 all: $(NAME)
 
-#run make in libft subdirectory, copy it to current dir and
-#rename it to $(NAME), then ar it with objs of current dir
 $(NAME): $(OBJ)
-	@make -C $(LIBFT_DIR)
-	@cp ${LIBFT_DIR}/libft.a .
-	@mv libft.a $(NAME)
 	ar rcs $(NAME) $(OBJ)
 	@echo "Compilation done"
 
 %.o : %.c
-	$(CC) $(CCFLAGS) -c $< -o $@ -I $(LIBFT_DIR)
+	$(CC) $(CCFLAGS) -Ilibft -c $< -o $@
+
+libft/%.o : libft/%.c
+	$(CC) $(CCFLAGS) -Ilibft -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)
-	@make clean -C ${LIBFT_DIR}
-	@echo "ft_printf clean done"
+	@make clean -C ./libft
+	@echo "Clean done"
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) $(LIBFT_DIR)/libft.a
+	@make fclean -C ./libft
 	@echo "Fclean done"
 
 re: fclean all

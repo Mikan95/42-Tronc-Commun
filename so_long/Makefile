@@ -55,13 +55,14 @@ fclean: clean
 #recompile the project
 re: fclean all
 
+
 .PHONY: clean fclean re
 endif
 
 #check if the operating system is MacOS and change variables accordingly
 ifeq ($(UNAME_S), Darwin)
 NAME = play
-CC = gcc
+CC = gcc -v
 CCFLAGS = -Wall -Werror -Wextra -I./lib/minilibx_macos/ -I./lib/ft_printf/ -I./lib/get_next_line/
 LDFLAGS = -L./lib -lmlx -lftprintf -lgnl -framework OpenGL -framework AppKit
 MLX = ./lib/libmlx.a
@@ -76,10 +77,6 @@ OBJ := $(SRC_FILES:.c=.o)
 #default rules
 all: $(NAME)
 
-#compile the object files
-%.o : %.c
-	$(CC) $(CCFLAGS) -Ilib -c $< -o $@
-
 #build minilibx, ft_printf and GNL
 $(MLX):
 	make -C ./lib/minilibx_macos/ -f Makefile
@@ -88,9 +85,13 @@ $(FTPRINTF):
 $(GNL):
 	make -C ./lib/get_next_line/ -f Makefile
 
+#compile the object files
+%.o : %.c
+	$(CC) $(CCFLAGS) -Ilib -c $< -o $@
+
 #compile the project
 $(NAME): $(OBJ) $(MLX) $(FTPRINTF) $(GNL)
-	$(CC) $(CCFLAGS) $(LDFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CCFLAGS) $(OBJ) $(LDFLAGS) -o $(NAME)
 	@echo "Compilation done"
 
 #clean the object files
@@ -103,11 +104,17 @@ clean:
 
 #clean the object files and the project
 fclean: clean
-	$(RM) $(NAME) $(MLX) $(FTPRINTF) $(GNL)
+	$(RM) $(NAME)
+	$(RM) $(MLX)
+	@make fclean -C ./lib/ft_printf/
+	@make fclean -C ./lib/get_next_line/
 	@echo "Fclean done"
 
 #recompile the project
 re: fclean all
+
+sanitize: CCFLAGS += -fsanitize=address -g3
+sanitize: re
 
 .PHONY: clean fclean re
 endif
