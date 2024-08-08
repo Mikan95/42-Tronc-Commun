@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 12:43:33 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/08 15:41:49 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/08/08 16:43:47 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,29 @@ int	ft_mystrlen(char *str)
 	return (len);
 }
 
-int	same_line_length(char *map, int i)
+void	same_line_length(char **map)
+{
+	int	i;
+	int	len;
+	char	**temp;
+
+	temp = map;
+	len = ft_mystrlen(temp[i]);
+	while (temp[i])
+	{
+		if(ft_mystrlen(temp[i]) == len)
+			i++;
+		else
+		{
+			perror("Error\nMap is not rectangular or square");
+			exit (1);
+		}
+	}
+}
+
+
+/*
+PREVIOUS VERSION OF same_line_length;
 {
 	int		len1;
 	int		len2;
@@ -97,5 +119,4 @@ int	same_line_length(char *map, int i)
 		exit(1);
 	} */
 	return (0);
-}
-
+} */

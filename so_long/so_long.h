@@ -27,8 +27,8 @@ void		map_malloc(int fd, char ***map , char *map_path);
 void		map_fill(int fd, char **map);
 int			count_lines(int *fd, char *map_path);
 int			valid_char(char c);
-int			same_line_length(char *map, int i);
-int	ft_mystrlen(char *str);
+void		same_line_length(char **map);
+int			ft_mystrlen(char *str);
 
 //define struct for map
 typedef struct s_data

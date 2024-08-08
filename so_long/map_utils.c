@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 14:44:13 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/08 15:28:54 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/08/08 16:29:27 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	map_check(int fd, char *map_path)
 	char	**map;
 	int		i;
 	int		j;
+	//int	line_len;
 	// int		player_count;
 	// int		exit_count;
 	// int		collectable_count;
@@ -24,8 +25,9 @@ void	map_check(int fd, char *map_path)
 	map = NULL;
 	map_malloc(fd, &map, map_path);
 	map_fill(fd, map);
+	same_line_length(map);
 	i = 0;
-	while (map[i] && same_line_length(map[i], i))
+	while (map[i])
 	{
 		j = 0;
 		while (map[i][j] && valid_char(map[i][j]))
