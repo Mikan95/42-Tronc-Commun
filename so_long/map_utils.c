@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 14:44:13 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/08 16:29:27 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/08/12 21:34:24 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 void	map_check(int fd, char *map_path)
 {
 	char	**map;
-	int		i;
-	int		j;
 	//int	line_len;
 	// int		player_count;
 	// int		exit_count;
@@ -25,16 +23,9 @@ void	map_check(int fd, char *map_path)
 	map = NULL;
 	map_malloc(fd, &map, map_path);
 	map_fill(fd, map);
-	same_line_length(map);
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j] && valid_char(map[i][j]))
-			j++;
-		ft_printf("Line %d is valid\n", i);
-		i++;
-	}
+	line_len_check(map);
+	char_check(map);
+
 }
 
 /*
@@ -44,7 +35,6 @@ void	map_malloc(int fd, char ***map, char *map_path)
 {
 	int	line_count;
 
-	ft_printf("Map malloc:\n");
 	line_count = count_lines(&fd, map_path);
 	*map = malloc(sizeof(char *) * (line_count + 1));
 	if (!(*map))
@@ -52,16 +42,15 @@ void	map_malloc(int fd, char ***map, char *map_path)
 		perror("Error\nproblem allocating memory for map\n");
 		exit(1);
 	}
-	ft_printf("Map malloced\n");
 	(*map)[line_count] = NULL;
-	ft_printf("last Map slot  malloced with NULL pointer\n");
 	close(fd);
 	fd = open(map_path, O_RDONLY);
 }
 
 /*
 Stores contents of the map file in the map array line by line.
-closes map file once done.
+making sure to trim the \n character from GNL.
+Also, closes map file once finished.
 */
 void	map_fill(int fd, char **map)
 {
@@ -78,6 +67,7 @@ void	map_fill(int fd, char **map)
 			exit(1);
 		}
 		map[i] = ft_strdup(line);
+		map[i][(ft_mystrlen(map[i]) - 1)] = '\0';
 		i++;
 	}
 	close(fd);

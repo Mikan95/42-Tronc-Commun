@@ -21,15 +21,16 @@
 #include "ft_printf.h"
 
 //define function prototypes
-int			arg_check(int argc, char **argv);
-void		map_check(int fd , char *map_path);
-void		map_malloc(int fd, char ***map , char *map_path);
-void		map_fill(int fd, char **map);
-int			count_lines(int *fd, char *map_path);
-int			valid_char(char c);
-void		same_line_length(char **map);
-int			ft_mystrlen(char *str);
-
+int		arg_check(int argc, char **argv);
+void	map_check(int fd , char *map_path);
+void	map_malloc(int fd, char ***map , char *map_path);
+void	map_fill(int fd, char **map);
+int		count_lines(int *fd, char *map_path);
+void	line_len_check(char **map);
+void	char_check(char **map);
+void	check_pec(int P_count, int E_count, int C_count);
+int		valid_char(char c);
+int		ft_mystrlen(char *str);
 //define struct for map
 typedef struct s_data
 {

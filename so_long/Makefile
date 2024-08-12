@@ -5,12 +5,12 @@ UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S), Linux)
 NAME = play
 CC = gcc
-CCFLAGS = -Wall -Werror -Wextra -Ilib/minilibx-linux/ -Ilib/ft_printf/ -Ilib/get_next_line/
+CCFLAGS = -Wall -Werror -Wextra -DGL_SILENCE_DEPRECATION -Ilib/minilibx-linux/ -Ilib/ft_printf/ -Ilib/get_next_line/
 LDFLAGS = -Llib -lmlx -lftprintf -lgnl -lXext -lX11
 RM = rm -f
 
 #define source files
-SRC_FILES = $(addsuffix .c, init error_checks map_utils)
+SRC_FILES = $(addsuffix .c, init error_checks map_utils utils)
 #define object files
 OBJ := $(SRC_FILES:.c=.o)
 
@@ -63,14 +63,14 @@ endif
 ifeq ($(UNAME_S), Darwin)
 NAME = play
 CC = gcc -v
-CCFLAGS = -Wall -Werror -Wextra -I./lib/minilibx_macos/ -I./lib/ft_printf/ -I./lib/get_next_line/
+CCFLAGS = -Wall -Werror -Wextra -DGL_SILENCE_DEPRECATION -I./lib/minilibx_macos/ -I./lib/ft_printf/ -I./lib/get_next_line/
 LDFLAGS = -L./lib -lmlx -lftprintf -lgnl -framework OpenGL -framework AppKit
 MLX = ./lib/libmlx.a
 FTPRINTF = ./lib/libftprintf.a
 GNL = ./lib/libgnl.a
 
 #define source files
-SRC_FILES = $(addsuffix .c, init error_checks map_utils)
+SRC_FILES = $(addsuffix .c, init error_checks map_utils utils)
 #define object files
 OBJ := $(SRC_FILES:.c=.o)
 

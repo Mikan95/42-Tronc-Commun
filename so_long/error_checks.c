@@ -6,17 +6,17 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 12:43:33 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/08 16:43:47 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/08/12 21:41:49 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 /*
-Checks if the command line arguments are valid, if the file is a .ber file,
-and if the file can be opened.
+[1]	Checks if the command line arguments are valid,
+	if the file is a .ber file and if the file can be opened.
 
-Returns: the file descriptor of the opened file.
+	Returns: the file descriptor of the opened file.
 */
 int	arg_check(int argc, char **argv)
 {
@@ -47,42 +47,21 @@ int	arg_check(int argc, char **argv)
 }
 
 /*
-Checks that only valid characters are used in the map file
-Exits the program with an error message if an invalid character is found
+[2]	Checks that all lines are the same length.
+	If not, prints out an error message.
 */
-int	valid_char(char c)
+void	line_len_check(char **map)
 {
-	if (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P')
-		return (1);
-	else
-	{
-		perror("Error\nInvalid character used in map file");
-		exit(1);
-	}
-	return (0);
-}
-
-int	ft_mystrlen(char *str)
-{
-	int	len;
-
-	len = 0;
-	while (str[len] != '\0')
-		len++;
-	return (len);
-}
-
-void	same_line_length(char **map)
-{
-	int	i;
-	int	len;
+	int		i;
+	int		len;
 	char	**temp;
 
+	i = 0;
 	temp = map;
 	len = ft_mystrlen(temp[i]);
 	while (temp[i])
 	{
-		if(ft_mystrlen(temp[i]) == len)
+		if (ft_mystrlen(temp[i]) == len)
 			i++;
 		else
 		{
@@ -92,31 +71,39 @@ void	same_line_length(char **map)
 	}
 }
 
-
 /*
-PREVIOUS VERSION OF same_line_length;
+[3]	Checks that only valid chars are used in the map file.
+	also counts occurences of 'P', 'E', and 'C'
+		Player			= counts[0]
+		Exit			= counts[1]
+		Collectibles	= counts[2]
+*/
+void	char_check(char **map)
 {
-	int		len1;
-	int		len2;
-	char	*temp;
+	int	i;
+	int	j;
+	int	counts[3];
 
-	temp = map;
-	len1 = ft_mystrlen(temp);
-	len2 = ft_mystrlen(++temp);
-	ft_printf("len1: %d\n", len1);
-	ft_printf("len2: %d\n", len2);
-	if (!temp)
-		return (1);
-	if (len1 == len2)
+	counts[0] = 0;
+	counts[1] = 0;
+	counts[2] = 0;
+	i = 0;
+	while (map[i])
 	{
-		ft_printf("Lines %d and %d are the same length\n", i, i+1);
-		return (1);
+		j = 0;
+		while (map[i][j] && valid_char(map[i][j]))
+		{
+			if (map[i][j] == 'P')
+				counts[0]++;
+			else if (map[i][j] == 'E')
+				counts[1]++;
+			else if (map[i][j] == 'C')
+				counts[2]++;
+			j++;
+		}
+		i++;
 	}
-	else
-		return (1);
-/* 	{
-		perror("Error\nMap is not rectangle or square");
-		exit(1);
-	} */
-	return (0);
-} */
+	check_pec(counts[0], counts[1], counts[2]);
+}
+
+//void	wall_check()
