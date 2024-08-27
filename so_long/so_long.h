@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@42.ch>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/28 12:45:14 by ameechan          #+#    #+#             */
-/*   Updated: 2024/07/28 12:45:14 by ameechan         ###   ########.fr       */
+/*   Created: 2024/08/27 17:35:57 by ameechan          #+#    #+#             */
+/*   Updated: 2024/08/27 17:36:16 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,13 @@ void	map_malloc(int fd, char ***map , char *map_path);
 void	map_fill(int fd, char **map);
 int		count_lines(int *fd, char *map_path);
 void	line_len_check(char **map);
+void	check_borders(char **map);
 void	char_check(char **map);
 void	check_pec(int P_count, int E_count, int C_count);
 int		valid_char(char c);
 int		ft_mystrlen(char *str);
+int		array_size(char **array);
+
 //define struct for map
 typedef struct s_data
 {

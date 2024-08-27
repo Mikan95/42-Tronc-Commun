@@ -3,36 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@42.ch>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/12 21:17:42 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/12 21:31:26 by ameechan         ###   ########.fr       */
+/*   Created: 2024/08/27 17:39:13 by ameechan          #+#    #+#             */
+/*   Updated: 2024/08/27 17:39:13 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*
-Receives the number of occurences of P, E and C and checks they are valid
-Prints out an error message and exits the program if invalid
-*/
-void	check_pec(int P_count, int E_count, int C_count)
+//Counts and returns the size of a **char
+int	array_size(char **array)
 {
-	if (P_count != 1)
-	{
-		ft_printf("Error\nP must equal 1\nCurrent P = %d", P_count);
-		exit (1);
-	}
-	if (E_count != 1)
-	{
-		ft_printf("Error\nE must equal 1\nCurrent E = %d", E_count);
-		exit (1);
-	}
-	if (C_count < 1)
-	{
-		ft_printf("Error\nC must be > 0\nCurrent C = %d", C_count);
-		exit (1);
-	}
+	int	size;
+
+	size = 0;
+	while(array[size])
+		size++;
+	return (size);
 }
 
 //Counts and returns the length of a string
@@ -60,4 +48,27 @@ int	valid_char(char c)
 		exit(1);
 	}
 	return (0);
+}
+
+/*
+Receives the number of occurences of P, E and C and checks they are valid
+Prints out an error message and exits the program if invalid
+*/
+void	check_pec(int P_count, int E_count, int C_count)
+{
+	if (P_count != 1)
+	{
+		ft_printf("Error\nP must equal 1\nCurrent P = %d", P_count);
+		exit (1);
+	}
+	if (E_count != 1)
+	{
+		ft_printf("Error\nE must equal 1\nCurrent E = %d", E_count);
+		exit (1);
+	}
+	if (C_count < 1)
+	{
+		ft_printf("Error\nC must be > 0\nCurrent C = %d", C_count);
+		exit (1);
+	}
 }

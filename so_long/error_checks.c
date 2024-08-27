@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_checks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@42.ch>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/06 12:43:33 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/12 21:41:49 by ameechan         ###   ########.fr       */
+/*   Created: 2024/08/27 17:39:26 by ameechan          #+#    #+#             */
+/*   Updated: 2024/08/27 17:57:55 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,39 @@ void	char_check(char **map)
 	check_pec(counts[0], counts[1], counts[2]);
 }
 
-//void	wall_check()
+/*
+Checks that the first and last line of the map are all '0'
+Checks that both the first and last characters of each line between
+the top and bottom of the map are '0'
+*/
+void	check_borders(char **map)
+{
+	int	size;
+	int	len;
+	int	i;
+
+	size = array_size(map);
+	i = 0;
+	while(map[0][i])
+	{
+		if (map[0][i] == '0' && map[size][i] == '0')
+			i++;
+		else
+		{
+			ft_printf("Error\nMap borders are not valid\n");
+			exit(1);
+		}
+	}
+	i = 1;
+	len = ft_mystrlen(map[0][i]);
+	while(i < size)
+	{
+		if (map[i][0] == '0' && map[i][len] == '0')
+			i++;
+		else
+		{
+			ft_printf("Error\nMap borders are not valid\n");
+			exit(1);
+		}
+	}
+}
