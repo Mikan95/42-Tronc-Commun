@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@42.ch>                   +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 17:16:44 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/28 17:16:44 by ameechan         ###   ########.ch       */
+/*   Created: 2024/08/28 19:24:58 by ameechan          #+#    #+#             */
+/*   Updated: 2024/08/28 19:25:16 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	map_check(int fd, char *map_path)
 	map_width = line_len_check(map);
 	char_check(map);
 	check_borders(map, map_height, map_width);
+	bfs(map, map_height, map_width);
 	free_map(map);
 }
 

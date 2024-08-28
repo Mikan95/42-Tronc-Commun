@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@42.ch>                   +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 17:27:43 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/28 17:27:43 by ameechan         ###   ########.ch       */
+/*   Created: 2024/08/28 18:38:20 by ameechan          #+#    #+#             */
+/*   Updated: 2024/08/28 18:39:05 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	main(int argc, char **argv)
 	int		fd;
 
 	fd = arg_check(argc, argv);
-//	ft_printf("first line of %s is:\n%s\n", argv[1], get_next_line(fd));	//DELETE LATER
 	map_check(fd, argv[1]);
 	var.mlx = mlx_init();
 	if (!var.mlx)
@@ -50,5 +49,3 @@ int	main(int argc, char **argv)
 	mlx_put_image_to_window(var.mlx, var.win, var.img_ptr, 0, 0);
 	mlx_loop(var.mlx);
 }
-
-

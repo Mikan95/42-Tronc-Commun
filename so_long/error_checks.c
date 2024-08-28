@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_checks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@42.ch>                   +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 17:31:55 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/28 17:32:12 by ameechan         ###   ########.ch       */
+/*   Created: 2024/08/28 19:36:43 by ameechan          #+#    #+#             */
+/*   Updated: 2024/08/28 19:36:43 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	check_borders(char **map, int map_height, int map_width)
 	int	i;
 
 	i = 0;
-	while(i < map_width)
+	while (i < map_width)
 	{
 		if (map[0][i] == '1' && map[map_height - 1][i] == '1')
 			i++;
@@ -123,7 +123,7 @@ void	check_borders(char **map, int map_height, int map_width)
 			ft_perror("Error\nMap's top or bottom borders are not valid");
 	}
 	i = 1;
-	while(i < map_height)
+	while (i < map_height)
 	{
 		if (map[i][0] == '1' && map[i][map_width - 1] == '1')
 			i++;

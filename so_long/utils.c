@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@42.ch>                   +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 16:57:54 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/28 16:57:54 by ameechan         ###   ########.ch       */
+/*   Created: 2024/08/28 18:41:03 by ameechan          #+#    #+#             */
+/*   Updated: 2024/08/28 18:41:32 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	array_size(char **array)
 	int	size;
 
 	size = 0;
-	while(array[size])
+	while (array[size])
 		size++;
 	return (size);
 }
@@ -28,8 +28,6 @@ int	ft_mystrlen(char *str)
 {
 	int	len;
 
-	// if(!str)
-	// 	return (0);
 	len = 0;
 	while (str[len] != '\0')
 		len++;

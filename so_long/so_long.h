@@ -3,22 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@42.ch>                   +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 17:27:56 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/28 17:29:49 by ameechan         ###   ########.ch       */
+/*   Created: 2024/08/28 20:03:16 by ameechan          #+#    #+#             */
+/*   Updated: 2024/08/28 20:03:16 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-#include <mlx.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include "get_next_line.h"
-#include "ft_printf.h"
+# include <mlx.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include "get_next_line.h"
+# include "ft_printf.h"
+
+//define struct for BFS starting position
+typedef struct pos_data
+{
+	int	row;
+	int column;
+} 				s_pos;
 
 //main functions' prototypes
 int		arg_check(int argc, char **argv);
@@ -26,10 +33,14 @@ void	char_check(char **map);
 void	check_borders(char **map, int map_height, int map_width);
 int		count_lines(int *fd, char *map_path);
 int		line_len_check(char **map);
-void	map_check(int fd , char *map_path);
+void	map_check(int fd, char *map_path);
 void	map_fill(int fd, char **map, int map_height);
-int		map_malloc(int fd, char ***map , char *map_path);
+int		map_malloc(int fd, char ***map, char *map_path);
 int		valid_char(char c);
+
+//bfs functions
+void	bfs(char **map, int map_height, int map_width);
+void	find_start(char **map, s_pos *start_pos);
 
 //utility functions
 int		array_size(char **array);
@@ -48,6 +59,7 @@ typedef struct s_data
 	int		height;
 }				t_data;
 
+
 //DEFINE KEYCODES WSL2
 # define ESC_KEY 65307
 # define W_KEY 119
@@ -62,4 +74,3 @@ typedef struct s_data
 # define S_KEY 1
 # define D_KEY 2
 #endif*/
-
