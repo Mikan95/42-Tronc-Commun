@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@42.ch>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 17:29:52 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/27 17:30:08 by ameechan         ###   ########.ch       */
+/*   Created: 2024/08/28 17:16:44 by ameechan          #+#    #+#             */
+/*   Updated: 2024/08/28 17:16:44 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,23 @@
 void	map_check(int fd, char *map_path)
 {
 	char	**map;
-	//int	line_len;
-	// int		player_count;
-	// int		exit_count;
-	// int		collectable_count;
+	int		map_height;
+	int		map_width;
 
 	map = NULL;
-	map_malloc(fd, &map, map_path);
-	map_fill(fd, map);
-	line_len_check(map);
+	map_height = map_malloc(fd, &map, map_path);
+	map_fill(fd, map, map_height);
+	map_width = line_len_check(map);
 	char_check(map);
-	check_borders(map);
-
+	check_borders(map, map_height, map_width);
+	free_map(map);
 }
 
 /*
 allocates memory for the map array,terminates the array with a NULL pointer
+and returns the number of lines in the map file.
 */
-void	map_malloc(int fd, char ***map, char *map_path)
+int	map_malloc(int fd, char ***map, char *map_path)
 {
 	int	line_count;
 
@@ -46,6 +45,7 @@ void	map_malloc(int fd, char ***map, char *map_path)
 	(*map)[line_count] = NULL;
 	close(fd);
 	fd = open(map_path, O_RDONLY);
+	return (line_count);
 }
 
 /*
@@ -53,13 +53,13 @@ Stores contents of the map file in the map array line by line.
 making sure to trim the \n character from GNL.
 Also, closes map file once finished.
 */
-void	map_fill(int fd, char **map)
+void	map_fill(int fd, char **map, int map_height)
 {
 	int		i;
 	char	*line;
 
 	i = 0;
-	while (map[i])
+	while (i < map_height)
 	{
 		line = get_next_line(fd);
 		if (!line)
@@ -102,4 +102,17 @@ int	count_lines(int *fd, char *map_path)
 	close(*fd);
 	*fd = open(map_path, O_RDONLY);
 	return (count);
+}
+
+void	free_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }

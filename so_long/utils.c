@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@42.ch>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 17:39:13 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/27 17:39:13 by ameechan         ###   ########.ch       */
+/*   Created: 2024/08/28 16:57:54 by ameechan          #+#    #+#             */
+/*   Updated: 2024/08/28 16:57:54 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	ft_mystrlen(char *str)
 {
 	int	len;
 
+	// if(!str)
+	// 	return (0);
 	len = 0;
 	while (str[len] != '\0')
 		len++;
@@ -71,4 +73,10 @@ void	check_pec(int P_count, int E_count, int C_count)
 		ft_printf("Error\nC must be > 0\nCurrent C = %d", C_count);
 		exit (1);
 	}
+}
+
+void	ft_perror(char *errmsg)
+{
+	ft_printf("%s\n", errmsg);
+	exit (1);
 }

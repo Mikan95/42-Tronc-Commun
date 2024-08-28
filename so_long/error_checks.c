@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@42.ch>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/27 17:39:26 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/27 17:57:55 by ameechan         ###   ########.ch       */
+/*   Created: 2024/08/28 17:31:55 by ameechan          #+#    #+#             */
+/*   Updated: 2024/08/28 17:32:12 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,10 @@ int	arg_check(int argc, char **argv)
 
 /*
 [2]	Checks that all lines are the same length.
+	If the map is square/rectangular, returns the length of the first line.
 	If not, prints out an error message.
 */
-void	line_len_check(char **map)
+int	line_len_check(char **map)
 {
 	int		i;
 	int		len;
@@ -64,11 +65,9 @@ void	line_len_check(char **map)
 		if (ft_mystrlen(temp[i]) == len)
 			i++;
 		else
-		{
-			perror("Error\nMap is not rectangular or square");
-			exit (1);
-		}
+			ft_perror("Error\nMap is not rectangular or square");
 	}
+	return (len);
 }
 
 /*
@@ -111,34 +110,24 @@ Checks that the first and last line of the map are all '0'
 Checks that both the first and last characters of each line between
 the top and bottom of the map are '0'
 */
-void	check_borders(char **map)
+void	check_borders(char **map, int map_height, int map_width)
 {
-	int	size;
-	int	len;
 	int	i;
 
-	size = array_size(map);
 	i = 0;
-	while(map[0][i])
+	while(i < map_width)
 	{
-		if (map[0][i] == '0' && map[size][i] == '0')
+		if (map[0][i] == '1' && map[map_height - 1][i] == '1')
 			i++;
 		else
-		{
-			ft_printf("Error\nMap borders are not valid\n");
-			exit(1);
-		}
+			ft_perror("Error\nMap's top or bottom borders are not valid");
 	}
 	i = 1;
-	len = ft_mystrlen(map[0][i]);
-	while(i < size)
+	while(i < map_height)
 	{
-		if (map[i][0] == '0' && map[i][len] == '0')
+		if (map[i][0] == '1' && map[i][map_width - 1] == '1')
 			i++;
 		else
-		{
-			ft_printf("Error\nMap borders are not valid\n");
-			exit(1);
-		}
+			ft_perror("Error\nMap's side borders are not valid");
 	}
 }

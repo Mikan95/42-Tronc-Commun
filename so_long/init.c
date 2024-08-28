@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@42.ch>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/19 16:19:10 by ameechan          #+#    #+#             */
-/*   Updated: 2024/07/19 16:19:10 by ameechan         ###   ########.fr       */
+/*   Created: 2024/08/28 17:27:43 by ameechan          #+#    #+#             */
+/*   Updated: 2024/08/28 17:27:43 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	close_window(t_data *data)
 
 int	key_hook(int keycode, t_data *data)
 {
-//	ft_printf("keycode: %d\n", keycode);
+	ft_printf("keycode: %d\n", keycode);
 	if (keycode == ESC_KEY)
 		close_window(data);
 	return (0);
@@ -51,4 +51,4 @@ int	main(int argc, char **argv)
 	mlx_loop(var.mlx);
 }
 
-//gcc init.c -o init -Iminilibx-linux/ -Lminilibx-linux/ -lmlx -lX11 -lXext
+

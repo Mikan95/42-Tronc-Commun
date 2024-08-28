@@ -6,7 +6,10 @@ ifeq ($(UNAME_S), Linux)
 NAME = play
 CC = gcc
 CCFLAGS = -Wall -Werror -Wextra -DGL_SILENCE_DEPRECATION -Ilib/minilibx-linux/ -Ilib/ft_printf/ -Ilib/get_next_line/
-LDFLAGS = -Llib -lmlx -lftprintf -lgnl -lXext -lX11
+LDFLAGS = -Llib -lmlx -lftprintf -lgnl -lm -lz
+MLX = lib/libmlx.a
+FTPRINTF = lib/libftprintf.a
+GNL = lib/libgnl.a
 RM = rm -f
 
 #define source files
@@ -14,29 +17,24 @@ SRC_FILES = $(addsuffix .c, init error_checks map_utils utils)
 #define object files
 OBJ := $(SRC_FILES:.c=.o)
 
-#define library targets
-MLX = lib/libmlx.a
-FTPRINTF = lib/libftprintf.a
-GNL = lib/libgnl.a
-
 #default rules
 all: $(NAME)
 
 #build minilibx, ft_printf and GNL
 $(MLX):
-	$(MAKE) -C ./lib/minilibx-linux/
+	$(MAKE) -C lib/minilibx-linux/
 $(FTPRINTF):
-	$(MAKE) -C ./lib/ft_printf/ -f Makefile
+	$(MAKE) -C lib/ft_printf/ -f Makefile
 $(GNL):
-	$(MAKE) -C ./lib/get_next_line/ -f Makefile
+	$(MAKE) -C lib/get_next_line/ -f Makefile
 
 #compile the object files
 %.o : %.c
-	$(CC) $(CCFLAGS) -Ilib -c $< -o $@
+	$(CC) $(CCFLAGS) -I/usr/include -Ilib -O3 -c $< -o $@
 
 #compile the project
 $(NAME): $(OBJ) $(MLX) $(FTPRINTF) $(GNL)
-	$(CC) $(CCFLAGS) $(LDFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CCFLAGS) $(LDFLAGS) $(OBJ) $(MLX) $(FTPRINTF) $(GNL) -o $(NAME) -lXext -lX11
 	@echo "Compilation done"
 
 #clean the object files
@@ -54,7 +52,6 @@ fclean: clean
 
 #recompile the project
 re: fclean all
-
 
 .PHONY: clean fclean re
 endif
