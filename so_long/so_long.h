@@ -39,8 +39,10 @@ int		map_malloc(int fd, char ***map, char *map_path);
 int		valid_char(char c);
 
 //bfs functions
-void	bfs(char **map, int map_height, int map_width);
+void	bfs_prep(char **map, int map_height, int map_width);
 void	find_start(char **map, s_pos *start_pos);
+void	copy_map(char **map_src, char **map_copy);
+void	copy_malloc(char ***map_copy, int height, int width);
 
 //utility functions
 int		array_size(char **array);
@@ -61,16 +63,17 @@ typedef struct s_data
 
 
 //DEFINE KEYCODES WSL2
-# define ESC_KEY 65307
+/* # define ESC_KEY 65307
 # define W_KEY 119
 # define A_KEY 97
 # define S_KEY 115
 # define D_KEY 100
-#endif
+#endif */
 //DEFINE KEYCODES MAC
-/* # define ESC_KEY 53
+# define ESC_KEY 53
 # define W_KEY 13
 # define A_KEY 0
 # define S_KEY 1
 # define D_KEY 2
-#endif*/
+#endif
+

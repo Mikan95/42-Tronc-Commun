@@ -24,7 +24,7 @@ void	map_check(int fd, char *map_path)
 	map_width = line_len_check(map);
 	char_check(map);
 	check_borders(map, map_height, map_width);
-	bfs(map, map_height, map_width);
+	bfs_prep(map, map_height, map_width);
 	free_map(map);
 }
 
