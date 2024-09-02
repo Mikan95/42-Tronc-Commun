@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 20:03:40 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/02 16:24:43 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/09/02 18:53:35 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ void	bfs_prep(char **map, int map_height, int map_width)
 	find_start(map, start_pos);
 	copy_malloc(&map_copy, map_height, map_width);
 	copy_map(map, map_copy);
-	bfs(map_copy, start_pos);
+	bfs(map_copy, *start_pos, map_width, map_height);
+	free(start_pos);
 }

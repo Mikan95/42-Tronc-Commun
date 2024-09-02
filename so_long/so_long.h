@@ -39,10 +39,12 @@ int		map_malloc(int fd, char ***map, char *map_path);
 int		valid_char(char c);
 
 //bfs functions
+void	bfs(char **map_copy, s_pos start_pos, int width, int height);
 void	bfs_prep(char **map, int map_height, int map_width);
-void	find_start(char **map, s_pos *start_pos);
 void	copy_map(char **map_src, char **map_copy);
 void	copy_malloc(char ***map_copy, int height, int width);
+void	find_start(char **map, s_pos *start_pos);
+int		valid_pos(int row, int column, int width, int height, char **map_copy);
 
 //utility functions
 int		array_size(char **array);
