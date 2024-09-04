@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 18:38:20 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/28 18:39:05 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/04 15:47:52 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/04 15:47:52 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,15 @@ int	key_hook(int keycode, t_data *data)
 int	main(int argc, char **argv)
 {
 	t_data	var;
-	char	*path = "./assets/Background.xpm";
-	int		fd;
+	t_map	*node;
+	char	*path = "./assets/Background.xpm";//		TEMPORARY
 
-	fd = arg_check(argc, argv);
-	map_check(fd, argv[1]);
+	node = malloc(sizeof (t_map));
+	if (!node)
+		ft_perror("Error\n node mem allocation failure\n");
+	node->fd = arg_check(argc, argv);
+	node->file_path = argv[1];
+	map_check(node);
 	var.mlx = mlx_init();
 	if (!var.mlx)
 		return (1);

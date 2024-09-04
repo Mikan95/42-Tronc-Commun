@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs_prep.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 20:03:40 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/02 18:53:35 by ameechan         ###   ########.fr       */
+/*   Created: 2024/09/04 16:03:15 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/04 16:03:19 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,18 @@ void	copy_map(char **map_src, char **map_copy)
 /*
 Creates a 2d array big enough to store a copy of the contents of map inside it
 */
-void	copy_malloc(char ***map_copy, int height, int width)
+void	copy_malloc(char ***map_copy, t_map *node)
 {
 	int	i;
 
 	i = 0;
-	*map_copy = malloc(sizeof(char *) * (height + 1));
+	*map_copy = malloc(sizeof(char *) * (node->height + 1));
 	if (!(*map_copy))
 		ft_perror("Error\nmap_copy memory allocation problem\n");
-	(*map_copy)[height] = NULL;
-	while (i < height)
+	(*map_copy)[node->height] = NULL;
+	while (i < node->height)
 	{
-		(*map_copy)[i] = malloc(sizeof(char) * width + 1);
+		(*map_copy)[i] = malloc(sizeof(char) * node->width + 1);
 		if (!(*map_copy)[i])
 			ft_perror("Error\nmap_copy memory allocation problem\n");
 		i++;
@@ -64,11 +64,15 @@ void	copy_malloc(char ***map_copy, int height, int width)
 Finds the position of `P` in `map` and stores its coordinates
 in `start_pos` struct
 */
-void	find_start(char **map, s_pos *start_pos)
+void	find_start(char **map, t_map *node)
 {
 	int	i;
 	int	j;
+	t_pos	*start;
 
+	start = malloc(sizeof(t_pos));
+	if (!start)
+		ft_perror("Error\nMemory allocation failure\n");
 	i = 0;
 	while (map[i])
 	{
@@ -77,31 +81,28 @@ void	find_start(char **map, s_pos *start_pos)
 		{
 			if (map[i][j] == 'P')
 			{
-				start_pos->row = i;
-				start_pos->column = j;
+				start->row = i;
+				start->column = j;
 			}
 			j++;
 		}
 		i++;
 	}
+	node->start = start;
 }
 
 /*
 Creates a copy of map** and stores position of `P` in `start_pos` struct
 then intiates bfs()
 */
-void	bfs_prep(char **map, int map_height, int map_width)
+void	bfs_prep(t_map *node)
 {
-	s_pos	*start_pos;
 	char	**map_copy;
 
 	map_copy = NULL;
-	start_pos = malloc(sizeof(s_pos));
-	if (!start_pos)
-		ft_perror("Error\nMemory allocation failure\n");
-	find_start(map, start_pos);
-	copy_malloc(&map_copy, map_height, map_width);
-	copy_map(map, map_copy);
-	bfs(map_copy, *start_pos, map_width, map_height);
-	free(start_pos);
+	find_start(node->map, node);
+	ft_printf("node->start: (%d:%d)\n", node->start->row, node->start->column);
+	copy_malloc(&map_copy, node);
+	copy_map(node->map, map_copy);
+	bfs(map_copy, node);
 }

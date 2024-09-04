@@ -5,38 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 19:24:58 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/28 19:25:16 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/04 15:56:27 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/04 15:56:27 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	map_check(int fd, char *map_path)
+void	map_check(t_map *node)
 {
 	char	**map;
-	int		map_height;
-	int		map_width;
 
 	map = NULL;
-	map_height = map_malloc(fd, &map, map_path);
-	map_fill(fd, map, map_height);
-	map_width = line_len_check(map);
+	map_malloc(&map, node);
+	map_fill(node);
+	node->width = line_len_check(map);
 	char_check(map);
-	check_borders(map, map_height, map_width);
-	bfs_prep(map, map_height, map_width);
+	check_borders(map, node->height, node->width);
+	bfs_prep(node);
 	free_map(map);
 }
 
 /*
 allocates memory for the map array,terminates the array with a NULL pointer
-and returns the number of lines in the map file.
+stores map and map height in t_map *node
 */
-int	map_malloc(int fd, char ***map, char *map_path)
+void	map_malloc(char ***map, t_map *node)
 {
 	int	line_count;
 
-	line_count = count_lines(&fd, map_path);
+	line_count = count_lines(&node->fd, node->file_path);
 	*map = malloc(sizeof(char *) * (line_count + 1));
 	if (!(*map))
 	{
@@ -44,9 +42,10 @@ int	map_malloc(int fd, char ***map, char *map_path)
 		exit(1);
 	}
 	(*map)[line_count] = NULL;
-	close(fd);
-	fd = open(map_path, O_RDONLY);
-	return (line_count);
+	close(node->fd);
+	node->fd = open(node->file_path, O_RDONLY);
+	node->map = *map;
+	node->height = line_count;
 }
 
 /*
@@ -54,25 +53,25 @@ Stores contents of the map file in the map array line by line.
 making sure to trim the \n character from GNL.
 Also, closes map file once finished.
 */
-void	map_fill(int fd, char **map, int map_height)
+void	map_fill(t_map *node)
 {
 	int		i;
 	char	*line;
 
 	i = 0;
-	while (i < map_height)
+	while (i < node->height)
 	{
-		line = get_next_line(fd);
+		line = get_next_line(node->fd);
 		if (!line)
 		{
 			perror("Error\nproblem getting next line from map");
 			exit(1);
 		}
-		map[i] = ft_strdup(line);
-		map[i][(ft_mystrlen(map[i]) - 1)] = '\0';
+		node->map[i] = ft_strdup(line);
+		node->map[i][(ft_mystrlen(node->map[i]) - 1)] = '\0';
 		i++;
 	}
-	close(fd);
+	close(node->fd);
 }
 
 /*

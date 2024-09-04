@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/02 16:57:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/02 18:59:19 by ameechan         ###   ########.fr       */
+/*   Created: 2024/09/04 15:58:01 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/04 16:00:24 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,26 @@
 #define MAX_ROWS 100
 #define MAX_COLS 100
 
-void	bfs(char **map_copy, s_pos start_pos, int width, int height)
+void	bfs(char **map_copy, t_map *node)
 {
 	int		front;
 	int		rear;
-	s_pos	queue[MAX_ROWS * MAX_COLS];
-	s_pos	current;
+	t_pos	queue[MAX_ROWS * MAX_COLS];
+	t_pos	current;
 
 	front = 0;
 	rear = 0;
-	queue[rear].column = start_pos.column;
-	queue[rear].row = start_pos.row;
+	queue[rear].column = node->start->column;
+	queue[rear].row = node->start->row;
 	rear++;
-	map_copy[start_pos.row][start_pos.column] = 'v';
-	if (!valid_pos(1, 5, width, height, map_copy))
+	map_copy[node->start->row][node->start->column] = 'v';
+	if (!valid_pos(1, 5, node, map_copy))
 		ft_perror("Error\nInvalid position or already visited\n");
 	while (front < rear)
 	{
 		current = queue[front];
 		front = rear;
-		move_row(current.row, current.column, width, height, )
+		// move_row(current.row, current.column, width, height, );
 		ft_printf("current: %d:%d\n", current.row, current.column);
 	}
 }
@@ -43,14 +43,14 @@ Checks if a position is within the boundaries of the map
 then checks if the current position is a wall or has already been visited
 returns 1 if valid position and 0 if not
 */
-int	valid_pos(int row, int column, int width, int height, char **map_copy)
+int	valid_pos(int row, int column, t_map *node, char **map_copy)
 {
 	int	valid;
 	char	current;
 
 	valid = 0;
 	current = map_copy[row][column];
-	if (row >= 0 && row < height && column >= 0 && column < width)
+	if (row >= 0 && row < node->height && column >= 0 && column < node->width)
 		valid = 1;
 	if (current == '1' || current == 'v')
 		valid = 0;
