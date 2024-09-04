@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 19:36:43 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/28 19:36:43 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/04 17:22:30 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/04 17:22:42 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,19 +73,15 @@ int	line_len_check(char **map)
 /*
 [3]	Checks that only valid chars are used in the map file.
 	also counts occurences of 'P', 'E', and 'C'
-		Player			= counts[0]
-		Exit			= counts[1]
-		Collectibles	= counts[2]
 */
-void	char_check(char **map)
+void	char_check(char **map, t_map *node)
 {
 	int	i;
 	int	j;
-	int	counts[3];
 
-	counts[0] = 0;
-	counts[1] = 0;
-	counts[2] = 0;
+	node->p_total = 0;
+	node->e_total = 0;
+	node->c_total = 0;
 	i = 0;
 	while (map[i])
 	{
@@ -93,22 +89,36 @@ void	char_check(char **map)
 		while (map[i][j] && valid_char(map[i][j]))
 		{
 			if (map[i][j] == 'P')
-				counts[0]++;
+				node->p_total++;
 			else if (map[i][j] == 'E')
-				counts[1]++;
+				node->e_total++;
 			else if (map[i][j] == 'C')
-				counts[2]++;
+				node->c_total++;
 			j++;
 		}
 		i++;
 	}
-	check_pec(counts[0], counts[1], counts[2]);
+	check_pec(node);
 }
 
 /*
-Checks that the first and last line of the map are all '0'
+Checks that P E & C are valid
+Prints out an error message and exits the program if invalid
+*/
+void	check_pec(t_map *node)
+{
+	if (node->p_total != 1)
+		ft_perror("Error\nP must equal 1\n");
+	if (node->e_total != 1)
+		ft_perror("Error\nE must equal 1\n");
+	if (node->c_total < 1)
+		ft_perror("Error\nC must be > 0\n");
+}
+
+/*
+Checks that the first and last line of the map are all '1' (walls)
 Checks that both the first and last characters of each line between
-the top and bottom of the map are '0'
+the top and bottom of the map are '1' (walls)
 */
 void	check_borders(char **map, int map_height, int map_width)
 {

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 16:00:38 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/04 16:02:17 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/04 17:11:43 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/04 17:11:43 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 //define struct for storing coordinates
 typedef struct s_pos
 {
-	int	row;
-	int	column;
+	int	y;
+	int	x;
 } 				t_pos;
 
 //define struct for all map related data
@@ -32,40 +32,43 @@ typedef struct s_map
 {
 	char	*file_path;
 	char	**map;
+	char	**visited;
 	int		fd;
 	int		height;
 	int		width;
-	int		total_obj;
-	int		bfs_obj;
+	int		p_total;
+	int		e_total;
+	int		c_total;
+	int		c_bfs;
 	t_pos	*start;
 	t_pos	*exit;
 }				t_map;
 
 //main functions' prototypes
-int		arg_check(int argc, char **argv);
-void	char_check(char **map);
-void	check_borders(char **map, int map_height, int map_width);
-int		count_lines(int *fd, char *map_path);
-int		line_len_check(char **map);
-void	map_check(t_map *node);
-void	map_fill(t_map *node);
-void	map_malloc(char ***map, t_map *node);
-int		valid_char(char c);
+int			arg_check(int argc, char **argv);
+void		char_check(char **map, t_map *node);
+void		check_borders(char **map, int map_height, int map_width);
+int			count_lines(int *fd, char *map_path);
+int			line_len_check(char **map);
+void		map_check(t_map *node);
+void		map_fill(t_map *node);
+void		map_malloc(char ***map, t_map *node);
+int			valid_char(char c);
 
 //bfs functions
-void	bfs(char **map_copy, t_map *node);
-void	bfs_prep(t_map *node);
-void	copy_map(char **map_src, char **map_copy);
-void	copy_malloc(char ***map_copy, t_map *node);
-void	find_start(char **map, t_map *node);
-int		valid_pos(int row, int column, t_map *node, char **map_copy);
+//void		bfs(char **map_copy, t_map *node, t_pos start);
+void		bfs_prep(t_map *node);
+void		copy_map(char **map_src, char **map_copy);
+void		copy_malloc(char ***map_copy, t_map *node);
+void		find_start(char **map, t_map *node);
+int			valid_pos(int row, int column, t_map *node, char **map_copy);
 
 //utility functions
-int		array_size(char **array);
-void	check_pec(int P_count, int E_count, int C_count);
-int		ft_mystrlen(char *str);
-void	ft_perror(char *errmsg);
-void	free_map(char **map);
+int			array_size(char **array);
+void		check_pec(t_map *node);
+int			ft_mystrlen(char *str);
+void		ft_perror(char *errmsg);
+void		free_map(char **map);
 
 //define struct for mlx
 typedef struct s_data

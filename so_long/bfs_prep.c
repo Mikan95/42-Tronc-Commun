@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 16:03:15 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/04 16:03:19 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/04 17:36:43 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/04 17:37:14 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,10 @@ void	copy_map(char **map_src, char **map_copy)
 			map_copy[i][j] = map_src[i][j];
 			j++;
 		}
+		map_copy[i][j] = '\0';
 		i++;
 	}
 	i = 0;
-/* 	while (map_copy[i])
-	{
-		ft_printf("map_copy[%d]: %s\n", i, map_copy[i]);
-		i++;
-	} */
 }
 
 /*
@@ -81,8 +77,8 @@ void	find_start(char **map, t_map *node)
 		{
 			if (map[i][j] == 'P')
 			{
-				start->row = i;
-				start->column = j;
+				start->y = i;
+				start->x = j;
 			}
 			j++;
 		}
@@ -92,8 +88,8 @@ void	find_start(char **map, t_map *node)
 }
 
 /*
-Creates a copy of map** and stores position of `P` in `start_pos` struct
-then intiates bfs()
+Creates a copy of map**, finds and stores position of `P` in node
+sets c_bfs to 0 in preparation for bfs
 */
 void	bfs_prep(t_map *node)
 {
@@ -101,8 +97,8 @@ void	bfs_prep(t_map *node)
 
 	map_copy = NULL;
 	find_start(node->map, node);
-	ft_printf("node->start: (%d:%d)\n", node->start->row, node->start->column);
 	copy_malloc(&map_copy, node);
 	copy_map(node->map, map_copy);
-	bfs(map_copy, node);
+	node->visited = map_copy;
+	node->c_bfs = 0;
 }

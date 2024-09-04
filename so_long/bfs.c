@@ -5,38 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 15:58:01 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/04 16:00:24 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/04 17:10:32 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/04 17:10:32 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#define MAX_ROWS 100
-#define MAX_COLS 100
-
-void	bfs(char **map_copy, t_map *node)
-{
-	int		front;
-	int		rear;
-	t_pos	queue[MAX_ROWS * MAX_COLS];
-	t_pos	current;
-
-	front = 0;
-	rear = 0;
-	queue[rear].column = node->start->column;
-	queue[rear].row = node->start->row;
-	rear++;
-	map_copy[node->start->row][node->start->column] = 'v';
-	if (!valid_pos(1, 5, node, map_copy))
-		ft_perror("Error\nInvalid position or already visited\n");
-	while (front < rear)
-	{
-		current = queue[front];
-		front = rear;
-		// move_row(current.row, current.column, width, height, );
-		ft_printf("current: %d:%d\n", current.row, current.column);
-	}
-}
 
 /*
 Checks if a position is within the boundaries of the map

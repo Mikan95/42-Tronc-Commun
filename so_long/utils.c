@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/28 18:41:03 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/28 18:41:32 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/04 16:46:12 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/04 16:46:12 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,6 @@ int	valid_char(char c)
 		exit(1);
 	}
 	return (0);
-}
-
-/*
-Receives the number of occurences of P, E and C and checks they are valid
-Prints out an error message and exits the program if invalid
-*/
-void	check_pec(int P_count, int E_count, int C_count)
-{
-	if (P_count != 1)
-	{
-		ft_printf("Error\nP must equal 1\nCurrent P = %d", P_count);
-		exit (1);
-	}
-	if (E_count != 1)
-	{
-		ft_printf("Error\nE must equal 1\nCurrent E = %d", E_count);
-		exit (1);
-	}
-	if (C_count < 1)
-	{
-		ft_printf("Error\nC must be > 0\nCurrent C = %d", C_count);
-		exit (1);
-	}
 }
 
 void	ft_perror(char *errmsg)
