@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 17:11:43 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/04 17:11:43 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/05 18:00:00 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/05 18:13:24 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,16 @@ typedef struct s_map
 	int		e_total;
 	int		c_total;
 	int		c_bfs;
+	int		e_bfs;
 	t_pos	*start;
 	t_pos	*exit;
 }				t_map;
+
+typedef struct s_lst
+{
+	t_pos			pos;
+	struct s_lst	*next;
+}				t_lst;
 
 //main functions' prototypes
 int			arg_check(int argc, char **argv);
@@ -56,12 +63,13 @@ void		map_malloc(char ***map, t_map *node);
 int			valid_char(char c);
 
 //bfs functions
-//void		bfs(char **map_copy, t_map *node, t_pos start);
+void		bfs(char **visited, t_map *node, t_pos start);
 void		bfs_prep(t_map *node);
 void		copy_map(char **map_src, char **map_copy);
 void		copy_malloc(char ***map_copy, t_map *node);
 void		find_start(char **map, t_map *node);
 int			valid_pos(int row, int column, t_map *node, char **map_copy);
+
 
 //utility functions
 int			array_size(char **array);

@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 17:37:27 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/06 12:01:59 by ameechan         ###   ########.fr       */
+/*   Created: 2024/09/05 13:19:16 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/05 13:19:24 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-f_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(void *content)
 {
-	struct ListNode	*newlst;
+	t_list	*newlst;
 
-	newlst = (struct ListNode *)malloc(sizeof(struct ListNode));
+	newlst = malloc(sizeof(t_list));
 	if (!newlst)
 		return (NULL);
 	newlst->content = content;

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 17:36:43 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/04 17:37:14 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/05 18:13:53 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/05 18:14:03 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,11 @@ sets c_bfs to 0 in preparation for bfs
 void	bfs_prep(t_map *node)
 {
 	char	**map_copy;
-
 	map_copy = NULL;
 	find_start(node->map, node);
 	copy_malloc(&map_copy, node);
 	copy_map(node->map, map_copy);
 	node->visited = map_copy;
 	node->c_bfs = 0;
+	node->e_bfs = 0;
 }

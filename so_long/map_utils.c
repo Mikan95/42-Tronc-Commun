@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 17:37:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/04 17:49:30 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/05 18:15:03 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/05 18:15:45 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	print_array(char **array)
+/* static void	print_array(char **array)
 {
 	int	i = 0;
 
@@ -22,26 +22,38 @@ static void	print_array(char **array)
 	i++;
 	}
 	ft_printf("\n");
-}
+} */
 
-static void	bfs(char **visited, t_map *node, t_pos start)
+/*
+searches all accessible
+*/
+void	bfs(char **visited, t_map *node, t_pos start)
 {
-	if (start.x < 0 || start.x >= node->width || start.y < 0
-		|| start.y >= node->height)
+	if (start.y < 0 || start.y >= node->height || start.x < 0
+		|| start.x >= node->width)
+		return;
+	if (visited[start.y][start.x] == 'v' || visited[start.y][start.x] == '1')
 		return ;
-	if (visited[start.y][start.x] == 'v'
-		|| node->map[start.y][start.x] == '1')
-		return ;
-	print_array(visited);
 	visited[start.y][start.x] = 'v';
 	if (node->map[start.y][start.x] == 'C')
 		node->c_bfs++;
-	bfs(visited, node, (t_pos){start.x + 1, start.y});
-	bfs(visited, node, (t_pos){start.x - 1, start.y});
-	bfs(visited, node, (t_pos){start.x, start.y + 1});
-	bfs(visited, node, (t_pos){start.x, start.y - 1});
+	if (node->map[start.y][start.x] == 'E')
+		node->e_bfs++;
+	bfs(visited, node, (t_pos){start.y + 1, start.x});
+	bfs(visited, node, (t_pos){start.y - 1, start.x});
+	bfs(visited, node, (t_pos){start.y, start.x - 1});
+	bfs(visited, node, (t_pos){start.y, start.x + 1});
 }
 
+/*
+Checks if map contents are valid
+ie: allowed chars only (0, 1, P, E, C)
+	only 1 Exit and Player start position
+	at least 1 collectible
+	rectangular map
+	surrounded by walls
+	must have valid path
+*/
 void	map_check(t_map *node)
 {
 	char	**map;
@@ -53,18 +65,13 @@ void	map_check(t_map *node)
 	char_check(map, node);
 	check_borders(map, node->height, node->width);
 	bfs_prep(node);
-/* 	ft_printf("before bfs visited:\n");
-	print_array(node->visited); */
-	bfs(node->visited, node, *(node->start));
-	ft_printf("\n\nintial map:\n");
-	print_array(node->map);
-	ft_printf("\nafter bfs:\n");
-	print_array(node->visited);
-	if (node->c_bfs == node->c_total)
-		ft_printf("congrats! map is valid!\n");
-	else
-		ft_perror("Error\nMap has unreachable collectibles\n");
-	free_map(map);
+	bfs(node->visited, node, (*node->start));
+	if(node->c_total != node->c_bfs
+		|| node->e_total != node->e_bfs)
+	{
+		free_map(map);
+		ft_perror("Error\nUnreachable collectible or exit\n");
+	}
 }
 
 /*

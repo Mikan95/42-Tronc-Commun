@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 16:05:08 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/06 12:01:59 by ameechan         ###   ########.fr       */
+/*   Created: 2024/09/05 13:20:15 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/05 13:20:15 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(f_list **lst, void (*del)(void *))
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	f_list	*temp;
+	t_list	*temp;
 
 	while (*lst)
 	{

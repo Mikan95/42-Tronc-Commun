@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 16:29:54 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/06 12:01:59 by ameechan         ###   ########.fr       */
+/*   Created: 2024/09/05 13:14:46 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/05 13:14:52 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-f_list	*ft_lstmap(f_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	f_list	*new_lst;
-	f_list	*new_elem;
+	t_list	*new_lst;
+	t_list	*new_elem;
 	void	*set;
 
 	if (!lst || !f || !del)
