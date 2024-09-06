@@ -37,7 +37,10 @@ int	main(int argc, char **argv)
 
 	node = malloc(sizeof (t_map));
 	if (!node)
+	{
+		free (node);
 		ft_perror("Error\n node mem allocation failure\n");
+	}
 	node->fd = arg_check(argc, argv);
 	node->file_path = argv[1];
 	map_check(node);

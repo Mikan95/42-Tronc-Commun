@@ -118,6 +118,7 @@ void	map_fill(t_map *node)
 		node->map[i] = ft_strdup(line);
 		node->map[i][(ft_mystrlen(node->map[i]) - 1)] = '\0';
 		i++;
+		free(line);
 	}
 	close(node->fd);
 }
