@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 17:52:45 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/09 17:52:49 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/09 18:38:05 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/09 18:38:05 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_data
 	void	*mlx;
 	void	*win;
 	void	*img_ptr;
+	t_map	*node;
 	int		width;
 	int		height;
 }				t_data;
