@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 21:45:41 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/19 16:54:29 by ameechan         ###   ########.fr       */
+/*   Created: 2024/09/09 17:28:18 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/09 17:28:22 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		len = ft_strlen(s + start);
 	ptr = ft_calloc(len + 1, sizeof(char));
 	if (!ptr)
+	{
+		free(ptr);
 		return (NULL);
+	}
 	while (i < len)
 	{
 		ptr[i] = s[start + i];

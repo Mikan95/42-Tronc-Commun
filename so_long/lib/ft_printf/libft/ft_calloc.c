@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 19:41:15 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/23 14:32:56 by ameechan         ###   ########.fr       */
+/*   Created: 2024/09/09 17:25:59 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/09 17:26:10 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ void	*ft_calloc(size_t count, size_t size)
 	i = 0;
 	ptr = (void *)malloc(count * size);
 	if (!ptr)
+	{
+		free(ptr);
 		return (NULL);
+	}
 	while (i < count * size)
 	{
 		*(ptr + i) = '\0';

@@ -5,12 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 17:10:32 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/04 17:10:32 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/09 17:43:38 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/09 17:43:38 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+/*
+searches all accessible paths from the player start position
+*/
+void	bfs(char **visited, t_map *node, t_pos start)
+{
+	if (start.y < 0 || start.y >= node->height || start.x < 0
+		|| start.x >= node->width)
+		return;
+	if (visited[start.y][start.x] == 'v' || visited[start.y][start.x] == '1')
+		return ;
+	visited[start.y][start.x] = 'v';
+	if (node->map[start.y][start.x] == 'C')
+		node->c_bfs++;
+	if (node->map[start.y][start.x] == 'E')
+		node->e_bfs++;
+	bfs(visited, node, (t_pos){start.y + 1, start.x});
+	bfs(visited, node, (t_pos){start.y - 1, start.x});
+	bfs(visited, node, (t_pos){start.y, start.x - 1});
+	bfs(visited, node, (t_pos){start.y, start.x + 1});
+}
 
 /*
 Checks if a position is within the boundaries of the map

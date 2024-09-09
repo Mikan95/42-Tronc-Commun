@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/05 18:00:00 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/05 18:13:24 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/09 17:52:45 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/09 17:52:49 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_pos
 typedef struct s_map
 {
 	char	*file_path;
+	char	*map_str;
 	char	**map;
 	char	**visited;
 	int		fd;
@@ -52,21 +53,19 @@ typedef struct s_lst
 }				t_lst;
 
 //main functions' prototypes
-int			arg_check(int argc, char **argv);
-void		char_check(char **map, t_map *node);
-void		check_borders(char **map, int map_height, int map_width);
+void		arg_check(int argc, char **argv);
+void		char_check(t_map *node);
+void		check_borders(t_map *node, int map_height, int map_width);
 int			count_lines(int *fd, char *map_path);
-int			line_len_check(char **map);
+void		line_len_check(t_map *node);
 void		map_check(t_map *node);
 void		map_fill(t_map *node);
-void		map_malloc(char ***map, t_map *node);
+void		init_node(t_map *node);
+void		init_map(t_map *node);
 int			valid_char(char c);
 
 //bfs functions
 void		bfs(char **visited, t_map *node, t_pos start);
-void		bfs_prep(t_map *node);
-void		copy_map(char **map_src, char **map_copy);
-void		copy_malloc(char ***map_copy, t_map *node);
 void		find_start(char **map, t_map *node);
 int			valid_pos(int row, int column, t_map *node, char **map_copy);
 
@@ -76,6 +75,7 @@ int			array_size(char **array);
 void		check_pec(t_map *node);
 int			ft_mystrlen(char *str);
 void		ft_perror(char *errmsg);
+void		free_elements(t_map *node, char *errmsg);
 void		free_map(char **map);
 
 //define struct for mlx

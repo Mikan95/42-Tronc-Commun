@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/05 18:15:03 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/05 18:15:45 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/09 18:11:55 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/09 18:11:55 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,6 @@
 	}
 	ft_printf("\n");
 } */
-
-/*
-searches all accessible
-*/
-void	bfs(char **visited, t_map *node, t_pos start)
-{
-	if (start.y < 0 || start.y >= node->height || start.x < 0
-		|| start.x >= node->width)
-		return;
-	if (visited[start.y][start.x] == 'v' || visited[start.y][start.x] == '1')
-		return ;
-	visited[start.y][start.x] = 'v';
-	if (node->map[start.y][start.x] == 'C')
-		node->c_bfs++;
-	if (node->map[start.y][start.x] == 'E')
-		node->e_bfs++;
-	bfs(visited, node, (t_pos){start.y + 1, start.x});
-	bfs(visited, node, (t_pos){start.y - 1, start.x});
-	bfs(visited, node, (t_pos){start.y, start.x - 1});
-	bfs(visited, node, (t_pos){start.y, start.x + 1});
-}
-
 /*
 Checks if map contents are valid
 ie: allowed chars only (0, 1, P, E, C)
@@ -56,71 +34,41 @@ ie: allowed chars only (0, 1, P, E, C)
 */
 void	map_check(t_map *node)
 {
-	char	**map;
-
-	map = NULL;
-	map_malloc(&map, node);
-	map_fill(node);
-	node->width = line_len_check(map);
-	char_check(map, node);
-	check_borders(map, node->height, node->width);
-	bfs_prep(node);
+	init_map(node);
+	line_len_check(node);
+	char_check(node);
+	check_borders(node, node->height, node->width);
+	find_start(node->map, node);
 	bfs(node->visited, node, (*node->start));
 	if(node->c_total != node->c_bfs
 		|| node->e_total != node->e_bfs)
-	{
-		free_map(map);
-		ft_perror("Error\nUnreachable collectible or exit\n");
-	}
+		free_elements(node, "Error\nUnreachable collectible or exit\n");
 }
 
 /*
-allocates memory for the map array,terminates the array with a NULL pointer
-stores map and map height in t_map *node
+reads the map file and stores it in the map array and visited array
+also stores the map height and width in the t_map *node
 */
-void	map_malloc(char ***map, t_map *node)
+void	init_map(t_map *node)
 {
-	int	line_count;
+	ssize_t	bytes_read;
 
-	line_count = count_lines(&(node->fd), node->file_path);
-	*map = malloc(sizeof(char *) * (line_count + 1));
-	if (!(*map))
-	{
-		perror("Error\nproblem allocating memory for map\n");
-		exit(1);
-	}
-	(*map)[line_count] = NULL;
-	close(node->fd);
 	node->fd = open(node->file_path, O_RDONLY);
-	node->map = *map;
-	node->height = line_count;
-}
-
-/*
-Stores contents of the map file in the map array line by line.
-making sure to trim the \n character from GNL.
-Also, closes map file once finished.
-*/
-void	map_fill(t_map *node)
-{
-	int		i;
-	char	*line;
-
-	i = 0;
-	while (i < node->height)
-	{
-		line = get_next_line(node->fd);
-		if (!line)
-		{
-			perror("Error\nproblem getting next line from map");
-			exit(1);
-		}
-		node->map[i] = ft_strdup(line);
-		node->map[i][(ft_mystrlen(node->map[i]) - 1)] = '\0';
-		i++;
-		free(line);
-	}
-	close(node->fd);
+	if (node->fd < 0)
+		free_elements(node, "Error\nProblem opening map file\n");
+	node->map_str = malloc(sizeof(char) * 10000);
+	if (!node->map_str)
+		free_elements(node, "Error\nProblem allocating memory for map string\n");
+	bytes_read = read(node->fd, node->map_str, 10000);
+	if (bytes_read <= 0)
+		free_elements(node, "Error\nProblem reading map file\n");
+	node->map_str[bytes_read] = '\0';
+	node->map = ft_split(node->map_str, '\n');
+	node->visited = ft_split(node->map_str, '\n');
+	if (!node->map || !node->visited)
+		free_elements(node, "Error\nProblem splitting map string\n");
+	node->height = array_size(node->map);
+	node->width = ft_mystrlen(node->map[0]);
 }
 
 /*
@@ -137,6 +85,8 @@ int	count_lines(int *fd, char *map_path)
 
 	count = 0;
 	bytes_read = read(*fd, buf, BUFFER_SIZE);
+	if (bytes_read <= 0)
+		return (-2);
 	while (bytes_read > 0)
 	{
 		i = 0;
@@ -153,15 +103,33 @@ int	count_lines(int *fd, char *map_path)
 	return (count);
 }
 
-void	free_map(char **map)
+/*
+Finds the position of `P` in `map` and stores its coordinates
+in `start_pos` struct
+*/
+void	find_start(char **map, t_map *node)
 {
 	int	i;
+	int	j;
+	t_pos	*start;
 
+	start = malloc(sizeof(t_pos));
+	if (!start)
+		ft_perror("Error\nMemory allocation failure\n");
 	i = 0;
 	while (map[i])
 	{
-		free(map[i]);
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'P')
+			{
+				start->y = i;
+				start->x = j;
+			}
+			j++;
+		}
 		i++;
 	}
-	free(map);
+	node->start = start;
 }

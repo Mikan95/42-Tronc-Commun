@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 17:22:09 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/04 17:22:19 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/09 18:11:27 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/09 18:11:27 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,27 @@ int	key_hook(int keycode, t_data *data)
 	return (0);
 }
 
+void	init_node(t_map *node)
+{
+	node->file_path = NULL;
+	node->map_str = NULL;
+	node->map = NULL;
+	node->visited = NULL;
+	node->start = NULL;
+	node->exit = NULL;
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	var;
 	t_map	*node;
 	char	*path = "./assets/Background.xpm";//		TEMPORARY
 
+	arg_check(argc, argv);
 	node = malloc(sizeof (t_map));
 	if (!node)
-	{
-		free (node);
-		ft_perror("Error\n node mem allocation failure\n");
-	}
-	node->fd = arg_check(argc, argv);
+		free_elements(node, "Error\nMemory allocation failure\n");
+	init_node(node);
 	node->file_path = argv[1];
 	map_check(node);
 	var.mlx = mlx_init();

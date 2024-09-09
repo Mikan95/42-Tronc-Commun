@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 21:09:18 by ameechan          #+#    #+#             */
-/*   Updated: 2023/10/20 15:06:07 by ameechan         ###   ########.fr       */
+/*   Created: 2024/09/09 17:27:13 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/09 17:27:20 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ char	*ft_strdup(const char *s1)
 
 	ptr = (char *)malloc(ft_strlen(s1) + 1);
 	if (!ptr)
+	{
+		free(ptr);
 		return (NULL);
+	}
 	i = 0;
 	while (i < ft_strlen(s1))
 	{
