@@ -46,11 +46,34 @@ typedef struct s_map
 	t_pos	*exit;
 }				t_map;
 
+//define struct for mlx
+typedef struct s_data
+{
+	void	*mlx;
+	void	*win;
+	void	*img_ptr;
+	void	*wall_ptr;
+	void	*player_ptr;
+	void	*exit_ptr;
+	void	*obj_ptr;
+	t_map	*node;
+	int		width;
+	int		height;
+}				t_data;
+
 typedef struct s_lst
 {
 	t_pos			pos;
 	struct s_lst	*next;
 }				t_lst;
+
+//init game functions
+int			init_game(t_map *node);
+void		render_map(t_data *var, t_map *node);
+void		draw_wall(t_data *var, int i, int j);
+void		draw_player(t_data *var, int i, int j);
+void		draw_exit(t_data *var, int i, int j);
+void		draw_collectible(t_data *var, int i, int j);
 
 //main functions' prototypes
 void		arg_check(int argc, char **argv);
@@ -78,18 +101,6 @@ void		ft_perror(char *errmsg);
 void		free_elements(t_map *node, char *errmsg);
 void		free_map(char **map);
 
-//define struct for mlx
-typedef struct s_data
-{
-	void	*mlx;
-	void	*win;
-	void	*img_ptr;
-	t_map	*node;
-	int		width;
-	int		height;
-}				t_data;
-
-
 //DEFINE KEYCODES WSL2
 # define ESC_KEY 65307
 # define W_KEY 119
@@ -105,3 +116,7 @@ typedef struct s_data
 # define D_KEY 2
 #endif */
 
+//DEFINE IMAGE PATHS
+# define BGPATH "./assets/Background.xpm"
+# define PLAYERPATH "./assets/player/player.xpm"
+# define WALLPATH "./assets/walls/walls.xpm"
