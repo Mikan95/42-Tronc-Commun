@@ -16,18 +16,17 @@ int	close_window(t_data *data)
 {
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
-	if (data->img_ptr)
-		mlx_destroy_image(data->mlx, data->img_ptr);
-	if (data->wall_ptr)
-		mlx_destroy_image(data->mlx, data->wall_ptr);
+	ft_printf("freed window\n");
 	if (data->bg_ptr)
 		mlx_destroy_image(data->mlx, data->bg_ptr);
-	if (data->img_ptr)
-		mlx_destroy_image(data->mlx, data->img_ptr);
+	ft_printf("freed bg_ptr\n");
 	mlx_destroy_display(data->mlx);
+	ft_printf("freed display\n");
 	if (data->mlx)
 		free(data->mlx);
-	mlx_loop_end(data->mlx);
+	ft_printf("freed mlx\n");
+//	mlx_loop_end(data->mlx);
+	ft_printf("freed loop\n");
 	free_elements(data->node, "Exiting game\n");
 	return (0);
 }
@@ -38,16 +37,6 @@ int	key_hook(int keycode, t_data *data)
 	if (keycode == ESC_KEY)
 		close_window(data);
 	return (0);
-}
-
-void	init_node(t_map *node)
-{
-	node->file_path = NULL;
-	node->map_str = NULL;
-	node->map = NULL;
-	node->visited = NULL;
-	node->start = NULL;
-	node->exit = NULL;
 }
 
 void	init_data(t_data *var)

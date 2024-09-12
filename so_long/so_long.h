@@ -123,7 +123,7 @@ void		free_map(char **map);
 
 //DEFINE IMAGE PATHS
 # define BGPATH "./assets/Background.xpm"
-# define PLAYERPATH "./assets/player/player.xpm"
+# define PLAYERPATH "./assets/player/space-down.xpm"
 # define WALLPATH "./assets/walls/walls.xpm"
 # define OBJPATH "./assets/collectibles/obj.xpm"
 # define EXITPATH "./assets/exit/exit.xpm"

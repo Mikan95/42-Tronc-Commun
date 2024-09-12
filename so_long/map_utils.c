@@ -56,12 +56,12 @@ void	init_map(t_map *node)
 	node->fd = open(node->file_path, O_RDONLY);
 	if (node->fd < 0)
 		free_elements(node, "Error\nProblem opening map file\n");
-	node->map_str = malloc(sizeof(char) * 10000);
+	node->map_str = malloc(sizeof(char) * 10240);
 	if (!node->map_str)
 		free_elements(node, "Error\nProblem allocating memory for map string\n");
-	bytes_read = read(node->fd, node->map_str, 10000);
+	bytes_read = read(node->fd, node->map_str, 10240);
 	if (bytes_read <= 0)
-		free_elements(node, "Error\nProblem reading map file\n");
+		free_elements(node, "Error\nProblem reading map file (Max size 10kb)\n");
 	node->map_str[bytes_read] = '\0';
 	node->map = ft_split(node->map_str, '\n');
 	node->visited = ft_split(node->map_str, '\n');

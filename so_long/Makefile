@@ -4,7 +4,7 @@ UNAME_S := $(shell uname -s)
 #define default project name, compiler, compiler flags and others for Linux
 ifeq ($(UNAME_S), Linux)
 NAME = play
-CC = gcc
+CC = gcc -g
 CCFLAGS = -Wall -Werror -Wextra -DGL_SILENCE_DEPRECATION -Ilib/minilibx-linux/ -Ilib/ft_printf/ -Ilib/get_next_line/
 LDFLAGS = -Llib -lmlx -lftprintf -lgnl -lm -lz
 MLX = lib/libmlx.a

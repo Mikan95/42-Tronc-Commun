@@ -12,10 +12,25 @@
 
 #include "so_long.h"
 
+void	init_node(t_map *node)
+{
+	node->file_path = NULL;
+	node->map_str = NULL;
+	node->map = NULL;
+	node->visited = NULL;
+	node->start = NULL;
+	node->exit = NULL;
+	node->c_total = 0;
+	node->e_total = 0;
+	node->c_bfs = 0;
+	node->e_bfs = 0;
+}
+
 int	main(int argc, char **argv)
 {
 	t_map	*node;
 
+	node = NULL;
 	arg_check(argc, argv);
 	node = malloc(sizeof (t_map));
 	if (!node)
