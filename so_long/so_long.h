@@ -53,9 +53,8 @@ typedef struct s_data
 	void	*win;
 	void	*img_ptr;
 	void	*wall_ptr;
-	void	*player_ptr;
 	void	*exit_ptr;
-	void	*obj_ptr;
+	void	*bg_ptr;
 	t_map	*node;
 	int		width;
 	int		height;
@@ -127,3 +126,4 @@ void		free_map(char **map);
 # define PLAYERPATH "./assets/player/player.xpm"
 # define WALLPATH "./assets/walls/walls.xpm"
 # define OBJPATH "./assets/collectibles/obj.xpm"
+# define EXITPATH "./assets/exit/exit.xpm"

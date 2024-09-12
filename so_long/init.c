@@ -16,9 +16,20 @@ int	close_window(t_data *data)
 {
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
+	if (data->img_ptr)
+		mlx_destroy_image(data->mlx, data->img_ptr);
+	if (data->wall_ptr)
+		mlx_destroy_image(data->mlx, data->wall_ptr);
+	if (data->bg_ptr)
+		mlx_destroy_image(data->mlx, data->bg_ptr);
+	if (data->img_ptr)
+		mlx_destroy_image(data->mlx, data->img_ptr);
+	mlx_destroy_display(data->mlx);
 	if (data->mlx)
 		free(data->mlx);
-	exit (0);
+	mlx_loop_end(data->mlx);
+	free_elements(data->node, "Exiting game\n");
+	return (0);
 }
 
 int	key_hook(int keycode, t_data *data)
@@ -39,10 +50,22 @@ void	init_node(t_map *node)
 	node->exit = NULL;
 }
 
+void	init_data(t_data *var)
+{
+	var->mlx = NULL;
+	var->win = NULL;
+	var->img_ptr = NULL;
+	var->wall_ptr = NULL;
+	var->exit_ptr = NULL;
+	var->bg_ptr = NULL;
+	var->node = NULL;
+}
+
 int	init_game(t_map *node)
 {
 	t_data	var;
 
+	init_data(&var);
 	var.mlx = mlx_init();
 	if (!var.mlx)
 		return (-1);
@@ -51,8 +74,8 @@ int	init_game(t_map *node)
 			node->height * 32, "My game");
 	if (!var.win)
 		return (-1);
-	mlx_hook(var.win, 17, 0, close_window, &var);
 	render_map(&var, node);
+	mlx_hook(var.win, 17, 0, close_window, &var);
 	mlx_key_hook(var.win, key_hook, &var);
 	mlx_loop(var.mlx);
 	return (0);
@@ -63,9 +86,9 @@ void	render_map(t_data *var, t_map *node)
 	int	i;
 	int	j;
 
-	var->img_ptr = mlx_xpm_file_to_image(var->mlx, BGPATH,
+	var->bg_ptr = mlx_xpm_file_to_image(var->mlx, BGPATH,
 			&var->width, &var->height);
-	mlx_put_image_to_window(var->mlx, var->win, var->img_ptr, 0, 1);
+	mlx_put_image_to_window(var->mlx, var->win, var->bg_ptr, 0, 1);
 	i = 0;
 	while (i < node->height)
 	{
@@ -91,9 +114,9 @@ void	draw_xpm_p(t_data *var, char *path, int start_x, int start_y)
 	int width;
 	int	height;
 
-	var->obj_ptr = mlx_xpm_file_to_image( var->mlx, path, &width, &height);
+	var->img_ptr = mlx_xpm_file_to_image( var->mlx, path, &width, &height);
 
-	var->addr = mlx_get_data_addr(var->obj_ptr, &var->bpp, &var->size_line, &var->endian);
+	var->addr = mlx_get_data_addr(var->img_ptr, &var->bpp, &var->size_line, &var->endian);
 
 	int x = 0;
 	while (x < width)
@@ -109,6 +132,7 @@ void	draw_xpm_p(t_data *var, char *path, int start_x, int start_y)
 		}
 		x++;
 	}
+	mlx_destroy_image(var->mlx, var->img_ptr);
 }
 
 void	draw_player(t_data *var, int i, int j)
@@ -130,41 +154,17 @@ void	draw_wall(t_data *var, int i, int j)
 	height = 32;
 	var->wall_ptr = mlx_xpm_file_to_image(var->mlx, WALLPATH, &width, &height);
 	mlx_put_image_to_window(var->mlx, var->win, var->wall_ptr, j * 32, i * 32);
+	mlx_destroy_image(var->mlx, var->wall_ptr);
 }
-
-/* void	draw_player(t_data *var, int i, int j)
-{
-	int	width;
-	int	height;
-
-	width = 32;
-	height = 32;
-	var->player_ptr = mlx_xpm_file_to_image(var->mlx, PLAYERPATH, &width, &height);
-	mlx_put_image_to_window(var->mlx, var->win, var->player_ptr, j * 32, i * 32);
-} */
 
 void	draw_exit(t_data *var, int i, int j)
 {
-	for (int x = 0; x < 32; x++)
-	{
-	for (int y = 0; y < 32; y++)
-		mlx_pixel_put(var->mlx, var->win, j * 32 + x, i * 32 + y, 0x800080);
-	}
-}
-
-/* void	draw_collectible(t_data *var, int i, int j)
-{
 	int	width;
 	int	height;
 
 	width = 32;
 	height = 32;
-
-	var->obj_ptr = mlx_xpm_file_to_image(var->mlx, OBJPATH, &width, &height);
-	mlx_put_image_to_window(var->mlx, var->win, var->obj_ptr, j * 32, i * 32);
-	for (int x = 0; x < 32; x++)
-	{
-	for (int y = 0; y < 32; y++)
-		mlx_pixel_put(var->mlx, var->win, j * 32 + x, i * 32 + y, 0x0000FF00);
-	}
-} */
+	var->exit_ptr = mlx_xpm_file_to_image(var->mlx, EXITPATH, &width, &height);
+	mlx_put_image_to_window(var->mlx, var->win, var->exit_ptr, j * 32, i * 32);
+	mlx_destroy_image(var->mlx, var->exit_ptr);
+}
