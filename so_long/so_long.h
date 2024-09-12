@@ -59,6 +59,12 @@ typedef struct s_data
 	t_map	*node;
 	int		width;
 	int		height;
+	int		bpp;
+	int		size_line;
+	int		endian;
+	int		pixel;
+	int		colour;
+	char	*addr;
 }				t_data;
 
 typedef struct s_lst
@@ -120,3 +126,4 @@ void		free_map(char **map);
 # define BGPATH "./assets/Background.xpm"
 # define PLAYERPATH "./assets/player/player.xpm"
 # define WALLPATH "./assets/walls/walls.xpm"
+# define OBJPATH "./assets/collectibles/obj.xpm"
