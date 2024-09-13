@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 18:38:05 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/09 18:38:05 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/13 17:28:33 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/13 17:28:33 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <fcntl.h>
 # include "get_next_line.h"
 # include "ft_printf.h"
+
+# define TILE_SIZE 32
 
 //define struct for storing coordinates
 typedef struct s_pos
@@ -42,6 +44,7 @@ typedef struct s_map
 	int		c_total;
 	int		c_bfs;
 	int		e_bfs;
+	t_pos	*player;
 	t_pos	*start;
 	t_pos	*exit;
 }				t_map;
@@ -64,13 +67,11 @@ typedef struct s_data
 	int		pixel;
 	int		colour;
 	char	*addr;
+	char	*bg_addr;
+	int		bg_bpp;
+	int		bg_size_line;
+	int		bg_endian;
 }				t_data;
-
-typedef struct s_lst
-{
-	t_pos			pos;
-	struct s_lst	*next;
-}				t_lst;
 
 //init game functions
 int			init_game(t_map *node);
@@ -79,8 +80,15 @@ void		draw_wall(t_data *var, int i, int j);
 void		draw_player(t_data *var, int i, int j);
 void		draw_exit(t_data *var, int i, int j);
 void		draw_collectible(t_data *var, int i, int j);
+void		draw_xpm_p(t_data *var, char *path, int start_x, int start_y);
 
-//main functions' prototypes
+//player movement functions
+void		move_up(t_data *var);
+void		move_down(t_data *var);
+void		move_left(t_data *var);
+void		move_right(t_data *var);
+
+//map parsing functions
 void		arg_check(int argc, char **argv);
 void		char_check(t_map *node);
 void		check_borders(t_map *node, int map_height, int map_width);
@@ -97,7 +105,6 @@ void		bfs(char **visited, t_map *node, t_pos start);
 void		find_start(char **map, t_map *node);
 int			valid_pos(int row, int column, t_map *node, char **map_copy);
 
-
 //utility functions
 int			array_size(char **array);
 void		check_pec(t_map *node);
@@ -112,14 +119,13 @@ void		free_map(char **map);
 # define A_KEY 97
 # define S_KEY 115
 # define D_KEY 100
-#endif
 //DEFINE KEYCODES MAC
 /* # define ESC_KEY 53
 # define W_KEY 13
 # define A_KEY 0
 # define S_KEY 1
 # define D_KEY 2
-#endif */
+*/
 
 //DEFINE IMAGE PATHS
 # define BGPATH "./assets/Background.xpm"
@@ -127,3 +133,5 @@ void		free_map(char **map);
 # define WALLPATH "./assets/walls/walls.xpm"
 # define OBJPATH "./assets/collectibles/obj.xpm"
 # define EXITPATH "./assets/exit/exit.xpm"
+
+#endif

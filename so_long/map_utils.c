@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 18:11:55 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/09 18:11:55 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/13 16:22:56 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/13 16:23:02 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	map_check(t_map *node)
 	char_check(node);
 	check_borders(node, node->height, node->width);
 	find_start(node->map, node);
+	node->player = node->start;
 	bfs(node->visited, node, (*node->start));
 	if(node->c_total != node->c_bfs
 		|| node->e_total != node->e_bfs)

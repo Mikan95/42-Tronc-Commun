@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/12 00:23:02 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/12 00:23:02 by ameechan         ###   ########.fr       */
+/*   Created: 2024/09/13 17:59:58 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/13 17:59:58 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,28 @@ int	close_window(t_data *data)
 
 int	key_hook(int keycode, t_data *data)
 {
-	ft_printf("keycode: %d\n", keycode);
 	if (keycode == ESC_KEY)
 		close_window(data);
+	else if (keycode == W_KEY)
+	{
+		move_up(data);
+		ft_printf("W key pressed\n");
+	}
+	else if (keycode == A_KEY)
+	{
+		move_left(data);
+		ft_printf("A key pressed\n");
+	}
+	else if (keycode == S_KEY)
+	{
+		move_down(data);
+		ft_printf("S key pressed\n");
+	}
+	else if (keycode == D_KEY)
+	{
+		move_right(data);
+		ft_printf("D key pressed\n");
+	}
 	return (0);
 }
 
@@ -49,6 +68,13 @@ void	init_data(t_data *var)
 	var->bg_ptr = NULL;
 	var->node = NULL;
 }
+
+/* int	game_loop(t_data *var)
+{
+	mlx_clear_window(var->mlx, var->win);
+	render_map(var, var->node);
+	return (0);
+} */
 
 int	init_game(t_map *node)
 {
@@ -70,6 +96,7 @@ int	init_game(t_map *node)
 	return (0);
 }
 
+
 void	render_map(t_data *var, t_map *node)
 {
 	int	i;
@@ -86,12 +113,12 @@ void	render_map(t_data *var, t_map *node)
 		{
 			if (node->map[i][j] == '1')
 				draw_wall(var, i, j);
-			else if (node->map[i][j] == 'P')
-				draw_player(var, i, j);
-			else if (node->map[i][j] == 'E')
+			if (node->map[i][j] == 'E' && node->c_total == 0)
 				draw_exit(var, i, j);
 			else if (node->map[i][j] == 'C')
 				draw_collectible(var, i, j);
+			else if (node->map[i][j] == 'P')
+				draw_player(var, i, j);
 			j++;
 		}
 		i++;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 18:38:31 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/09 18:40:38 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/13 16:21:55 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/13 16:21:55 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	init_node(t_map *node)
 	node->visited = NULL;
 	node->start = NULL;
 	node->exit = NULL;
+	node->player = NULL;
 	node->c_total = 0;
 	node->e_total = 0;
 	node->c_bfs = 0;
