@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/13 17:59:58 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/13 17:59:58 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/13 19:00:40 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/13 19:00:40 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,44 +16,38 @@ int	close_window(t_data *data)
 {
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
-	ft_printf("freed window\n");
 	if (data->bg_ptr)
 		mlx_destroy_image(data->mlx, data->bg_ptr);
-	ft_printf("freed bg_ptr\n");
 	mlx_destroy_display(data->mlx);
-	ft_printf("freed display\n");
 	if (data->mlx)
 		free(data->mlx);
-	ft_printf("freed mlx\n");
-//	mlx_loop_end(data->mlx);
-	ft_printf("freed loop\n");
 	free_elements(data->node, "Exiting game\n");
 	return (0);
 }
 
-int	key_hook(int keycode, t_data *data)
+int	key_hook(int keycode, t_data *var)
 {
 	if (keycode == ESC_KEY)
-		close_window(data);
+		close_window(var);
 	else if (keycode == W_KEY)
 	{
-		move_up(data);
-		ft_printf("W key pressed\n");
+		move_up(var);
+		ft_printf("move count: %d\n", var->node->move_count);
 	}
 	else if (keycode == A_KEY)
 	{
-		move_left(data);
-		ft_printf("A key pressed\n");
+		move_left(var);
+		ft_printf("move count: %d\n", var->node->move_count);
 	}
 	else if (keycode == S_KEY)
 	{
-		move_down(data);
-		ft_printf("S key pressed\n");
+		move_down(var);
+		ft_printf("move count: %d\n", var->node->move_count);
 	}
 	else if (keycode == D_KEY)
 	{
-		move_right(data);
-		ft_printf("D key pressed\n");
+		move_right(var);
+		ft_printf("move count: %d\n", var->node->move_count);
 	}
 	return (0);
 }
@@ -80,6 +74,7 @@ int	init_game(t_map *node)
 {
 	t_data	var;
 
+	node->move_count = 0;
 	init_data(&var);
 	var.mlx = mlx_init();
 	if (!var.mlx)

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/13 17:56:09 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/13 17:59:37 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/13 18:56:22 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/13 18:56:33 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	move_up(t_data *var)
 		var->node->player->y = y - 1;
 		var->node->c_total--;
 	}
+	var->node->move_count++;
 	render_map(var, var->node);
 }
 
@@ -63,6 +64,7 @@ void	move_down(t_data *var)
 		var->node->player->y = y + 1;
 		var->node->c_total--;
 	}
+	var->node->move_count++;
 	render_map(var, var->node);
 }
 
@@ -90,6 +92,7 @@ void	move_left(t_data *var)
 		var->node->player->x = x - 1;
 		var->node->c_total--;
 	}
+	var->node->move_count++;
 	render_map(var, var->node);
 }
 
@@ -117,5 +120,6 @@ void	move_right(t_data *var)
 		var->node->player->x = x + 1;
 		var->node->c_total--;
 	}
+	var->node->move_count++;
 	render_map(var, var->node);
 }

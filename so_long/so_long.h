@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/13 17:28:33 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/13 17:28:33 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/13 18:54:49 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/13 18:54:49 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_map
 	int		c_total;
 	int		c_bfs;
 	int		e_bfs;
+	int		move_count;
 	t_pos	*player;
 	t_pos	*start;
 	t_pos	*exit;
