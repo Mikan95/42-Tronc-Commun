@@ -16,11 +16,15 @@ int	close_window(t_data *data)
 {
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
+	ft_printf("freed win\n");
 	if (data->bg_ptr)
 		mlx_destroy_image(data->mlx, data->bg_ptr);
+	ft_printf("freed bg\n");
 	mlx_destroy_display(data->mlx);
+	ft_printf("freed display\n");
 	if (data->mlx)
 		free(data->mlx);
+	ft_printf("freed mlx\n");
 	free_elements(data->node, "Exiting game\n");
 	return (0);
 }
@@ -31,22 +35,22 @@ int	key_hook(int keycode, t_data *var)
 		close_window(var);
 	else if (keycode == W_KEY)
 	{
-		move_up(var);
+		move_up(var, var->node->exit);
 		ft_printf("move count: %d\n", var->node->move_count);
 	}
 	else if (keycode == A_KEY)
 	{
-		move_left(var);
+		move_left(var, var->node->exit);
 		ft_printf("move count: %d\n", var->node->move_count);
 	}
 	else if (keycode == S_KEY)
 	{
-		move_down(var);
+		move_down(var, var->node->exit);
 		ft_printf("move count: %d\n", var->node->move_count);
 	}
 	else if (keycode == D_KEY)
 	{
-		move_right(var);
+		move_right(var, var->node->exit);
 		ft_printf("move count: %d\n", var->node->move_count);
 	}
 	return (0);
@@ -74,6 +78,7 @@ int	init_game(t_map *node)
 {
 	t_data	var;
 
+	ft_printf("exit: (%d, %d)\n", node->exit->x, node->exit->y);
 	node->move_count = 0;
 	init_data(&var);
 	var.mlx = mlx_init();
@@ -91,15 +96,21 @@ int	init_game(t_map *node)
 	return (0);
 }
 
+void	check_collectibles(t_map *node, int c_total, t_pos *exit)
+{
+	if (c_total == 0)
+	{
+		node->map[exit->y][exit->x] = 'E';
+	}
+}
 
 void	render_map(t_data *var, t_map *node)
 {
 	int	i;
 	int	j;
 
-	var->bg_ptr = mlx_xpm_file_to_image(var->mlx, BGPATH,
-			&var->width, &var->height);
-	mlx_put_image_to_window(var->mlx, var->win, var->bg_ptr, 0, 1);
+	draw_bg(var);
+	check_collectibles(node, node->c_total, node->exit);
 	i = 0;
 	while (i < node->height)
 	{
@@ -118,6 +129,13 @@ void	render_map(t_data *var, t_map *node)
 		}
 		i++;
 	}
+}
+
+void	draw_bg(t_data *var)
+{
+	var->bg_ptr = mlx_xpm_file_to_image(var->mlx, BGPATH,
+		&var->width, &var->height);
+	mlx_put_image_to_window(var->mlx, var->win, var->bg_ptr, 0, 1);
 }
 
 void	draw_xpm_p(t_data *var, char *path, int start_x, int start_y)

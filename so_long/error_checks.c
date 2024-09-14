@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_checks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:37:10 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/09 17:38:31 by ameechan         ###   ########.ch       */
+/*   Updated: 2024/09/14 14:54:10 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,6 @@ void	char_check(t_map *node)
 	int	i;
 	int	j;
 
-	node->p_total = 0;
-	node->e_total = 0;
-	node->c_total = 0;
 	i = 0;
 	while (node->map[i])
 	{
@@ -89,7 +86,10 @@ void	char_check(t_map *node)
 			if (node->map[i][j] == 'P')
 				node->p_total++;
 			else if (node->map[i][j] == 'E')
+			{
+				store_exit(node, i, j);
 				node->e_total++;
+			}
 			else if (node->map[i][j] == 'C')
 				node->c_total++;
 			j++;
@@ -97,6 +97,18 @@ void	char_check(t_map *node)
 		i++;
 	}
 	check_pec(node);
+}
+
+void	store_exit(t_map *node, int i, int j)
+{
+	t_pos	*exit;
+
+	exit = malloc(sizeof(t_pos));
+	if (!exit)
+		free_elements(node, "Error\nMemory allocation failure\n");
+	exit->y = i;
+	exit->x = j;
+	node->exit = exit;
 }
 
 /*

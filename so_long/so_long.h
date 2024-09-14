@@ -89,6 +89,9 @@ void		move_down(t_data *var);
 void		move_left(t_data *var);
 void		move_right(t_data *var);
 
+//draw functions
+void		draw_bg(t_data *var);
+
 //map parsing functions
 void		arg_check(int argc, char **argv);
 void		char_check(t_map *node);
@@ -100,6 +103,7 @@ void		map_fill(t_map *node);
 void		init_node(t_map *node);
 void		init_map(t_map *node);
 int			valid_char(char c);
+void		store_exit(t_map *node, int i, int j);
 
 //bfs functions
 void		bfs(char **visited, t_map *node, t_pos start);

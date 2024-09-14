@@ -21,15 +21,24 @@ void	free_elements(t_map *node, char *errmsg)
 		return;
 	if (node->map)
 		free_map(node->map);
+	ft_printf("freed map\n");
 	if (node->visited)
 		free_map(node->visited);
+	ft_printf("freed visited\n");
 	if (node->map_str)
 		free(node->map_str);
+	ft_printf("freed map_str\n");
 	if (node->exit)
 		free(node->exit);
+	ft_printf("freed exit\n");
+	// if (node->player)
+	// 	free(node->player);
+	// ft_printf("freed player\n");
 	if (node->start)
 		free(node->start);
+	ft_printf("freed start\n");
 	free(node);
+	ft_printf("freed node\n");
 	ft_printf("%s", errmsg);
 	exit (1);
 }

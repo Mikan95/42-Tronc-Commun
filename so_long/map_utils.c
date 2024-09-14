@@ -44,6 +44,7 @@ void	map_check(t_map *node)
 	if(node->c_total != node->c_bfs
 		|| node->e_total != node->e_bfs)
 		free_elements(node, "Error\nUnreachable collectible or exit\n");
+	node->map[node->exit->y][node->exit->x] = '1';
 }
 
 /*
