@@ -90,8 +90,8 @@ void		move_left(t_data *var);
 void		move_right(t_data *var);
 
 //draw functions
-void	draw_bg(t_data *var, int i, int j);
-
+// void	draw_bg(t_data *var, int i, int j);
+void		draw_bg(t_data *va, int i, int j);
 //map parsing functions
 void		arg_check(int argc, char **argv);
 void		char_check(t_map *node);
@@ -133,10 +133,10 @@ void		free_map(char **map);
 */
 
 //DEFINE IMAGE PATHS
-# define BGPATH "./assets/bg/tiles.xpm"
+# define BGPATH "./assets/bg/Bricks.xpm"
 # define PLAYERPATH "./assets/player/space-down.xpm"
 # define WALLPATH "./assets/walls/walls.xpm"
 # define OBJPATH "./assets/collectibles/obj.xpm"
-# define EXITPATH "./assets/exit/exit.xpm"
+# define EXITPATH "./assets/exit/exit2.xpm"
 
 #endif

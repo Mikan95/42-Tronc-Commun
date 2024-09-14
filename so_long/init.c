@@ -132,17 +132,6 @@ void	render_map(t_data *var, t_map *node)
 	}
 }
 
-void	draw_bg(t_data *var, int i, int j)
-{
-	int	width;
-	int	height;
-
-	width = 32;
-	height = 32;
-	var->bg_ptr = mlx_xpm_file_to_image(var->mlx, BGPATH, &width, &height);
-	mlx_put_image_to_window(var->mlx, var->win, var->bg_ptr, j * 32, i * 32);
-	mlx_destroy_image(var->mlx, var->bg_ptr);
-}
 
 void	draw_xpm_p(t_data *var, char *path, int start_x, int start_y)
 {
@@ -202,4 +191,16 @@ void	draw_exit(t_data *var, int i, int j)
 	var->exit_ptr = mlx_xpm_file_to_image(var->mlx, EXITPATH, &width, &height);
 	mlx_put_image_to_window(var->mlx, var->win, var->exit_ptr, j * 32, i * 32);
 	mlx_destroy_image(var->mlx, var->exit_ptr);
+}
+
+void	draw_bg(t_data *var, int i, int j)
+{
+	int	width;
+	int	height;
+
+	width = 32;
+	height = 32;
+	var->bg_ptr = mlx_xpm_file_to_image(var->mlx, BGPATH, &width, &height);
+	mlx_put_image_to_window(var->mlx, var->win, var->bg_ptr, j * 32, i * 32);
+	mlx_destroy_image(var->mlx, var->bg_ptr);
 }

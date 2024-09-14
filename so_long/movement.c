@@ -21,17 +21,16 @@ void	move_up(t_data *var)
 	x = var->node->player->x;
 	if (var->node->map[y - 1][x] == '1')
 		return ;
-	if (var->node->map[y][x] == 'P')
-		var->node->map[y][x] = '0';
+	if (var->node->map[y - 1][x] == 'E')
+		render_end(var);
+	var->node->map[y][x] = '0';
 	if (var->node->map[y - 1][x] == '0')
 	{
-		var->node->map[y][x] = '0';
 		var->node->map[y - 1][x] = 'P';
 		var->node->player->y = y - 1;
 	}
 	else if (var->node->map[y - 1][x] == 'C')
 	{
-		var->node->map[y][x] = '0';
 		var->node->map[y - 1][x] = 'P';
 		var->node->player->y = y - 1;
 		var->node->c_total--;
@@ -49,17 +48,16 @@ void	move_down(t_data *var)
 	x = var->node->player->x;
 	if (var->node->map[y + 1][x] == '1')
 		return ;
-	if (var->node->map[y][x] == 'P')
-		var->node->map[y][x] = '0';
+	if (var->node->map[y + 1][x] == 'E')
+		render_end(var);
+	var->node->map[y][x] = '0';
 	if (var->node->map[y + 1][x] == '0')
 	{
-		var->node->map[y][x] = '0';
 		var->node->map[y + 1][x] = 'P';
 		var->node->player->y = y + 1;
 	}
 	else if (var->node->map[y + 1][x] == 'C')
 	{
-		var->node->map[y][x] = '0';
 		var->node->map[y + 1][x] = 'P';
 		var->node->player->y = y + 1;
 		var->node->c_total--;
@@ -77,17 +75,17 @@ void	move_left(t_data *var)
 	x = var->node->player->x;
 	if (var->node->map[y][x - 1] == '1')
 		return ;
-	if (var->node->map[y][x] == 'P')
-		var->node->map[y][x] = '0';
+	if (var->node->map[y][x - 1] == 'E')
+		render_end(var);
+	var->node->map[y][x] = '0';
 	if (var->node->map[y][x - 1] == '0')
 	{
-		var->node->map[y][x] = '0';
+
 		var->node->map[y][x - 1] = 'P';
 		var->node->player->x = x - 1;
 	}
 	else if (var->node->map[y][x - 1] == 'C')
 	{
-		var->node->map[y][x] = '0';
 		var->node->map[y][x - 1] = 'P';
 		var->node->player->x = x - 1;
 		var->node->c_total--;
@@ -105,17 +103,16 @@ void	move_right(t_data *var)
 	x = var->node->player->x;
 	if (var->node->map[y][x + 1] == '1')
 		return ;
-	if (var->node->map[y][x] == 'P')
-		var->node->map[y][x] = '0';
+	if (var->node->map[y][x + 1] == 'E')
+		render_end(var);
+	var->node->map[y][x] = '0';
 	if (var->node->map[y][x + 1] == '0')
 	{
-		var->node->map[y][x] = '0';
 		var->node->map[y][x + 1] = 'P';
 		var->node->player->x = x + 1;
 	}
 	else if (var->node->map[y][x + 1] == 'C')
 	{
-		var->node->map[y][x] = '0';
 		var->node->map[y][x + 1] = 'P';
 		var->node->player->x = x + 1;
 		var->node->c_total--;
