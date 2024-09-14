@@ -17,9 +17,6 @@ int	close_window(t_data *data)
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
 	ft_printf("freed win\n");
-/* 	if (data->bg_ptr)
-		mlx_destroy_image(data->mlx, data->bg_ptr); */
-	ft_printf("freed bg\n");
 	mlx_destroy_display(data->mlx);
 	ft_printf("freed display\n");
 	if (data->mlx)
