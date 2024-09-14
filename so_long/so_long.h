@@ -90,7 +90,7 @@ void		move_left(t_data *var);
 void		move_right(t_data *var);
 
 //draw functions
-void		draw_bg(t_data *var);
+void	draw_bg(t_data *var, int i, int j);
 
 //map parsing functions
 void		arg_check(int argc, char **argv);
@@ -133,7 +133,7 @@ void		free_map(char **map);
 */
 
 //DEFINE IMAGE PATHS
-# define BGPATH "./assets/Background.xpm"
+# define BGPATH "./assets/bg/tiles.xpm"
 # define PLAYERPATH "./assets/player/space-down.xpm"
 # define WALLPATH "./assets/walls/walls.xpm"
 # define OBJPATH "./assets/collectibles/obj.xpm"
