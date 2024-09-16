@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 17:32:53 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/16 13:39:40 by ameechan         ###   ########.fr       */
+/*   Created: 2024/09/16 13:46:02 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 13:46:28 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*get_next_line(int fd)
 {
-	static t_list	*line_stash;
-	char			*line;
+	static t_gnllist	*line_stash;
+	char				*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &line, 0) < 0)
 	{
@@ -40,7 +40,7 @@ char	*get_next_line(int fd)
 }
 
 // uses read() and adds characters to 'line_stash'.
-void	read_and_stash(int fd, t_list **line_stash)
+void	read_and_stash(int fd, t_gnllist **line_stash)
 {
 	char	*buffer;
 	int		readed;
@@ -64,13 +64,13 @@ void	read_and_stash(int fd, t_list **line_stash)
 }
 
 // adds the content of 'buffer' to the end of 'line_stash'.
-void	add_to_stash(t_list **line_stash, char *buffer, int readed)
+void	add_to_stash(t_gnllist **line_stash, char *buffer, int readed)
 {
-	int		i;
-	t_list	*last;
-	t_list	*new_node;
+	int			i;
+	t_gnllist	*last;
+	t_gnllist	*new_node;
 
-	new_node = malloc(sizeof (t_list));
+	new_node = malloc(sizeof (t_gnllist));
 	if (!new_node)
 		return ;
 	new_node->next = NULL;
@@ -95,7 +95,7 @@ void	add_to_stash(t_list **line_stash, char *buffer, int readed)
 
 // extracts all characters from 'line_stash' and stores them in 'line'
 // stops after first '\n' encountered.
-void	extract_line(t_list *line_stash, char **line)
+void	extract_line(t_gnllist *line_stash, char **line)
 {
 	int	i;
 	int	j;
@@ -125,14 +125,14 @@ void	extract_line(t_list *line_stash, char **line)
 
 // clears 'line_stash' so only the overflow (chars after the \n)
 // remains in 'line_stash'.
-void	clean_stash(t_list **line_stash)
+void	clean_stash(t_gnllist **line_stash)
 {
-	t_list	*last;
-	t_list	*clean_node;
-	int		i;
-	int		j;
+	t_gnllist	*last;
+	t_gnllist	*clean_node;
+	int			i;
+	int			j;
 
-	clean_node = malloc(sizeof(t_list));
+	clean_node = malloc(sizeof(t_gnllist));
 	if (!clean_node || !line_stash)
 		return ;
 	clean_node->next = NULL;

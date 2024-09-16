@@ -5,18 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/22 17:32:59 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/16 13:39:40 by ameechan         ###   ########.fr       */
+/*   Created: 2024/09/16 13:46:38 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 13:46:41 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 // checks for a '\n' in the given linked list.
-int	found_newline(t_list *line_stash)
+int	found_newline(t_gnllist *line_stash)
 {
-	int		i;
-	t_list	*last;
+	int			i;
+	t_gnllist	*last;
 
 	i = 0;
 	if (line_stash == NULL)
@@ -32,9 +32,9 @@ int	found_newline(t_list *line_stash)
 }
 
 // Returns a pointer to the last node in 'line_stash'.
-t_list	*get_last_node(t_list *line_stash)
+t_gnllist	*get_last_node(t_gnllist *line_stash)
 {
-	t_list	*current;
+	t_gnllist	*current;
 
 	if (line_stash == NULL)
 		return (NULL);
@@ -46,7 +46,7 @@ t_list	*get_last_node(t_list *line_stash)
 
 // Calculates the number of chars in the current line, including the trailing
 // \n if there is one, and allocates memory accordingly.
-void	generate_line(char **line, t_list *line_stash)
+void	generate_line(char **line, t_gnllist *line_stash)
 {
 	int		i;
 	int		count;
@@ -71,10 +71,10 @@ void	generate_line(char **line, t_list *line_stash)
 }
 
 // Frees the entire stash.
-void	free_stash(t_list *line_stash)
+void	free_stash(t_gnllist *line_stash)
 {
-	t_list	*current;
-	t_list	*next;
+	t_gnllist	*current;
+	t_gnllist	*next;
 
 	current = line_stash;
 	while (current)
