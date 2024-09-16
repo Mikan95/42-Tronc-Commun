@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 13:21:09 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/16 13:21:26 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 14:00:40 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 14:00:47 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,10 @@ int	close_window(t_data *data)
 {
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
-	ft_printf("freed win\n");
 	mlx_destroy_display(data->mlx);
-	ft_printf("freed display\n");
 	if (data->mlx)
 		free(data->mlx);
-	ft_printf("freed mlx\n");
-	free_elements(data->node, "Exiting game\n");
+	free_elements(data->node, "Exiting game...\n");
 	return (0);
 }
 
@@ -80,7 +77,6 @@ int	init_game(t_map *node)
 {
 	t_data	var;
 
-	ft_printf("exit: (%d, %d)\n", node->exit->x, node->exit->y);
 	node->move_count = 0;
 	init_data(&var);
 	var.mlx = mlx_init();

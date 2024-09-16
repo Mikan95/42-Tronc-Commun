@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 13:32:28 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/16 13:33:11 by ameechan         ###   ########.fr       */
+/*   Created: 2024/09/16 13:55:10 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 13:57:43 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,6 @@ void	render_end(t_data *var)
 	mlx_clear_window(var->mlx, var->win);
 	mlx_string_put(var->mlx, var->win,
 		100, 100, 0x00FF0000, "You have reached the exit!");
-	mlx_string_put(var->mlx, var->win,
-		100, 120, 0x00FF0000, "Total moves: ");
-	mlx_string_put(var->mlx, var->win,
-		200, 120, 0x00FF0000, ft_itoa(var->node->move_count));
 	mlx_string_put(var->mlx, var->win,
 		100, 140, 0x00FF0000, "Press ESC to exit");
 }
