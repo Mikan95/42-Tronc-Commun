@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/13 19:00:22 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/13 19:00:22 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 13:21:41 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 13:21:41 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 	arg_check(argc, argv);
 	node = malloc(sizeof (t_map));
 	if (!node)
-		free_elements(node, "Error\nMemory allocation failure\n");
+		free_elements(node, ERR_111);
 	init_node(node);
 	node->file_path = argv[1];
 	map_check(node);

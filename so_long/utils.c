@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 12:56:50 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/16 12:57:04 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 13:33:29 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 13:33:31 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	valid_char(t_map *node, char c)
 	if (c == '0' || c == '1' || c == 'C' || c == 'E' || c == 'P')
 		return (1);
 	else
-		free_elements(node, "Error\nInvalid character used in map file");
+		free_elements(node, ERR_004);
 	return (0);
 }
 
@@ -53,7 +53,7 @@ void	store_exit(t_map *node, int i, int j)
 
 	exit = malloc(sizeof(t_pos));
 	if (!exit)
-		free_elements(node, "Error\nMemory allocation failure\n");
+		free_elements(node, ERR_114);
 	exit->y = i;
 	exit->x = j;
 	node->exit = exit;

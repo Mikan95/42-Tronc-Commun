@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/05 13:19:16 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/05 13:19:24 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 13:36:46 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 13:36:48 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

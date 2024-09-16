@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/05 13:20:23 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/05 13:20:38 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 13:36:05 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 13:36:08 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

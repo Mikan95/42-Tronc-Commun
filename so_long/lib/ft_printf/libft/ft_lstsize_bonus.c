@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/05 13:21:01 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/05 13:21:09 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 13:36:53 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 13:37:14 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_lstsize(t_list *lst)
 {
 	t_list	*temp;
-	int				i;
+	int		i;
 
 	temp = lst;
 	i = 0;

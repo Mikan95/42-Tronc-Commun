@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 12:45:15 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/16 12:45:39 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 13:20:45 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 13:20:57 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ before printing an error message and exiting the program
 void	free_elements(t_map *node, char *errmsg)
 {
 	if (!node)
-		return;
+		return ;
 	if (node->map)
 		free_map(node->map);
 	ft_printf("freed map\n");

@@ -6,7 +6,7 @@
 /*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 17:32:53 by ameechan          #+#    #+#             */
-/*   Updated: 2024/08/06 17:19:08 by ameechan         ###   ########.fr       */
+/*   Updated: 2024/09/16 13:39:40 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*get_next_line(int fd)
 {
-	static f_list	*line_stash;
+	static t_list	*line_stash;
 	char			*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &line, 0) < 0)
@@ -40,7 +40,7 @@ char	*get_next_line(int fd)
 }
 
 // uses read() and adds characters to 'line_stash'.
-void	read_and_stash(int fd, f_list **line_stash)
+void	read_and_stash(int fd, t_list **line_stash)
 {
 	char	*buffer;
 	int		readed;
@@ -64,13 +64,13 @@ void	read_and_stash(int fd, f_list **line_stash)
 }
 
 // adds the content of 'buffer' to the end of 'line_stash'.
-void	add_to_stash(f_list **line_stash, char *buffer, int readed)
+void	add_to_stash(t_list **line_stash, char *buffer, int readed)
 {
 	int		i;
-	f_list	*last;
-	f_list	*new_node;
+	t_list	*last;
+	t_list	*new_node;
 
-	new_node = malloc(sizeof (f_list));
+	new_node = malloc(sizeof (t_list));
 	if (!new_node)
 		return ;
 	new_node->next = NULL;
@@ -95,7 +95,7 @@ void	add_to_stash(f_list **line_stash, char *buffer, int readed)
 
 // extracts all characters from 'line_stash' and stores them in 'line'
 // stops after first '\n' encountered.
-void	extract_line(f_list *line_stash, char **line)
+void	extract_line(t_list *line_stash, char **line)
 {
 	int	i;
 	int	j;
@@ -125,14 +125,14 @@ void	extract_line(f_list *line_stash, char **line)
 
 // clears 'line_stash' so only the overflow (chars after the \n)
 // remains in 'line_stash'.
-void	clean_stash(f_list **line_stash)
+void	clean_stash(t_list **line_stash)
 {
-	f_list	*last;
-	f_list	*clean_node;
+	t_list	*last;
+	t_list	*clean_node;
 	int		i;
 	int		j;
 
-	clean_node = malloc(sizeof(f_list));
+	clean_node = malloc(sizeof(t_list));
 	if (!clean_node || !line_stash)
 		return ;
 	clean_node->next = NULL;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_checks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 12:52:06 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/16 12:54:14 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 13:20:24 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 13:20:27 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	line_len_check(t_map *node)
 		if (ft_mystrlen(temp[i]) == len)
 			i++;
 		else
-			free_elements(node, "Error\nMap is not rectangular or square");
+			free_elements(node, ERR_001);
 	}
 }
 
@@ -105,11 +105,11 @@ void	char_check(t_map *node)
 void	check_pec(t_map *node)
 {
 	if (node->p_total != 1)
-		free_elements(node, "Error\nP must equal 1\n");
+		free_elements(node, ERR_005);
 	if (node->e_total != 1)
-		free_elements(node, "Error\nE must equal 1\n");
+		free_elements(node, ERR_006);
 	if (node->c_total < 1)
-		free_elements(node, "Error\nC must be > 0\n");
+		free_elements(node, ERR_007);
 }
 
 /*
@@ -128,7 +128,7 @@ void	check_borders(t_map *node, int map_height, int map_width)
 				node->map[map_height - 1][i] == '1')
 			i++;
 		else
-			free_elements(node, "Error\nMap's top or bottom borders are not valid");
+			free_elements(node, ERR_002);
 	}
 	i = 1;
 	while (i < map_height)
@@ -137,6 +137,6 @@ void	check_borders(t_map *node, int map_height, int map_width)
 				node->map[i][map_width - 1] == '1')
 			i++;
 		else
-			free_elements(node, "Error\nMap's side borders are not valid");
+			free_elements(node, ERR_003);
 	}
 }

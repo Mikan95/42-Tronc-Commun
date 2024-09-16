@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 12:35:37 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/16 12:35:49 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 13:32:28 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 13:33:11 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,25 +59,26 @@ void	render_map(t_data *var, t_map *node)
 Renders xpm images pixel by pixel (ignoring transparent pixels)
 mlx_xpm_file_to_image & mlx_put_image_to_window had issues with transparency
 */
-void	render_xpm(t_data *var, char *path, int start_x, int start_y)
+void	render_xpm(t_data *var, char *path, int s_x, int s_y)
 {
-	int width;
+	int	width;
 	int	height;
+	int	x;
+	int	y;
 
-	var->img_ptr = mlx_xpm_file_to_image( var->mlx, path, &width, &height);
-
-	var->addr = mlx_get_data_addr(var->img_ptr, &var->bpp, &var->size_line, &var->endian);
-
-	int x = 0;
+	var->img_ptr = mlx_xpm_file_to_image(var->mlx, path, &width, &height);
+	var->addr = mlx_get_data_addr(var->img_ptr, &var->bpp,
+			&var->size_line, &var->endian);
+	x = 0;
 	while (x < width)
 	{
-		int y = 0;
+		y = 0;
 		while (y < height)
 		{
 			var->pixel = (y * var->size_line) + (x * (var->bpp / 8));
-			var->colour = *(int *)(var->addr + var->pixel);
-			if ((var->colour & 0xFF000000) != 0xFF000000)
-				mlx_pixel_put(var->mlx, var->win, start_x + x, start_y + y, var->colour);
+			var->color = *(int *)(var->addr + var->pixel);
+			if ((var->color & 0xFF000000) != 0xFF000000)
+				mlx_pixel_put(var->mlx, var->win, s_x + x, s_y + y, var->color);
 			y++;
 		}
 		x++;
@@ -91,8 +92,12 @@ renders the end screen when the player reaches the exit
 void	render_end(t_data *var)
 {
 	mlx_clear_window(var->mlx, var->win);
-	mlx_string_put(var->mlx, var->win, 100, 100, 0x00FF0000, "You have reached the exit!");
-	mlx_string_put(var->mlx, var->win, 100, 120, 0x00FF0000, "Total moves: ");
-	mlx_string_put(var->mlx, var->win, 200, 120, 0x00FF0000, ft_itoa(var->node->move_count));
-	mlx_string_put(var->mlx, var->win, 100, 140, 0x00FF0000, "Press ESC to exit");
+	mlx_string_put(var->mlx, var->win,
+		100, 100, 0x00FF0000, "You have reached the exit!");
+	mlx_string_put(var->mlx, var->win,
+		100, 120, 0x00FF0000, "Total moves: ");
+	mlx_string_put(var->mlx, var->win,
+		200, 120, 0x00FF0000, ft_itoa(var->node->move_count));
+	mlx_string_put(var->mlx, var->win,
+		100, 140, 0x00FF0000, "Press ESC to exit");
 }

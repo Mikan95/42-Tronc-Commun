@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 17:43:38 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/09 17:43:38 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 13:18:38 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 13:19:27 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	bfs(char **visited, t_map *node, t_pos start)
 {
 	if (start.y < 0 || start.y >= node->height || start.x < 0
 		|| start.x >= node->width)
-		return;
+		return ;
 	if (visited[start.y][start.x] == 'v' || visited[start.y][start.x] == '1')
 		return ;
 	visited[start.y][start.x] = 'v';
@@ -40,7 +40,7 @@ returns 1 if valid position and 0 if not
 */
 int	valid_pos(int row, int column, t_map *node, char **map_copy)
 {
-	int	valid;
+	int		valid;
 	char	current;
 
 	valid = 0;
@@ -54,8 +54,3 @@ int	valid_pos(int row, int column, t_map *node, char **map_copy)
 	else
 		return (0);
 }
-/*
-	ft_printf("queue.column: %d\n", queue[rear].column);
-	ft_printf("queue.row: %d\n", queue[rear].row);
-	ft_printf("Starting value: %c\n", map_copy[queue[rear].row][queue[rear].column]);
-	*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 12:42:11 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/16 12:44:25 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 13:22:37 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 13:22:39 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

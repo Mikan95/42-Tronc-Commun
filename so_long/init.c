@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 12:36:33 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/16 12:38:14 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 13:21:09 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 13:21:26 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 12:55:58 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/16 12:56:01 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 13:41:12 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 13:42:18 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_pos
 {
 	int	y;
 	int	x;
-} 				t_pos;
+}				t_pos;
 
 //define struct for all map related data
 typedef struct s_map
@@ -66,7 +66,7 @@ typedef struct s_data
 	int		size_line;
 	int		endian;
 	int		pixel;
-	int		colour;
+	int		color;
 	char	*addr;
 	char	*bg_addr;
 	int		bg_bpp;
@@ -128,6 +128,30 @@ void		move_right(t_data *var);
 //free.c functions
 void		free_elements(t_map *node, char *errmsg);
 void		free_map(char **map);
+
+//#######################################################################
+//DEFINE ERR_MSGS
+//Map contents errors
+# define ERR_001 "Error\nMap is not rectangular or square\n"
+# define ERR_002 "Error\nMap's top or bottom borders are not valid\n"
+# define ERR_003 "Error\nMap's side borders are not valid\n"
+# define ERR_004 "Error\nInvalid character used in map file\n"
+# define ERR_005 "Error\nP must equal 1\n"
+# define ERR_006 "Error\nE must equal 1\n"
+# define ERR_007 "Error\nC must be > 0\n"
+# define ERR_008 "Error\nUnreachable collectible or exit\n"
+
+//Map file errors
+# define ERR_101 "Error\nProblem opening map file\n"
+# define ERR_102 "Error\nProblem reading map file (Max size 10kb)\n"
+# define ERR_103 "Error\nProblem splitting map string\n"
+
+//Memory allocation errors
+# define ERR_111 "Error\nNode memory allocation failure\n"
+# define ERR_112 "Error\nProblem allocating memory for map string\n"
+# define ERR_113 "Error\nStart position memory allocation failure\n"
+# define ERR_114 "Error\nExit position memory allocation failure\n"
+//#######################################################################
 
 //DEFINE KEYCODES WSL2
 # define ESC_KEY 65307

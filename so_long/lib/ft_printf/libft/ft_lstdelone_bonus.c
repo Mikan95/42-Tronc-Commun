@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/05 13:20:10 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/05 13:20:10 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 13:36:21 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 13:36:23 by ameechan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
