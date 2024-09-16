@@ -5,13 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/13 18:56:22 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/13 18:56:33 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 12:42:11 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 12:44:25 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*
+checks if the player can move up, if yes, moves the player up,
+updates the map to reflect the move and renders the map.
+finally, checks if the player has reached the exit,
+if yes, renders the end screen.
+*/
 void	move_up(t_data *var)
 {
 	int	y;
@@ -21,8 +27,6 @@ void	move_up(t_data *var)
 	x = var->node->player->x;
 	if (var->node->map[y - 1][x] == '1')
 		return ;
-	if (var->node->map[y - 1][x] == 'E')
-		render_end(var);
 	var->node->map[y][x] = '0';
 	if (var->node->map[y - 1][x] == '0')
 	{
@@ -37,8 +41,16 @@ void	move_up(t_data *var)
 	}
 	var->node->move_count++;
 	render_map(var, var->node);
+	if (var->node->map[y - 1][x] == 'E')
+		render_end(var);
 }
 
+/*
+checks if the player can move down, if yes, moves the player down,
+updates the map to reflect the move and renders the map.
+finally, checks if the player has reached the exit,
+if yes, renders the end screen.
+*/
 void	move_down(t_data *var)
 {
 	int	y;
@@ -48,8 +60,6 @@ void	move_down(t_data *var)
 	x = var->node->player->x;
 	if (var->node->map[y + 1][x] == '1')
 		return ;
-	if (var->node->map[y + 1][x] == 'E')
-		render_end(var);
 	var->node->map[y][x] = '0';
 	if (var->node->map[y + 1][x] == '0')
 	{
@@ -64,8 +74,16 @@ void	move_down(t_data *var)
 	}
 	var->node->move_count++;
 	render_map(var, var->node);
+	if (var->node->map[y + 1][x] == 'E')
+		render_end(var);
 }
 
+/*
+checks if the player can move left, if yes, moves the player left,
+updates the map to reflect the move and renders the map.
+finally, checks if the player has reached the exit,
+if yes, renders the end screen.
+*/
 void	move_left(t_data *var)
 {
 	int	y;
@@ -75,12 +93,9 @@ void	move_left(t_data *var)
 	x = var->node->player->x;
 	if (var->node->map[y][x - 1] == '1')
 		return ;
-	if (var->node->map[y][x - 1] == 'E')
-		render_end(var);
 	var->node->map[y][x] = '0';
 	if (var->node->map[y][x - 1] == '0')
 	{
-
 		var->node->map[y][x - 1] = 'P';
 		var->node->player->x = x - 1;
 	}
@@ -92,8 +107,16 @@ void	move_left(t_data *var)
 	}
 	var->node->move_count++;
 	render_map(var, var->node);
+	if (var->node->map[y][x - 1] == 'E')
+		render_end(var);
 }
 
+/*
+checks if the player can move right, if yes, moves the player right,
+updates the map to reflect the move and renders the map.
+finally, checks if the player has reached the exit,
+if yes, renders the end screen.
+*/
 void	move_right(t_data *var)
 {
 	int	y;
@@ -103,8 +126,6 @@ void	move_right(t_data *var)
 	x = var->node->player->x;
 	if (var->node->map[y][x + 1] == '1')
 		return ;
-	if (var->node->map[y][x + 1] == 'E')
-		render_end(var);
 	var->node->map[y][x] = '0';
 	if (var->node->map[y][x + 1] == '0')
 	{
@@ -119,4 +140,6 @@ void	move_right(t_data *var)
 	}
 	var->node->move_count++;
 	render_map(var, var->node);
+	if (var->node->map[y][x + 1] == 'E')
+		render_end(var);
 }

@@ -5,13 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/13 19:00:40 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/13 19:00:40 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 12:36:33 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 12:38:14 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+/*
+closes the game window and frees all allocated memory
+*/
 int	close_window(t_data *data)
 {
 	if (data->win)
@@ -26,6 +29,9 @@ int	close_window(t_data *data)
 	return (0);
 }
 
+/*
+key_hook function that handles player movement
+*/
 int	key_hook(int keycode, t_data *var)
 {
 	if (keycode == ESC_KEY)
@@ -53,6 +59,9 @@ int	key_hook(int keycode, t_data *var)
 	return (0);
 }
 
+/*
+intializes all data in the t_data struct
+*/
 void	init_data(t_data *var)
 {
 	var->mlx = NULL;
@@ -64,13 +73,9 @@ void	init_data(t_data *var)
 	var->node = NULL;
 }
 
-/* int	game_loop(t_data *var)
-{
-	mlx_clear_window(var->mlx, var->win);
-	render_map(var, var->node);
-	return (0);
-} */
-
+/*
+initializes the game window and renders the map in it's initial stage
+*/
 int	init_game(t_map *node)
 {
 	t_data	var;
@@ -91,113 +96,4 @@ int	init_game(t_map *node)
 	mlx_key_hook(var.win, key_hook, &var);
 	mlx_loop(var.mlx);
 	return (0);
-}
-
-void	check_collectibles(t_map *node, int c_total, t_pos *exit)
-{
-	if (c_total == 0)
-	{
-		node->map[exit->y][exit->x] = 'E';
-	}
-}
-
-void	render_map(t_data *var, t_map *node)
-{
-	int	i;
-	int	j;
-
-	check_collectibles(node, node->c_total, node->exit);
-	i = 0;
-	while (i < node->height)
-	{
-		j = 0;
-		while (j < node->width)
-		{
-			if (node->map[i][j] != '1')
-				draw_bg(var, i, j);
-			if (node->map[i][j] == '1')
-				draw_wall(var, i, j);
-			else if (node->map[i][j] == 'E' && node->c_total == 0)
-				draw_exit(var, i, j);
-			else if (node->map[i][j] == 'C')
-				draw_collectible(var, i, j);
-			else if (node->map[i][j] == 'P')
-				draw_player(var, i, j);
-			j++;
-		}
-		i++;
-	}
-}
-
-
-void	draw_xpm_p(t_data *var, char *path, int start_x, int start_y)
-{
-	int width;
-	int	height;
-
-	var->img_ptr = mlx_xpm_file_to_image( var->mlx, path, &width, &height);
-
-	var->addr = mlx_get_data_addr(var->img_ptr, &var->bpp, &var->size_line, &var->endian);
-
-	int x = 0;
-	while (x < width)
-	{
-		int y = 0;
-		while (y < height)
-		{
-			var->pixel = (y * var->size_line) + (x * (var->bpp / 8));
-			var->colour = *(int *)(var->addr + var->pixel);
-			if ((var->colour & 0xFF000000) != 0xFF000000)
-				mlx_pixel_put(var->mlx, var->win, start_x + x, start_y + y, var->colour);
-			y++;
-		}
-		x++;
-	}
-	mlx_destroy_image(var->mlx, var->img_ptr);
-}
-
-void	draw_player(t_data *var, int i, int j)
-{
-	draw_xpm_p(var, PLAYERPATH, j * 32, i * 32);
-}
-
-void	draw_collectible(t_data *var, int i, int j)
-{
-	draw_xpm_p(var, OBJPATH, j * 32, i * 32);
-}
-
-void	draw_wall(t_data *var, int i, int j)
-{
-	int	width;
-	int	height;
-
-	width = 32;
-	height = 32;
-	var->wall_ptr = mlx_xpm_file_to_image(var->mlx, WALLPATH, &width, &height);
-	mlx_put_image_to_window(var->mlx, var->win, var->wall_ptr, j * 32, i * 32);
-	mlx_destroy_image(var->mlx, var->wall_ptr);
-}
-
-void	draw_exit(t_data *var, int i, int j)
-{
-	int	width;
-	int	height;
-
-	width = 32;
-	height = 32;
-	var->exit_ptr = mlx_xpm_file_to_image(var->mlx, EXITPATH, &width, &height);
-	mlx_put_image_to_window(var->mlx, var->win, var->exit_ptr, j * 32, i * 32);
-	mlx_destroy_image(var->mlx, var->exit_ptr);
-}
-
-void	draw_bg(t_data *var, int i, int j)
-{
-	int	width;
-	int	height;
-
-	width = 32;
-	height = 32;
-	var->bg_ptr = mlx_xpm_file_to_image(var->mlx, BGPATH, &width, &height);
-	mlx_put_image_to_window(var->mlx, var->win, var->bg_ptr, j * 32, i * 32);
-	mlx_destroy_image(var->mlx, var->bg_ptr);
 }

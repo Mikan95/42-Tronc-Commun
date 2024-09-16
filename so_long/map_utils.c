@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/13 16:22:56 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/13 16:23:02 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 12:46:42 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 12:47:07 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void	find_start(char **map, t_map *node)
 
 	start = malloc(sizeof(t_pos));
 	if (!start)
-		ft_perror("Error\nMemory allocation failure\n");
+		free_elements(node, "Error\nMemory allocation failure\n");
 	i = 0;
 	while (map[i])
 	{

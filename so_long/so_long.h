@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/13 18:54:49 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/13 18:54:49 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 12:55:58 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 12:56:01 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,47 +74,58 @@ typedef struct s_data
 	int		bg_endian;
 }				t_data;
 
-//init game functions
-int			init_game(t_map *node);
-void		render_map(t_data *var, t_map *node);
-void		draw_wall(t_data *var, int i, int j);
-void		draw_player(t_data *var, int i, int j);
-void		draw_exit(t_data *var, int i, int j);
-void		draw_collectible(t_data *var, int i, int j);
-void		draw_xpm_p(t_data *var, char *path, int start_x, int start_y);
+//main.c functions
+void		init_node(t_map *node);
 
-//player movement functions
+//error_checks.c functions
+void		arg_check(int argc, char **argv);
+void		line_len_check(t_map *node);
+void		char_check(t_map *node);
+void		check_pec(t_map *node);
+void		check_borders(t_map *node, int map_height, int map_width);
+
+//utils.c functions
+int			array_size(char **array);
+int			ft_mystrlen(char *str);
+void		store_exit(t_map *node, int i, int j);
+int			valid_char(t_map *node, char c);
+
+//map_utils.c functions
+int			count_lines(int *fd, char *map_path);
+void		init_map(t_map *node);
+void		map_check(t_map *node);
+void		find_start(char **map, t_map *node);
+
+//bfs.c functions
+void		bfs(char **visited, t_map *node, t_pos start);
+int			valid_pos(int row, int column, t_map *node, char **map_copy);
+
+//init.c functions
+int			init_game(t_map *node);
+void		init_data(t_data *var);
+int			key_hook(int keycode, t_data *var);
+int			close_window(t_data *data);
+
+//render.c functions
+void		check_collectibles(t_map *node, int c_total, t_pos *exit);
+void		render_xpm(t_data *var, char *path, int start_x, int start_y);
+void		render_map(t_data *var, t_map *node);
+void		render_end(t_data *var);
+
+//draw.c functions
+void		draw_bg(t_data *va, int i, int j);
+void		draw_collectible(t_data *var, int i, int j);
+void		draw_exit(t_data *var, int i, int j);
+void		draw_player(t_data *var, int i, int j);
+void		draw_wall(t_data *var, int i, int j);
+
+//movement.c functions
 void		move_up(t_data *var);
 void		move_down(t_data *var);
 void		move_left(t_data *var);
 void		move_right(t_data *var);
 
-//draw functions
-// void	draw_bg(t_data *var, int i, int j);
-void		draw_bg(t_data *va, int i, int j);
-//map parsing functions
-void		arg_check(int argc, char **argv);
-void		char_check(t_map *node);
-void		check_borders(t_map *node, int map_height, int map_width);
-int			count_lines(int *fd, char *map_path);
-void		line_len_check(t_map *node);
-void		map_check(t_map *node);
-void		map_fill(t_map *node);
-void		init_node(t_map *node);
-void		init_map(t_map *node);
-int			valid_char(char c);
-void		store_exit(t_map *node, int i, int j);
-
-//bfs functions
-void		bfs(char **visited, t_map *node, t_pos start);
-void		find_start(char **map, t_map *node);
-int			valid_pos(int row, int column, t_map *node, char **map_copy);
-
-//utility functions
-int			array_size(char **array);
-void		check_pec(t_map *node);
-int			ft_mystrlen(char *str);
-void		ft_perror(char *errmsg);
+//free.c functions
 void		free_elements(t_map *node, char *errmsg);
 void		free_map(char **map);
 

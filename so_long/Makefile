@@ -13,7 +13,7 @@ GNL = lib/libgnl.a
 RM = rm -f
 
 #define source files
-SRC_FILES = $(addsuffix .c, main init error_checks map_utils utils bfs free movement)
+SRC_FILES = $(addsuffix .c, main init error_checks map_utils utils bfs free movement render draw)
 #define object files
 OBJ := $(SRC_FILES:.c=.o)
 
@@ -67,7 +67,7 @@ FTPRINTF = ./lib/libftprintf.a
 GNL = ./lib/libgnl.a
 
 #define source files
-SRC_FILES = $(addsuffix .c, main init error_checks map_utils utils bfs free movement)
+SRC_FILES = $(addsuffix .c, main init error_checks map_utils utils bfs free movement render draw)
 #define object files
 OBJ := $(SRC_FILES:.c=.o)
 

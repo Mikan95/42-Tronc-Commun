@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_checks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ameechan <ameechan@student.42.ch>          +#+  +:+       +#+        */
+/*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 17:37:10 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/14 14:54:10 by ameechan         ###   ########.fr       */
+/*   Created: 2024/09/16 12:52:06 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 12:54:14 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	arg_check(int argc, char **argv)
 }
 
 /*
-[2]	Checks that all lines are the same length as the first line (node->width)
+[2]	Checks that all lines are the same length as the first line.
 	If not, prints out an error message.
 */
 void	line_len_check(t_map *node)
@@ -80,8 +80,7 @@ void	char_check(t_map *node)
 	while (node->map[i])
 	{
 		j = 0;
-		while (node->map[i][j] &&
-				valid_char(node->map[i][j]))
+		while (node->map[i][j] && valid_char(node, node->map[i][j]))
 		{
 			if (node->map[i][j] == 'P')
 				node->p_total++;
@@ -99,21 +98,9 @@ void	char_check(t_map *node)
 	check_pec(node);
 }
 
-void	store_exit(t_map *node, int i, int j)
-{
-	t_pos	*exit;
-
-	exit = malloc(sizeof(t_pos));
-	if (!exit)
-		free_elements(node, "Error\nMemory allocation failure\n");
-	exit->y = i;
-	exit->x = j;
-	node->exit = exit;
-}
-
 /*
-Checks that P E & C are valid
-Prints out an error message and exits the program if invalid
+[4]	Checks that P E & C are valid
+	Prints out an error message and exits the program if invalid
 */
 void	check_pec(t_map *node)
 {
@@ -126,9 +113,9 @@ void	check_pec(t_map *node)
 }
 
 /*
-Checks that the first and last line of the map are all '1' (walls)
-Checks that both the first and last characters of each line between
-the top and bottom of the map are '1' (walls)
+[5]	Checks that the first and last line of the map are all '1' (walls)
+	Checks that both the first and last characters of each line between
+	the top and bottom of the map are '1' (walls)
 */
 void	check_borders(t_map *node, int map_height, int map_width)
 {

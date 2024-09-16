@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ameechan <ameechan@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 17:29:35 by ameechan          #+#    #+#             */
-/*   Updated: 2024/09/09 17:29:35 by ameechan         ###   ########.ch       */
+/*   Created: 2024/09/16 12:45:15 by ameechan          #+#    #+#             */
+/*   Updated: 2024/09/16 12:45:39 by ameechan         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 /*
 checks and frees all elements accordingly
+before printing an error message and exiting the program
 */
 void	free_elements(t_map *node, char *errmsg)
 {
@@ -31,9 +32,6 @@ void	free_elements(t_map *node, char *errmsg)
 	if (node->exit)
 		free(node->exit);
 	ft_printf("freed exit\n");
-	// if (node->player)
-	// 	free(node->player);
-	// ft_printf("freed player\n");
 	if (node->start)
 		free(node->start);
 	ft_printf("freed start\n");
